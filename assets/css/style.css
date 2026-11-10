@@ -666,11 +666,22 @@ h1.display {
 .footer-bottom a { color: var(--ink-faint); }
 
 /* ---------- Animations ---------- */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.is-in { opacity: 1; transform: none; }
+/* Les tuiles entrent au défilement avec un vrai petit rebond : on anime
+   `translate` et `scale` (pas `transform`) pour ne pas gêner le tilt 3D
+   des cartes au survol. */
+.reveal { opacity: 0; translate: 0 34px; scale: 0.95; }
+.reveal.is-in { animation: tileBounce 1s cubic-bezier(0.22, 0.72, 0.28, 1) both; }
+@keyframes tileBounce {
+  0%   { opacity: 0; translate: 0 34px; scale: 0.95; }
+  34%  { opacity: 1; translate: 0 -7px; scale: 1.012; }
+  52%  { translate: 0 3px; scale: 0.998; }
+  68%  { translate: 0 -2px; scale: 1.003; }
+  84%  { translate: 0 1px; scale: 1; }
+  100% { opacity: 1; translate: 0 0; scale: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal { opacity: 1; translate: none; scale: none; animation: none !important; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
@@ -782,9 +793,15 @@ body::after {
 
 /* Titre ligne par ligne */
 .display .line { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
-.display .line > span { display: block; transform: translateY(112%); animation: lineUp 1.05s cubic-bezier(0.22, 0.9, 0.28, 1) forwards; }
+.display .line > span { display: block; transform: translateY(112%); animation: lineUp 1.15s cubic-bezier(0.22, 0.9, 0.28, 1) forwards; }
 .display .line:nth-of-type(2) > span { animation-delay: 0.13s; }
-@keyframes lineUp { to { transform: translateY(0); } }
+@keyframes lineUp {
+  0%   { transform: translateY(112%); }
+  58%  { transform: translateY(-5.5%); }
+  76%  { transform: translateY(2%); }
+  89%  { transform: translateY(-0.8%); }
+  100% { transform: translateY(0); }
+}
 
 /* Petit « ping » sur le badge */
 .eyebrow .dot { animation: pulse 2.6s ease-in-out infinite; }

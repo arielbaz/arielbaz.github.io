@@ -61,7 +61,7 @@
 
   /* ---------- Révélation au scroll ---------- */
   var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealEls.length) {
+  if ('IntersectionObserver' in window && revealEls.length && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -71,7 +71,10 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
     revealEls.forEach(function (el, i) {
-      el.style.transitionDelay = Math.min(i % 6, 5) * 50 + 'ms';
+      // Petit décalage entre tuiles voisines pour un rebond lisible.
+      el.style.animationDelay = Math.min(i % 6, 5) * 55 + 'ms';
+      // Le délai de transition généré ne doit pas retarder le survol.
+      el.style.transitionDelay = '0ms';
       io.observe(el);
     });
   } else {
@@ -342,9 +345,9 @@
 
           if (Math.abs(st.tx - st.x) > 0.02 || Math.abs(st.ty - st.y) > 0.02 || Math.abs(st.tr - st.r) > 0.02) moving = true;
 
-          var wobX = Math.abs(scrollVel) > 0.01 ? scrollVel * 2.2 * Math.sin(i * 0.55 + act.phase) : 0;
-          var wobY = Math.abs(scrollVel) > 0.01 ? scrollVel * 2.8 * Math.cos(i * 0.42 + act.phase) : 0;
-          var wobR = Math.abs(scrollVel) > 0.01 ? scrollVel * 1.0 * Math.sin(i * 0.3) : 0;
+          var wobX = Math.abs(scrollVel) > 0.01 ? scrollVel * 2.8 * Math.sin(i * 0.55 + act.phase) : 0;
+          var wobY = Math.abs(scrollVel) > 0.01 ? scrollVel * 4.2 * Math.cos(i * 0.42 + act.phase) : 0;
+          var wobR = Math.abs(scrollVel) > 0.01 ? scrollVel * 1.6 * Math.sin(i * 0.3) : 0;
 
           act.chars[i].style.transform = 'translate3d(' + (st.x + wobX).toFixed(2) + 'px,' +
             (st.y + wobY).toFixed(2) + 'px,0) rotate(' + (st.r + wobR).toFixed(2) + 'deg)';
@@ -444,7 +447,7 @@
       var d = y - lastY;
       lastY = y;
       if (Math.abs(d) < 0.4) return;
-      scrollVel = Math.max(-1.4, Math.min(1.4, d / 26));
+      scrollVel = Math.max(-1.8, Math.min(1.8, d / 24));
       start();
     }, { passive: true });
 
