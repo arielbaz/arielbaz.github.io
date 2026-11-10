@@ -40,5 +40,8 @@
   },
   "bitchat": {
     "full": true
+  },
+  "appels-wifi": {
+    "full": false
   }
 }

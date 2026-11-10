@@ -6,6 +6,7 @@ category: Mobile
 tags: [vowifi, mobile, voyage, forfait]
 excerpt: "Le réseau manque, le Wi-Fi est là. À l'étranger, la différence entre 2 € et 200 € de facture."
 platforms: [ios, android]
+logo: appels-wifi
 icon: phone
 source: https://www.free.fr
 sourceLabel: free.fr

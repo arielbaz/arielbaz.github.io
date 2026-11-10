@@ -612,7 +612,7 @@ function articlePage(post, prev, next) {
     keywords: post.tags.join(', '),
   })}</script>`;
 
-  return head({ title, description: post.excerpt, url: `/articles/${post.slug}.html`, type: 'article', extra: jsonld }) + `${nav('articles')}
+  return head({ title, description: post.excerpt, url: `/articles/${post.slug}.html`, type: 'article', image: `/assets/img/cards/${post.slug}.jpg`, extra: jsonld }) + `${nav('articles')}
 <div class="progress" aria-hidden="true"></div>
 <main id="contenu">
   <article>
@@ -628,7 +628,9 @@ function articlePage(post, prev, next) {
         <p class="dek">${esc(post.excerpt)}</p>
       </div>
       <div class="wrap">
-        <div class="article-art ${post.cat.art}">${artVisual(post)}</div>
+        <figure class="article-art">
+          <img src="/assets/img/cards/${post.slug}.jpg" alt="${esc(post.excerpt)}" width="1600" height="900">
+        </figure>
       </div>
     </header>
 
