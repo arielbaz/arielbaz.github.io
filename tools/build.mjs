@@ -298,6 +298,11 @@ function nav(active) {
   return `<a class="skip-link" href="#contenu">Aller au contenu</a>
 <header class="nav">
   <div class="nav-inner">
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <span class="nav-toggle-label"><span class="l-open">Menu</span><span class="l-close">Fermer</span></span>
+      </button>
     <a class="brand" href="/" aria-label="${SITE.name} — accueil">
       <img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27">
     </a>
@@ -308,11 +313,6 @@ function nav(active) {
     <div class="nav-actions">
       <a class="icon-btn" href="/feed.xml" aria-label="Flux RSS" title="Flux RSS">${icon('rss')}</a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème">${icon('sun')}</button>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
-        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        <span class="nav-toggle-label"><span class="l-open">Menu</span><span class="l-close">Fermer</span></span>
-      </button>
     </div>
   </div>
 </header>`;

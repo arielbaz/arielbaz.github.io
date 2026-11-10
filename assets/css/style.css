@@ -1147,3 +1147,11 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
   .hero-meta { gap: 8px 18px; }
   .lede { max-width: 100%; }
 }
+
+/* ---------- Bouton menu à gauche sur mobile ---------- */
+@media (max-width: 780px) {
+  .nav-inner { gap: 10px; }
+  .nav-toggle { margin-right: 2px; }
+  .brand { margin-right: auto; }
+  .nav-actions { margin-left: 0; }
+}
