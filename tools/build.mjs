@@ -308,8 +308,10 @@ function nav(active) {
     <div class="nav-actions">
       <a class="icon-btn" href="/feed.xml" aria-label="Flux RSS" title="Flux RSS">${icon('rss')}</a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème">${icon('sun')}</button>
-      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <span class="nav-toggle-label"><span class="l-open">Menu</span><span class="l-close">Fermer</span></span>
       </button>
     </div>
   </div>
@@ -411,7 +413,7 @@ function homePage() {
       </h1>
       <p class="lede">Des outils gratuits, des réglages précis et les pièges évités. Zéro abonnement, zéro blabla, zéro « leader du marché ».</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#dernieres">Voir ce qui vient de sortir ${icon('arrow')}</a>
+        <a class="btn btn-primary" href="/articles/${posts[0].slug}.html">Voir ce qui vient de sortir ${icon('arrow')}</a>
         <a class="btn btn-ghost" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} La chaîne WhatsApp</a>
       </div>
       <div class="hero-meta">
