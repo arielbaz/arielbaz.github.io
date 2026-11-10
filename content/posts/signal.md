@@ -3,7 +3,7 @@ title: "Signal : la messagerie la plus sûre, et la plus simple à adopter"
 slug: signal
 date: 2026-11-03
 category: Sécurité
-tags: [messagerie, chiffrement, open source, mobile]
+tags: [messagerie, chiffrement, mobile, open source]
 excerpt: "La messagerie la plus sûre du marché. Le seul problème : elle ne fait pas chaîne de diffusion. Donc on garde WhatsApp pour ça."
 logo: signal
 platforms: [windows, mac, ios, android]
