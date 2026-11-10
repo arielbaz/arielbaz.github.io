@@ -158,7 +158,7 @@
   }
 
   /* ---------- Filtre + recherche ---------- */
-  var searchInput = document.querySelector('[data-search]');
+  var searchInput = document.querySelector('input[data-search]');
   var chips = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
   var items = Array.prototype.slice.call(document.querySelectorAll('[data-post]'));
   var countEl = document.querySelector('[data-count]');
@@ -459,6 +459,56 @@
 
   initTitleFx();
 
+
+  /* ---------- Rebond global au défilement ----------
+     Le contenu prend un très léger retard dans le sens du scroll, puis
+     revient avec un petit overshoot. On translate les .wrap (et pas
+     <main>) pour éviter tout trou sous la navbar. */
+  (function () {
+    if (reduceMotion) return;
+
+    var wraps = document.querySelectorAll('main .wrap, .footer .wrap');
+    if (!wraps.length) return;
+
+    var offset = 0;
+    var velocity = 0;
+    var lastY = window.scrollY;
+    var raf = null;
+    var MAX = 9;
+
+    function clearBounce() {
+      for (var i = 0; i < wraps.length; i++) wraps[i].style.translate = '';
+    }
+
+    function tick() {
+      raf = null;
+      velocity += -offset * 0.12;
+      velocity *= 0.82;
+      offset += velocity;
+
+      if (Math.abs(offset) < 0.04 && Math.abs(velocity) < 0.04) {
+        offset = 0;
+        velocity = 0;
+        clearBounce();
+        return;
+      }
+
+      var y = Math.max(-MAX, Math.min(MAX, offset)).toFixed(2) + 'px';
+      for (var i = 0; i < wraps.length; i++) wraps[i].style.translate = '0 ' + y;
+      raf = requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      var d = y - lastY;
+      lastY = y;
+      if (Math.abs(d) < 0.4) return;
+
+      // Impulsion dans le sens du scroll, bornée pour les sauts d'ancre.
+      velocity += Math.max(-6, Math.min(6, d * 0.045));
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: true });
+  })();
 
   /* ---------- Retour en haut, avec anneau de progression ---------- */
   (function () {
