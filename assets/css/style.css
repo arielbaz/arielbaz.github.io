@@ -1197,3 +1197,16 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 
 .article-plats { gap: 14px; }
 .article-plats .plat { width: 22px; height: 22px; }
+
+/* ---------- La tuile « dossier du moment » réagit aussi au pointeur ---------- */
+.featured { position: relative; }
+.featured::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.55), transparent 62%);
+  opacity: 0; transition: opacity 0.35s var(--ease); mix-blend-mode: soft-light;
+}
+.featured:hover::after { opacity: 1; }
+.featured:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--line-strong);
+}

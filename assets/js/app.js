@@ -104,7 +104,7 @@
 
   /* ---------- Cartes : inclinaison 3D + halo ---------- */
   if (finePointer && !reduceMotion) {
-    document.querySelectorAll('.post-card').forEach(function (card) {
+    document.querySelectorAll('.post-card, .featured').forEach(function (card) {
       var raf = null;
       card.addEventListener('pointermove', function (e) {
         if (raf) return;
