@@ -1210,3 +1210,12 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
   box-shadow: var(--shadow);
   border-color: var(--line-strong);
 }
+
+/* ---------- Pied de la tuile à la une ---------- */
+.featured-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-top: 4px;
+}
+.featured-foot .platforms { gap: 6px; }
+.featured-foot .plat { width: 20px; height: 20px; }
+@media (max-width: 620px) { .featured-foot .plat { width: 18px; height: 18px; } }

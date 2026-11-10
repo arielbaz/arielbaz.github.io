@@ -149,6 +149,9 @@
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { cio.observe(el); });
+  } else {
+    // mouvement réduit ou pas d'IntersectionObserver : on affiche la valeur finale
+    counters.forEach(function (el) { el.textContent = el.dataset.countTo; });
   }
 
   /* ---------- Filtre + recherche ---------- */

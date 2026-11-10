@@ -26,7 +26,7 @@ const SITE = {
   name: 'ARIBAZ',
   author: 'ARIBAZ',
   url: 'https://arielbaz.github.io',
-  tagline: 'La tech utile, propre et sans blabla.',
+  tagline: 'La tech utile, testée à la main.',
   description:
     "Des astuces concrètes pour un numérique plus simple, plus sûr et plus propre : outils gratuits, vie privée, filtrage familial et productivité.",
   whatsapp: 'https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S',
@@ -129,8 +129,12 @@ const PLATFORMS = {
   },
 };
 
+const PLAT_ORDER = ['windows', 'mac', 'ios', 'android', 'chrome', 'web'];
+
 function platforms(post) {
-  const list = Array.isArray(post.platforms) ? post.platforms.filter((k) => PLATFORMS[k]) : [];
+  const list = Array.isArray(post.platforms)
+    ? post.platforms.filter((k) => PLATFORMS[k]).sort((a, b) => PLAT_ORDER.indexOf(a) - PLAT_ORDER.indexOf(b))
+    : [];
   if (!list.length) return '';
   const names = list.map((k) => PLATFORMS[k].label).join(', ');
   return `<span class="platforms" role="img" aria-label="Compatible : ${esc(names)}" title="Compatible : ${esc(names)}">${list
@@ -369,7 +373,7 @@ function footer() {
     <div class="footer-top">
       <div class="footer-brand">
         <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="104" height="32"></a>
-        <p>${SITE.tagline} Une sélection d'outils, de réglages et d'astuces testés, expliqués simplement, publiés deux à quatre fois par mois.</p>
+        <p>Je fouille internet, parfois je trouve des trucs. Une sélection d'outils, de réglages et d'astuces testés, publiés deux à quatre fois par mois.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -455,7 +459,7 @@ function homePage() {
         <span class="line"><span>La tech qui sert</span></span>
         <span class="line"><span>à <span class="gradient-text">quelque chose.</span></span></span>
       </h1>
-      <p class="lede">Des outils gratuits, des réglages précis et les pièges évités. Zéro abonnement, zéro blabla, zéro « leader du marché ».</p>
+      <p class="lede">Je fouille internet. Parfois je trouve des trucs. Des outils gratuits, des réglages précis et les pièges évités — testés avant d'atterrir ici.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/articles/${posts[0].slug}.html">Voir ce qui vient de sortir ${icon('arrow')}</a>
         <a class="btn btn-ghost" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} La chaîne WhatsApp</a>
@@ -482,7 +486,10 @@ function homePage() {
           <div class="card-meta"><span class="pill" data-cat="${esc(featured.category)}">${esc(featured.category)}</span><span>${fmtDate(featured.date)}</span><span>${featured.readTime} min</span></div>
           <h3>${esc(featured.title)}</h3>
           <p>${esc(featured.excerpt)}</p>
-          <span class="link-arrow">Lire l'article ${icon('arrow')}</span>
+          <div class="featured-foot">
+            <span class="link-arrow">Lire l'article ${icon('arrow')}</span>
+            ${platforms(featured)}
+          </div>
         </div>
       </a>
     </div>
@@ -818,6 +825,7 @@ function aboutPage() {
       <div class="about-grid">
         <div class="prose">
           <p class="lead">Il y a deux façons de vivre avec la technologie : la subir, ou la comprendre. J'ai choisi la deuxième, et ça m'occupe à plein temps.</p>
+          <p>Je fouille internet. Parfois je trouve des trucs. C'est toute la méthode : pas de veille payante, pas de liste prédigérée — de la curiosité, des tests, et un tri sévère.</p>
 
           <h2>Le parcours en trois lignes</h2>
           <p>Ingénierie système, développement logiciel, artisanat hardware. Un parcours entre la France et Israël, beaucoup d'autodidaxie, et une conviction : celui qui comprend toutes les couches n'a besoin de demander la permission à personne.</p>
