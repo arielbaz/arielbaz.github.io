@@ -6,6 +6,7 @@ category: Alternatives
 tags: [navigateur, publicité, vie privée, mobile]
 excerpt: "Pubs bloquées, YouTube qui continue écran éteint, zéro abonnement. Le navigateur qui fait regretter Chrome."
 logo: brave
+platforms: [windows, mac, ios, android]
 icon: globe
 source: https://brave.com/fr
 sourceLabel: brave.com

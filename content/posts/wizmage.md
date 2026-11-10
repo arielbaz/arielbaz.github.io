@@ -5,6 +5,7 @@ date: 2026-07-28
 category: Filtrage
 tags: [navigateur, images, filtre, famille]
 excerpt: "Toutes les images floutées, un clic pour voir. Pour surfer sans les surprises que personne n'a demandées."
+platforms: [chrome, windows, mac]
 icon: image
 source: https://chromewebstore.google.com/detail/wizmage-image-hider/ifoggbfaoakkojipahnplnbfnhhhnmlp
 sourceLabel: Chrome Web Store

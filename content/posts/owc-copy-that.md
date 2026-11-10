@@ -6,6 +6,7 @@ category: Mobile
 tags: [iphone, sauvegarde, stockage, usb-c]
 excerpt: "Tes photos quittent iCloud sans payer un centime de plus. Direction : une clé USB, chez toi."
 logo: owc-copy-that
+platforms: [ios, mac]
 icon: usb
 source: https://apps.apple.com/app/id1536830655
 sourceLabel: App Store

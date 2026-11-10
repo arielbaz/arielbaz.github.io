@@ -5,6 +5,7 @@ date: 2026-11-10
 category: Sécurité
 tags: [messagerie, bluetooth, chiffrement, hors-ligne]
 excerpt: "Zéro internet, zéro compte, zéro numéro. Tes messages passent de téléphone en téléphone par Bluetooth, et personne ne peut couper la conversation."
+platforms: [ios, android, mac]
 icon: lock
 logo: bitchat
 source: https://bitchat.free

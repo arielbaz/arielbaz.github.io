@@ -6,6 +6,7 @@ category: Filtrage
 tags: [android, contrôle parental, google, famille]
 excerpt: "Temps d'écran, installations validées, localisation. Le socle gratuit pour un Android qui n'échappe pas des mains."
 logo: family-link
+platforms: [ios, android, web]
 icon: eye
 source: https://families.google.com/familylink
 sourceLabel: families.google.com

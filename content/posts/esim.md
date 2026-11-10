@@ -5,6 +5,7 @@ date: 2026-06-12
 category: Mobile
 tags: [esim, mobile, voyage, opérateur]
 excerpt: "Un QR code, deux validations, zéro carte à découper. Et trois pièges à éviter avant de partir."
+platforms: [ios, android]
 icon: sim
 source: https://www.gsma.com/esim/
 sourceLabel: gsma.com

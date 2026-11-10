@@ -6,6 +6,7 @@ category: Productivité
 tags: [ia, étude, google, podcast]
 excerpt: "Quarante pages de PDF transformées en podcast à deux voix. La révision la plus confortable de ta vie."
 logo: notebooklm
+platforms: [web, ios, android]
 icon: book
 source: https://notebooklm.google
 sourceLabel: notebooklm.google

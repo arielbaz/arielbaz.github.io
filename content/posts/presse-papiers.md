@@ -5,6 +5,7 @@ date: 2026-06-24
 category: Productivité
 tags: [raccourcis, windows, macos, productivité]
 excerpt: "Win + V : le raccourci que la moitié des gens ignore. Côté Mac, la vérité est moins glamour."
+platforms: [windows, mac]
 icon: clipboard
 source: https://support.microsoft.com/fr-fr/windows
 sourceLabel: support.microsoft.com

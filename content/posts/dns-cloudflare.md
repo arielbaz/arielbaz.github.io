@@ -6,6 +6,7 @@ category: Filtrage
 tags: [dns, réseau, cloudflare, famille]
 excerpt: "Deux adresses IP, deux minutes, et toute la maison est filtrée. Le meilleur rapport effort/résultat du web."
 logo: dns-cloudflare
+platforms: [windows, mac, ios, android]
 icon: wifi
 source: https://one.one.one.one/fr-FR/family/
 sourceLabel: one.one.one.one

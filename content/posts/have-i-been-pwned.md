@@ -6,6 +6,7 @@ category: Sécurité
 tags: [fuite, mots de passe, 2fa, sécurité]
 excerpt: "Ton adresse a peut-être fuité. Deux secondes pour le savoir, deux actions pour limiter les dégâts."
 logo: have-i-been-pwned
+platforms: [web]
 icon: breach
 source: https://haveibeenpwned.com
 sourceLabel: haveibeenpwned.com

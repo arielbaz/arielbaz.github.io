@@ -6,6 +6,7 @@ category: Productivité
 tags: [dictée, ia, open source, accessibilité]
 excerpt: "Dicte, arrête de taper. L'IA transcrit ta voix en local, sans envoyer un mot à un serveur."
 logo: handy
+platforms: [windows, mac]
 icon: mic
 source: https://handy.computer/
 sourceLabel: handy.computer

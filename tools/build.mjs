@@ -94,6 +94,50 @@ function icon(name, cls = '') {
   return `<svg viewBox="0 0 24 24" aria-hidden="true"${cls ? ` class="${cls}"` : ''}>${body}</svg>`;
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* Plateformes                                                                */
+/* -------------------------------------------------------------------------- */
+const APPLE = `<path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.3-1.5-2.8-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.9c.7-1 1-2 1-2.1-.1 0-2-.8-2-3.3Z"/><path d="M14.6 6.6c.5-.6.9-1.5.8-2.4-.8.1-1.8.5-2.4 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.5 2.4-1.1Z"/>`;
+const LAPTOP = (inner) => `<rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/>${inner}`;
+const PHONE = (inner) => `<rect x="6.4" y="2.3" width="11.2" height="19.4" rx="2.8" fill="none" stroke="currentColor" stroke-width="1.5"/>${inner}`;
+
+const PLATFORMS = {
+  mac: {
+    label: 'macOS', cls: 'plat-mac',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true">${LAPTOP(`<g transform="translate(7.9 6.2) scale(0.34)" fill="currentColor">${APPLE}</g>`)}</svg>`,
+  },
+  windows: {
+    label: 'Windows', cls: 'plat-win',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true">${LAPTOP(`<g fill="currentColor"><rect x="9.1" y="7.3" width="3" height="3" rx="0.35"/><rect x="12.6" y="7.3" width="3" height="3" rx="0.35"/><rect x="9.1" y="10.8" width="3" height="3" rx="0.35"/><rect x="12.6" y="10.8" width="3" height="3" rx="0.35"/></g>`)}</svg>`,
+  },
+  android: {
+    label: 'Android', cls: 'plat-android',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true">${PHONE(`<g fill="currentColor"><rect x="8.4" y="10.1" width="7.2" height="4.5" rx="1.3"/><path d="M9.4 9.9 8.5 8.3M14.6 9.9l.9-1.6" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/><circle cx="10.4" cy="12.1" r="0.55" fill="#fff"/><circle cx="13.6" cy="12.1" r="0.55" fill="#fff"/></g>`)}</svg>`,
+  },
+  ios: {
+    label: 'iPhone / iPad', cls: 'plat-ios',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true">${PHONE(`<g transform="translate(8.4 8.2) scale(0.3)" fill="currentColor">${APPLE}</g>`)}</svg>`,
+  },
+  chrome: {
+    label: 'Extension Chrome', cls: 'plat-chrome',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5.5A1.5 1.5 0 0 1 5.5 4h4.2v2.1a1.7 1.7 0 1 0 3.4 0V4h4.2A1.5 1.5 0 0 1 19 5.5v4.2h-2.1a1.7 1.7 0 1 0 0 3.4H19v4.2a1.5 1.5 0 0 1-1.5 1.5h-4.2v-2.1a1.7 1.7 0 1 0-3.4 0v2.1H5.5A1.5 1.5 0 0 1 4 17.7v-4.2h2.1a1.7 1.7 0 1 0 0-3.4H4Z"/></svg>`,
+  },
+  web: {
+    label: 'Dans le navigateur', cls: 'plat-web',
+    svg: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.6 12h16.8M12 3.6c2.4 2.4 3.6 5.3 3.6 8.4s-1.2 6-3.6 8.4c-2.4-2.4-3.6-5.3-3.6-8.4S9.6 6 12 3.6Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+};
+
+function platforms(post) {
+  const list = Array.isArray(post.platforms) ? post.platforms.filter((k) => PLATFORMS[k]) : [];
+  if (!list.length) return '';
+  const names = list.map((k) => PLATFORMS[k].label).join(', ');
+  return `<span class="platforms" role="img" aria-label="Compatible : ${esc(names)}" title="Compatible : ${esc(names)}">${list
+    .map((k) => `<span class="plat ${PLATFORMS[k].cls}" aria-hidden="true">${PLATFORMS[k].svg}</span>`)
+    .join('')}</span>`;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Utilitaires                                                                */
 /* -------------------------------------------------------------------------- */
@@ -248,13 +292,13 @@ if (!posts.length) throw new Error('Aucun article trouvé.');
 /* -------------------------------------------------------------------------- */
 /* Fragments de page                                                          */
 /* -------------------------------------------------------------------------- */
-const THEME_BOOT = `<script>(function(){try{var t=localStorage.getItem('aribaz-theme');if(t){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}}catch(e){}})();</script>`;
+const THEME_BOOT = `<script>(function(){try{var t=localStorage.getItem('aribaz-theme');var d=(t==='dark')?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>`;
 
 function head({ title, description, url, image = '/assets/img/og.png', type = 'website', extra = '' }) {
   const full = url.startsWith('http') ? url : SITE.url + url;
   const ogImage = SITE.url + image;
   return `<!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -370,7 +414,7 @@ function card(post, { reveal = true, delay = 0 } = {}) {
     <div class="card-meta"><span class="pill" data-cat="${esc(post.category)}">${esc(post.category)}</span><span>${fmtDate(post.date)}</span></div>
     <h3>${esc(post.title)}</h3>
     <p>${esc(post.excerpt)}</p>
-    <div class="card-foot"><span>${post.readTime} min de lecture</span><span class="go">Lire ${icon('arrow')}</span></div>
+    <div class="card-foot"><span>${post.readTime} min de lecture</span><span class="card-end">${platforms(post)}<span class="go">Lire ${icon('arrow')}</span></span></div>
   </div>
 </a>`;
 }
@@ -516,7 +560,7 @@ function iconForCat(name) {
 
 function articlesPage() {
   return `<!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -593,6 +637,8 @@ function articlePage(post, prev, next) {
         </div>
         <a class="btn btn-primary" href="${post.source}" target="_blank" rel="noopener">Ouvrir le site ${icon('arrow-up-right')}</a>
       </div>` : ''}
+
+      ${post.platforms && post.platforms.length ? `<div class="article-plats"><span class="k">Disponible sur</span>${platforms(post)}</div>` : ''}
 
       <div class="article-footer">
         <div class="tags">

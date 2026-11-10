@@ -8,23 +8,15 @@
 
   /* ---------- Thème ---------- */
   var STORAGE_KEY = 'aribaz-theme';
-  var media = window.matchMedia('(prefers-color-scheme: dark)');
-
-  function systemTheme() { return media.matches ? 'dark' : 'light'; }
+  function currentTheme() { return root.getAttribute('data-theme') || 'light'; }
 
   function applyTheme(theme) {
-    if (theme) {
-      root.setAttribute('data-theme', theme);
-      root.style.colorScheme = theme;
-    } else {
-      root.removeAttribute('data-theme');
-      root.style.colorScheme = '';
-    }
+    root.setAttribute('data-theme', theme);
+    root.style.colorScheme = theme;
     var btn = document.querySelector('[data-theme-toggle]');
     if (btn) {
-      var current = theme || systemTheme();
-      btn.setAttribute('aria-label', current === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre');
-      btn.innerHTML = current === 'dark'
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Passer en thème clair' : 'Passer en thème sombre');
+      btn.innerHTML = theme === 'dark'
         ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>'
         : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5 8.6 8.6 0 1 0 20.5 14.2Z"/></svg>';
     }
@@ -32,15 +24,13 @@
 
   var stored = null;
   try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-  applyTheme(stored);
-  media.addEventListener('change', function () { if (!stored) applyTheme(null); });
+  applyTheme(stored === 'dark' ? 'dark' : 'light');
 
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-theme-toggle]');
     if (!t) return;
     e.preventDefault();
-    var next = (root.getAttribute('data-theme') || systemTheme()) === 'dark' ? 'light' : 'dark';
-    stored = next;
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
     try { localStorage.setItem(STORAGE_KEY, next); } catch (err) {}
     applyTheme(next);
   });
@@ -270,12 +260,9 @@
   }
 
 
-  /* ---------- Titres interactifs (lettres qui réagissent au pointeur) ----------
-     - découpe les titres en mots + lettres, sans casser les dégradés (traités
-       comme un bloc atomique) ;
-     - ressort physique : chaque lettre rejoint sa cible avec inertie ;
-     - un seul rAF partagé, arrêté dès que tout est au repos ;
-     - souris, trackpad et doigt, avec repli propre si mouvement réduit. */
+  /* ---------- Titres interactifs ----------
+     Lettres qui réagissent au pointeur, plus un très léger tremblement
+     au défilement de la page. Un seul rAF partagé, arrêté au repos. */
 
   function initTitleFx() {
     var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -285,11 +272,13 @@
     if (!titles.length) return;
 
     var acts = [];
+    var loopRaf = null;
+    var scrollVel = 0;
 
     function splitTitle(el) {
       var chars = [];
       var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      if (text.length > 130) return []; // au-delà, on laisse le titre tranquille
+      if (text.length > 130) return [];
 
       function walk(node) {
         if (node.nodeType === 3) {
@@ -298,10 +287,7 @@
           var frag = document.createDocumentFragment();
           raw.split(/(\s+)/).forEach(function (part) {
             if (!part) return;
-            if (/^\s+$/.test(part)) {
-              frag.appendChild(document.createTextNode(part));
-              return;
-            }
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
             var word = document.createElement('span');
             word.className = 'fx-word';
             word.setAttribute('aria-hidden', 'true');
@@ -333,47 +319,66 @@
       return chars;
     }
 
-    titles.forEach(function (el) {
+    function start() { if (!loopRaf) loopRaf = requestAnimationFrame(tick); }
+
+    function tick() {
+      loopRaf = null;
+      var moving = Math.abs(scrollVel) > 0.01;
+
+      for (var a = 0; a < acts.length; a++) {
+        var act = acts[a];
+        if (!act.chars.length) continue;
+        for (var i = 0; i < act.chars.length; i++) {
+          var st = act.state[i];
+          st.vx = (st.vx + (st.tx - st.x) * 0.22) * 0.74;
+          st.vy = (st.vy + (st.ty - st.y) * 0.22) * 0.74;
+          st.vr = (st.vr + (st.tr - st.r) * 0.22) * 0.74;
+          st.x += st.vx;
+          st.y += st.vy;
+          st.r += st.vr;
+
+          if (Math.abs(st.tx - st.x) > 0.02 || Math.abs(st.ty - st.y) > 0.02 || Math.abs(st.tr - st.r) > 0.02) moving = true;
+
+          var wobX = Math.abs(scrollVel) > 0.01 ? scrollVel * 2.2 * Math.sin(i * 0.55 + act.phase) : 0;
+          var wobY = Math.abs(scrollVel) > 0.01 ? scrollVel * 2.8 * Math.cos(i * 0.42 + act.phase) : 0;
+          var wobR = Math.abs(scrollVel) > 0.01 ? scrollVel * 1.0 * Math.sin(i * 0.3) : 0;
+
+          act.chars[i].style.transform = 'translate3d(' + (st.x + wobX).toFixed(2) + 'px,' +
+            (st.y + wobY).toFixed(2) + 'px,0) rotate(' + (st.r + wobR).toFixed(2) + 'deg)';
+        }
+      }
+
+      scrollVel *= 0.86;
+      if (Math.abs(scrollVel) < 0.01) scrollVel = 0;
+      if (moving || scrollVel !== 0) loopRaf = requestAnimationFrame(tick);
+    }
+
+    titles.forEach(function (el, index) {
       if (el.closest('.article-body') || el.closest('.prose')) return;
       var chars = splitTitle(el);
       if (!chars.length) return;
 
       el.setAttribute('data-title-fx', '');
-      var state = chars.map(function () { return { x: 0, y: 0, r: 0, vx: 0, vy: 0, vr: 0, tx: 0, ty: 0, tr: 0 }; });
-      var points = null;
-      var raf = null;
-      var pointer = null;
-      var active = false;
+      acts.push({
+        el: el,
+        chars: chars,
+        state: chars.map(function () { return { x: 0, y: 0, r: 0, vx: 0, vy: 0, vr: 0, tx: 0, ty: 0, tr: 0 }; }),
+        points: null,
+        active: false,
+        phase: index * 1.7,
+      });
+      var act = acts[acts.length - 1];
 
       function measure() {
         var base = el.getBoundingClientRect();
-        points = chars.map(function (c) {
+        act.points = chars.map(function (c) {
           var r = c.getBoundingClientRect();
           return { x: r.left + r.width / 2 - base.left, y: r.top + r.height / 2 - base.top };
         });
       }
 
-      function paint() {
-        raf = null;
-        var moving = false;
-        for (var i = 0; i < chars.length; i++) {
-          var s = state[i];
-          s.vx = (s.vx + (s.tx - s.x) * 0.22) * 0.74;
-          s.vy = (s.vy + (s.ty - s.y) * 0.22) * 0.74;
-          s.vr = (s.vr + (s.tr - s.r) * 0.22) * 0.74;
-          s.x += s.vx;
-          s.y += s.vy;
-          s.r += s.vr;
-          if (Math.abs(s.tx - s.x) > 0.02 || Math.abs(s.ty - s.y) > 0.02 || Math.abs(s.tr - s.r) > 0.02) moving = true;
-          chars[i].style.transform = 'translate3d(' + s.x.toFixed(2) + 'px,' + s.y.toFixed(2) + 'px,0) rotate(' + s.r.toFixed(2) + 'deg)';
-        }
-        if (moving) raf = requestAnimationFrame(paint);
-      }
-
-      function kick() { if (!raf) raf = requestAnimationFrame(paint); }
-
       function aim(clientX, clientY) {
-        if (!points) measure();
+        if (!act.points) measure();
         var base = el.getBoundingClientRect();
         var px = clientX - base.left;
         var py = clientY - base.top;
@@ -382,60 +387,66 @@
 
         var R = 170;
         for (var i = 0; i < chars.length; i++) {
-          var p = points[i];
+          var p = act.points[i];
           var dx = p.x - px;
           var dy = p.y - py;
           var dist = Math.sqrt(dx * dx + dy * dy) || 1;
-          var s = state[i];
-          if (dist < R && active) {
+          var st = act.state[i];
+          if (dist < R && act.active) {
             var f = 1 - dist / R;
             f = f * f;
-            s.tx = (dx / dist) * 9 * f;
-            s.ty = (dy / dist) * 7 * f - 3 * f;
-            s.tr = (dx / dist) * 3.2 * f;
+            st.tx = (dx / dist) * 9 * f;
+            st.ty = (dy / dist) * 7 * f - 3 * f;
+            st.tr = (dx / dist) * 3.2 * f;
           } else {
-            s.tx = 0; s.ty = 0; s.tr = 0;
+            st.tx = 0; st.ty = 0; st.tr = 0;
           }
         }
-        kick();
+        start();
       }
 
       function release() {
-        active = false;
+        act.active = false;
         el.classList.remove('is-hover');
-        state.forEach(function (s) { s.tx = 0; s.ty = 0; s.tr = 0; });
-        kick();
+        act.state.forEach(function (st) { st.tx = 0; st.ty = 0; st.tr = 0; });
+        start();
       }
 
       el.addEventListener('pointerenter', function (e) {
-        if (!points) measure();
-        active = true;
+        if (!act.points) measure();
+        act.active = true;
         el.classList.add('is-hover');
         aim(e.clientX, e.clientY);
       });
-
       el.addEventListener('pointermove', function (e) {
-        if (e.pointerType === 'touch' && !active) return;
+        if (e.pointerType === 'touch' && !act.active) return;
         aim(e.clientX, e.clientY);
       }, { passive: true });
-
       el.addEventListener('pointerleave', release);
       el.addEventListener('pointercancel', release);
       el.addEventListener('pointerup', function (e) {
         if (e.pointerType === 'touch') setTimeout(release, 260);
       });
 
-      var remeasure = function () { points = null; if (active) measure(); };
+      var remeasure = function () { act.points = null; if (act.active) measure(); };
       window.addEventListener('resize', remeasure, { passive: true });
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
       if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(el);
-
-      acts.push({ el: el, release: release });
     });
 
-    // si le système passe en « mouvement réduit » en cours de route
+    // tremblement très léger au défilement
+    var lastY = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      var d = y - lastY;
+      lastY = y;
+      if (Math.abs(d) < 0.4) return;
+      scrollVel = Math.max(-1.4, Math.min(1.4, d / 26));
+      start();
+    }, { passive: true });
+
     var onMotionChange = function () {
-      if (motionQuery.matches) acts.forEach(function (a) { a.release(); });
+      if (motionQuery.matches) acts.forEach(function (a) { a.active = false; });
     };
     if (motionQuery.addEventListener) motionQuery.addEventListener('change', onMotionChange);
   }

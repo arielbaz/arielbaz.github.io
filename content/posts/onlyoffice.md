@@ -6,6 +6,7 @@ category: Productivité
 tags: [bureautique, office, gratuit, compatibilité]
 excerpt: "Word, Excel, PowerPoint sans abonnement. Et surtout : tes .docx gardent leur mise en page."
 logo: onlyoffice
+platforms: [windows, mac, ios, android]
 icon: text
 source: https://www.onlyoffice.com/download-desktop.aspx
 sourceLabel: onlyoffice.com

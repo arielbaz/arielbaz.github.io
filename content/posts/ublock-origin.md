@@ -6,6 +6,7 @@ category: Sécurité
 tags: [navigateur, publicité, open source, vie privée]
 excerpt: "Le bloqueur de pubs qui ne négocie pas. Gratuit, open source — et toujours imbattable, à condition de ne pas l'enfermer dans Chrome."
 logo: ublock-origin
+platforms: [chrome, windows, mac]
 icon: shield
 source: https://ublockorigin.com/fr
 sourceLabel: ublockorigin.com

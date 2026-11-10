@@ -6,6 +6,7 @@ category: Filtrage
 tags: [navigateur, ia, filtre, famille, vie privée]
 excerpt: "Une IA qui masque l'indésirable sans envoyer une seule image à un serveur."
 logo: nsfw-filter
+platforms: [chrome, windows, mac]
 icon: eye-off
 source: https://chromewebstore.google.com/detail/nsfw-filter/kmgagnlkckiamnenbpigfaljmanlbbhh
 sourceLabel: Chrome Web Store

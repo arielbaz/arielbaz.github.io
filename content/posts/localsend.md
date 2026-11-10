@@ -6,6 +6,7 @@ category: Alternatives
 tags: [partage, open source, réseau, multiplateforme]
 excerpt: "AirDrop pour tout le monde. Sans compte, sans cloud, sans « envoie-toi un mail »."
 logo: localsend
+platforms: [windows, mac, ios, android]
 icon: folder
 source: https://localsend.org
 sourceLabel: localsend.org

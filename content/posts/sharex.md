@@ -6,6 +6,7 @@ category: Productivité
 tags: [windows, capture d'écran, open source, productivité]
 excerpt: "Capture, annotation, GIF, OCR. Cinq logiciels en un, et la facture reste à zéro euro."
 logo: sharex
+platforms: [windows]
 icon: camera
 source: https://getsharex.com
 sourceLabel: getsharex.com

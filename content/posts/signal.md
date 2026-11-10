@@ -6,6 +6,7 @@ category: Sécurité
 tags: [messagerie, chiffrement, open source, mobile]
 excerpt: "La messagerie la plus sûre du marché. Le seul problème : elle ne fait pas chaîne de diffusion. Donc on garde WhatsApp pour ça."
 logo: signal
+platforms: [windows, mac, ios, android]
 icon: lock
 source: https://signal.org/fr/
 sourceLabel: signal.org
