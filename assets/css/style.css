@@ -1054,3 +1054,50 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 .contact-card h3 { display: flex; align-items: center; gap: 8px; }
 .contact-card h3 svg { width: 18px; height: 18px; flex: none; }
 .svc .svc-foot svg { width: 14px; height: 14px; }
+
+/* ==========================================================================
+   V3 — titres interactifs : les lettres bougent autour du curseur / du doigt
+   ========================================================================== */
+[data-title-fx] {
+  position: relative;
+  isolation: isolate;
+  touch-action: pan-y;
+  cursor: default;
+}
+[data-title-fx]::before {
+  content: "";
+  position: absolute;
+  inset: -14% -8%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background: radial-gradient(
+    280px circle at var(--fx-x, 50%) var(--fx-y, 50%),
+    rgba(10, 132, 255, 0.14),
+    rgba(191, 90, 242, 0.10) 38%,
+    transparent 66%
+  );
+}
+[data-title-fx].is-hover::before { opacity: 1; }
+
+.fx-word { display: inline-block; white-space: nowrap; }
+.fx-char {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  transform-origin: 50% 78%;
+  transition: text-shadow 0.35s ease;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+[data-title-fx].is-hover .fx-char {
+  text-shadow: 0 6px 22px rgba(191, 90, 242, 0.16), 0 0 14px rgba(10, 132, 255, 0.12);
+}
+/* le dégradé reste appliqué au bloc, on ne découpe pas dedans */
+.fx-char.fx-block { display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-char { transition: none !important; }
+  [data-title-fx]::before { display: none; }
+}

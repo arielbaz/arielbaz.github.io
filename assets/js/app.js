@@ -269,6 +269,179 @@
     });
   }
 
+
+  /* ---------- Titres interactifs (lettres qui réagissent au pointeur) ----------
+     - découpe les titres en mots + lettres, sans casser les dégradés (traités
+       comme un bloc atomique) ;
+     - ressort physique : chaque lettre rejoint sa cible avec inertie ;
+     - un seul rAF partagé, arrêté dès que tout est au repos ;
+     - souris, trackpad et doigt, avec repli propre si mouvement réduit. */
+
+  function initTitleFx() {
+    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motionQuery.matches) return;
+
+    var titles = document.querySelectorAll('.display, .article-hero h1, .section-head h2');
+    if (!titles.length) return;
+
+    var acts = [];
+
+    function splitTitle(el) {
+      var chars = [];
+      var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      if (text.length > 130) return []; // au-delà, on laisse le titre tranquille
+
+      function walk(node) {
+        if (node.nodeType === 3) {
+          var raw = node.nodeValue;
+          if (!raw || !raw.trim()) return;
+          var frag = document.createDocumentFragment();
+          raw.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+              return;
+            }
+            var word = document.createElement('span');
+            word.className = 'fx-word';
+            word.setAttribute('aria-hidden', 'true');
+            for (var i = 0; i < part.length; i++) {
+              var c = document.createElement('span');
+              c.className = 'fx-char';
+              c.textContent = part.charAt(i);
+              word.appendChild(c);
+              chars.push(c);
+            }
+            frag.appendChild(word);
+          });
+          node.parentNode.replaceChild(frag, node);
+          return;
+        }
+        if (node.nodeType !== 1) return;
+        if (node.classList && (node.classList.contains('gradient-text') || node.classList.contains('accent'))) {
+          node.classList.add('fx-char', 'fx-block');
+          node.setAttribute('aria-hidden', 'true');
+          chars.push(node);
+          return;
+        }
+        if (node.tagName === 'BR' || node.tagName === 'svg') return;
+        Array.prototype.slice.call(node.childNodes).forEach(walk);
+      }
+
+      Array.prototype.slice.call(el.childNodes).forEach(walk);
+      el.setAttribute('aria-label', text);
+      return chars;
+    }
+
+    titles.forEach(function (el) {
+      if (el.closest('.article-body') || el.closest('.prose')) return;
+      var chars = splitTitle(el);
+      if (!chars.length) return;
+
+      el.setAttribute('data-title-fx', '');
+      var state = chars.map(function () { return { x: 0, y: 0, r: 0, vx: 0, vy: 0, vr: 0, tx: 0, ty: 0, tr: 0 }; });
+      var points = null;
+      var raf = null;
+      var pointer = null;
+      var active = false;
+
+      function measure() {
+        var base = el.getBoundingClientRect();
+        points = chars.map(function (c) {
+          var r = c.getBoundingClientRect();
+          return { x: r.left + r.width / 2 - base.left, y: r.top + r.height / 2 - base.top };
+        });
+      }
+
+      function paint() {
+        raf = null;
+        var moving = false;
+        for (var i = 0; i < chars.length; i++) {
+          var s = state[i];
+          s.vx = (s.vx + (s.tx - s.x) * 0.22) * 0.74;
+          s.vy = (s.vy + (s.ty - s.y) * 0.22) * 0.74;
+          s.vr = (s.vr + (s.tr - s.r) * 0.22) * 0.74;
+          s.x += s.vx;
+          s.y += s.vy;
+          s.r += s.vr;
+          if (Math.abs(s.tx - s.x) > 0.02 || Math.abs(s.ty - s.y) > 0.02 || Math.abs(s.tr - s.r) > 0.02) moving = true;
+          chars[i].style.transform = 'translate3d(' + s.x.toFixed(2) + 'px,' + s.y.toFixed(2) + 'px,0) rotate(' + s.r.toFixed(2) + 'deg)';
+        }
+        if (moving) raf = requestAnimationFrame(paint);
+      }
+
+      function kick() { if (!raf) raf = requestAnimationFrame(paint); }
+
+      function aim(clientX, clientY) {
+        if (!points) measure();
+        var base = el.getBoundingClientRect();
+        var px = clientX - base.left;
+        var py = clientY - base.top;
+        el.style.setProperty('--fx-x', px.toFixed(1) + 'px');
+        el.style.setProperty('--fx-y', py.toFixed(1) + 'px');
+
+        var R = 170;
+        for (var i = 0; i < chars.length; i++) {
+          var p = points[i];
+          var dx = p.x - px;
+          var dy = p.y - py;
+          var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          var s = state[i];
+          if (dist < R && active) {
+            var f = 1 - dist / R;
+            f = f * f;
+            s.tx = (dx / dist) * 9 * f;
+            s.ty = (dy / dist) * 7 * f - 3 * f;
+            s.tr = (dx / dist) * 3.2 * f;
+          } else {
+            s.tx = 0; s.ty = 0; s.tr = 0;
+          }
+        }
+        kick();
+      }
+
+      function release() {
+        active = false;
+        el.classList.remove('is-hover');
+        state.forEach(function (s) { s.tx = 0; s.ty = 0; s.tr = 0; });
+        kick();
+      }
+
+      el.addEventListener('pointerenter', function (e) {
+        if (!points) measure();
+        active = true;
+        el.classList.add('is-hover');
+        aim(e.clientX, e.clientY);
+      });
+
+      el.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch' && !active) return;
+        aim(e.clientX, e.clientY);
+      }, { passive: true });
+
+      el.addEventListener('pointerleave', release);
+      el.addEventListener('pointercancel', release);
+      el.addEventListener('pointerup', function (e) {
+        if (e.pointerType === 'touch') setTimeout(release, 260);
+      });
+
+      var remeasure = function () { points = null; if (active) measure(); };
+      window.addEventListener('resize', remeasure, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+      if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(el);
+
+      acts.push({ el: el, release: release });
+    });
+
+    // si le système passe en « mouvement réduit » en cours de route
+    var onMotionChange = function () {
+      if (motionQuery.matches) acts.forEach(function (a) { a.release(); });
+    };
+    if (motionQuery.addEventListener) motionQuery.addEventListener('change', onMotionChange);
+  }
+
+  initTitleFx();
+
   /* ---------- Partage ---------- */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-share]');
