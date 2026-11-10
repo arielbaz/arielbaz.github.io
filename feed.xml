@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ARIBAZ — La tech utile, testée à la main.</title>
-    <link>https://arielbaz.github.io/</link>
+    <link>https://aribaz.com/</link>
     <description>Des astuces concrètes pour un numérique plus simple, plus sûr et plus propre : outils gratuits, vie privée, filtrage familial et productivité.</description>
     <language>fr-FR</language>
     <lastBuildDate>Tue, 10 Nov 2026 09:00:00 GMT</lastBuildDate>
-    <atom:link href="https://arielbaz.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://aribaz.com/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Bitchat : la messagerie qui marche même quand tout le réseau tombe</title>
-      <link>https://arielbaz.github.io/articles/bitchat.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/bitchat.html</guid>
+      <link>https://aribaz.com/articles/bitchat.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/bitchat.html</guid>
       <pubDate>Tue, 10 Nov 2026 09:00:00 GMT</pubDate>
       <category>Sécurité</category>
       <description>Zéro internet, zéro compte, zéro numéro. Tes messages passent de téléphone en téléphone par Bluetooth, et personne ne peut couper la conversation.</description>
@@ -31,8 +31,8 @@
     </item>
     <item>
       <title>uBlock Origin : le bloqueur de pubs qui mérite encore sa place</title>
-      <link>https://arielbaz.github.io/articles/ublock-origin.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/ublock-origin.html</guid>
+      <link>https://aribaz.com/articles/ublock-origin.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/ublock-origin.html</guid>
       <pubDate>Mon, 09 Nov 2026 09:00:00 GMT</pubDate>
       <category>Sécurité</category>
       <description>Le bloqueur de pubs qui ne négocie pas. Gratuit, open source — et toujours imbattable, à condition de ne pas l'enfermer dans Chrome.</description>
@@ -52,8 +52,8 @@
     </item>
     <item>
       <title>Brave : le navigateur qui bloque les pubs même quand Google ne veut pas</title>
-      <link>https://arielbaz.github.io/articles/brave.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/brave.html</guid>
+      <link>https://aribaz.com/articles/brave.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/brave.html</guid>
       <pubDate>Fri, 06 Nov 2026 09:00:00 GMT</pubDate>
       <category>Alternatives</category>
       <description>Pubs bloquées, YouTube qui continue écran éteint, zéro abonnement. Le navigateur qui fait regretter Chrome.</description>
@@ -72,8 +72,8 @@
     </item>
     <item>
       <title>Signal : la messagerie la plus sûre, et la plus simple à adopter</title>
-      <link>https://arielbaz.github.io/articles/signal.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/signal.html</guid>
+      <link>https://aribaz.com/articles/signal.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/signal.html</guid>
       <pubDate>Tue, 03 Nov 2026 09:00:00 GMT</pubDate>
       <category>Sécurité</category>
       <description>La messagerie la plus sûre du marché. Le seul problème : elle ne fait pas chaîne de diffusion. Donc on garde WhatsApp pour ça.</description>
@@ -90,8 +90,8 @@
     </item>
     <item>
       <title>LocalSend : l'AirDrop universel qui marche entre tous tes appareils</title>
-      <link>https://arielbaz.github.io/articles/localsend.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/localsend.html</guid>
+      <link>https://aribaz.com/articles/localsend.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/localsend.html</guid>
       <pubDate>Mon, 26 Oct 2026 09:00:00 GMT</pubDate>
       <category>Alternatives</category>
       <description>AirDrop pour tout le monde. Sans compte, sans cloud, sans « envoie-toi un mail ».</description>
@@ -108,8 +108,8 @@
     </item>
     <item>
       <title>ShareX : l'outil de capture d'écran le plus complet, et il est gratuit</title>
-      <link>https://arielbaz.github.io/articles/sharex.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/sharex.html</guid>
+      <link>https://aribaz.com/articles/sharex.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/sharex.html</guid>
       <pubDate>Fri, 16 Oct 2026 09:00:00 GMT</pubDate>
       <category>Productivité</category>
       <description>Capture, annotation, GIF, OCR. Cinq logiciels en un, et la facture reste à zéro euro.</description>
@@ -126,8 +126,8 @@
     </item>
     <item>
       <title>OnlyOffice : la suite bureautique gratuite qui n'abîme pas tes fichiers Word</title>
-      <link>https://arielbaz.github.io/articles/onlyoffice.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/onlyoffice.html</guid>
+      <link>https://aribaz.com/articles/onlyoffice.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/onlyoffice.html</guid>
       <pubDate>Wed, 07 Oct 2026 09:00:00 GMT</pubDate>
       <category>Productivité</category>
       <description>Word, Excel, PowerPoint sans abonnement. Et surtout : tes .docx gardent leur mise en page.</description>
@@ -145,8 +145,8 @@
     </item>
     <item>
       <title>Handy : dicte ton texte, l'IA s'occupe du reste (et en local)</title>
-      <link>https://arielbaz.github.io/articles/handy.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/handy.html</guid>
+      <link>https://aribaz.com/articles/handy.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/handy.html</guid>
       <pubDate>Tue, 29 Sep 2026 09:00:00 GMT</pubDate>
       <category>Productivité</category>
       <description>Dicte, arrête de taper. L'IA transcrit ta voix en local, sans envoyer un mot à un serveur.</description>
@@ -163,8 +163,8 @@
     </item>
     <item>
       <title>NotebookLM : transforme tes PDF en podcast pour réviser partout</title>
-      <link>https://arielbaz.github.io/articles/notebooklm.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/notebooklm.html</guid>
+      <link>https://aribaz.com/articles/notebooklm.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/notebooklm.html</guid>
       <pubDate>Thu, 17 Sep 2026 09:00:00 GMT</pubDate>
       <category>Productivité</category>
       <description>Quarante pages de PDF transformées en podcast à deux voix. La révision la plus confortable de ta vie.</description>
@@ -179,8 +179,8 @@
     </item>
     <item>
       <title>OWC Copy That : sauvegarde ta galerie iPhone sans payer iCloud</title>
-      <link>https://arielbaz.github.io/articles/owc-copy-that.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/owc-copy-that.html</guid>
+      <link>https://aribaz.com/articles/owc-copy-that.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/owc-copy-that.html</guid>
       <pubDate>Tue, 08 Sep 2026 09:00:00 GMT</pubDate>
       <category>Mobile</category>
       <description>Tes photos quittent iCloud sans payer un centime de plus. Direction : une clé USB, chez toi.</description>
@@ -195,8 +195,8 @@
     </item>
     <item>
       <title>Family Link : reprendre le contrôle d'un smartphone Android</title>
-      <link>https://arielbaz.github.io/articles/family-link.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/family-link.html</guid>
+      <link>https://aribaz.com/articles/family-link.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/family-link.html</guid>
       <pubDate>Thu, 27 Aug 2026 09:00:00 GMT</pubDate>
       <category>Filtrage</category>
       <description>Temps d'écran, installations validées, localisation. Le socle gratuit pour un Android qui n'échappe pas des mains.</description>
@@ -212,8 +212,8 @@
     </item>
     <item>
       <title>Le DNS 1.1.1.3 : un internet plus propre pour toute la maison</title>
-      <link>https://arielbaz.github.io/articles/dns-cloudflare.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/dns-cloudflare.html</guid>
+      <link>https://aribaz.com/articles/dns-cloudflare.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/dns-cloudflare.html</guid>
       <pubDate>Tue, 18 Aug 2026 09:00:00 GMT</pubDate>
       <category>Filtrage</category>
       <description>Deux adresses IP, deux minutes, et toute la maison est filtrée. Le meilleur rapport effort/résultat du web.</description>
@@ -231,8 +231,8 @@
     </item>
     <item>
       <title>Appels Wi-Fi : reste joignable sans réseau mobile (et sans surcoût à l'étranger)</title>
-      <link>https://arielbaz.github.io/articles/appels-wifi.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/appels-wifi.html</guid>
+      <link>https://aribaz.com/articles/appels-wifi.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/appels-wifi.html</guid>
       <pubDate>Wed, 05 Aug 2026 09:00:00 GMT</pubDate>
       <category>Mobile</category>
       <description>Le réseau manque, le Wi-Fi est là. À l'étranger, la différence entre 2 € et 200 € de facture.</description>
@@ -249,8 +249,8 @@
     </item>
     <item>
       <title>Wizmage : naviguer sans voir les images qui traînent</title>
-      <link>https://arielbaz.github.io/articles/wizmage.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/wizmage.html</guid>
+      <link>https://aribaz.com/articles/wizmage.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/wizmage.html</guid>
       <pubDate>Tue, 28 Jul 2026 09:00:00 GMT</pubDate>
       <category>Filtrage</category>
       <description>Toutes les images floutées, un clic pour voir. Pour surfer sans les surprises que personne n'a demandées.</description>
@@ -266,8 +266,8 @@
     </item>
     <item>
       <title>NSFW Filter : une IA locale qui masque les images inappropriées</title>
-      <link>https://arielbaz.github.io/articles/nsfw-filter.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/nsfw-filter.html</guid>
+      <link>https://aribaz.com/articles/nsfw-filter.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/nsfw-filter.html</guid>
       <pubDate>Wed, 15 Jul 2026 09:00:00 GMT</pubDate>
       <category>Filtrage</category>
       <description>Une IA qui masque l'indésirable sans envoyer une seule image à un serveur.</description>
@@ -284,8 +284,8 @@
     </item>
     <item>
       <title>Have I Been Pwned : ton adresse mail a-t-elle fuité ?</title>
-      <link>https://arielbaz.github.io/articles/have-i-been-pwned.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/have-i-been-pwned.html</guid>
+      <link>https://aribaz.com/articles/have-i-been-pwned.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/have-i-been-pwned.html</guid>
       <pubDate>Mon, 06 Jul 2026 09:00:00 GMT</pubDate>
       <category>Sécurité</category>
       <description>Ton adresse a peut-être fuité. Deux secondes pour le savoir, deux actions pour limiter les dégâts.</description>
@@ -302,8 +302,8 @@
     </item>
     <item>
       <title>Presse-papiers : l'historique caché de Windows et de macOS</title>
-      <link>https://arielbaz.github.io/articles/presse-papiers.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/presse-papiers.html</guid>
+      <link>https://aribaz.com/articles/presse-papiers.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/presse-papiers.html</guid>
       <pubDate>Wed, 24 Jun 2026 09:00:00 GMT</pubDate>
       <category>Productivité</category>
       <description>Win + V : le raccourci que la moitié des gens ignore. Côté Mac, la vérité est moins glamour.</description>
@@ -320,8 +320,8 @@
     </item>
     <item>
       <title>eSIM : activer une ligne en 3 étapes, sans carte à découper</title>
-      <link>https://arielbaz.github.io/articles/esim.html</link>
-      <guid isPermaLink="true">https://arielbaz.github.io/articles/esim.html</guid>
+      <link>https://aribaz.com/articles/esim.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/esim.html</guid>
       <pubDate>Fri, 12 Jun 2026 09:00:00 GMT</pubDate>
       <category>Mobile</category>
       <description>Un QR code, deux validations, zéro carte à découper. Et trois pièges à éviter avant de partir.</description>

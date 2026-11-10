@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arielbaz.github.io/sitemap.xml
+Sitemap: https://aribaz.com/sitemap.xml

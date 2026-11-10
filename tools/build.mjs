@@ -25,7 +25,7 @@ const JS_V = assetHash('assets/js/app.js');
 const SITE = {
   name: 'ARIBAZ',
   author: 'ARIBAZ',
-  url: 'https://arielbaz.github.io',
+  url: 'https://aribaz.com',
   tagline: 'La tech utile, testée à la main.',
   description:
     "Des astuces concrètes pour un numérique plus simple, plus sûr et plus propre : outils gratuits, vie privée, filtrage familial et productivité.",
