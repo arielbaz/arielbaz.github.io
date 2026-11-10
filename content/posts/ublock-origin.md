@@ -9,7 +9,6 @@ logo: ublock-origin
 icon: shield
 source: https://ublockorigin.com/fr
 sourceLabel: ublockorigin.com
-featured: true
 ---
 
 Tu ouvres un site d'actu et trois pop-ups te sautent au visage avant même la première ligne de texte. Ce n'est pas une fatalité : c'est juste que ton navigateur n'a pas de garde-fou.

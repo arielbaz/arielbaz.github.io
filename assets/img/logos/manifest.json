@@ -37,5 +37,8 @@
   },
   "have-i-been-pwned": {
     "full": false
+  },
+  "bitchat": {
+    "full": true
   }
 }

@@ -26,13 +26,13 @@ Créée par **Brian Acton**, l'un des cofondateurs de WhatsApp, la fondation Sig
 
 Signal reprend l'essentiel de l'interface de WhatsApp. Messages, appels, groupes, photos, notes vocales : rien à réapprendre. On installe, on vérifie son numéro, et on invite ses proches — c'est le seul vrai frein, et il est social, pas technique.
 
-## Le Pro-Tip ARIBAZ — le détail qui compte pour cette chaîne
-
+:::tip Le Pro-Tip ARIBAZ — le détail qui compte pour cette chaîne
 Signal n'a **pas de fonctionnalité « Chaînes »** comparable à WhatsApp ou Telegram. C'est une messagerie strictement pair-à-pair et groupes privés.
 
 Traduction : si toute ta communauté migre vers Signal, tu ne pourras plus diffuser tes actus via un canal ARIBAZ. Signal est excellent pour discuter, pas pour broadcaster.
 
 La bonne stratégie, c'est donc un usage complémentaire : **WhatsApp pour la diffusion**, **Signal pour les échanges privés sensibles**. Et pour ceux qui veulent aller plus loin, Telegram reste la seule alternative crédible côté canaux.
+:::
 
 ## Verdict
 

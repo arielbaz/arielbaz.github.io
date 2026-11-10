@@ -284,7 +284,8 @@ function head({ title, description, url, image = '/assets/img/og.png', type = 'w
 <link rel="stylesheet" href="/assets/css/style.css">
 ${THEME_BOOT}
 ${extra}
-</head>`;
+</head>
+<body>`;
 }
 
 function nav(active) {
