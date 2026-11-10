@@ -709,11 +709,107 @@ function articlesPage() {
 </html>`;
 }
 
+/* Schémas explicatifs ajoutés dans le corps de chaque article.
+   Les images sont générées par tools/make-article-figures.py. */
+const ARTICLE_FIGURES = {
+  'ublock-origin': {
+    alt: "Schéma : le navigateur demande une page, les listes bloquent les domaines publicitaires, la page s’affiche sans publicité.",
+    caption: "Les listes de blocage agissent avant le rendu de la page : la publicité n’est jamais chargée.",
+  },
+  brave: {
+    alt: "Schéma : le bouclier intégré de Brave arrête les pubs et les traqueurs avant l’affichage.",
+    caption: "Le bouclier est intégré au navigateur : aucune extension n’est nécessaire.",
+  },
+  signal: {
+    alt: "Schéma : le message est chiffré sur le téléphone, relayé par le serveur puis déchiffré par le destinataire.",
+    caption: "Le chiffrement de bout en bout protège le contenu ; les métadonnées, elles, restent visibles du serveur.",
+  },
+  localsend: {
+    alt: "Schéma : deux appareils sur le même Wi-Fi s’échangent un fichier directement, sans serveur.",
+    caption: "Les deux appareils doivent être sur le même réseau local : les fichiers ne passent pas par internet.",
+  },
+  sharex: {
+    alt: "Schéma : capture d’écran, retouche puis export dans ShareX.",
+    caption: "Capture, retouche et export s’enchaînent dans la même fenêtre.",
+  },
+  onlyoffice: {
+    alt: "Schéma : ouverture d’un fichier Office, modification puis enregistrement sans conversion.",
+    caption: "Les formats .docx, .xlsx et .pptx sont ouverts directement, sans conversion forcée.",
+  },
+  handy: {
+    alt: "Schéma : la voix est transcrite localement par l’IA puis insérée dans l’application active.",
+    caption: "La transcription se fait sur l’appareil : aucun audio n’est envoyé à un service en ligne.",
+  },
+  notebooklm: {
+    alt: "Schéma : des documents sont analysés par l’IA puis transformés en podcast audio.",
+    caption: "Le podcast est construit uniquement à partir des sources déposées dans le carnet.",
+  },
+  'owc-copy-that': {
+    alt: "Schéma : un iPhone copie sa galerie vers un disque USB branché, sans passer par iCloud.",
+    caption: "Le câble fait le transfert ; iCloud n’est pas sollicité.",
+  },
+  'family-link': {
+    alt: "Schéma : un compte enfant, des règles de temps d’écran puis le suivi depuis le téléphone parent.",
+    caption: "Family Link se configure depuis le téléphone parent et s’applique au compte enfant.",
+  },
+  'dns-cloudflare': {
+    alt: "Schéma : le DNS 1.1.1.3 filtre les requêtes de tous les appareils du réseau.",
+    caption: "Le filtrage DNS s’applique à toutes les requêtes du réseau, avant le chargement des pages.",
+  },
+  'appels-wifi': {
+    alt: "Schéma : un appel passe par le Wi-Fi et la box puis rejoint le réseau de l’opérateur.",
+    caption: "L’appel passe par la box internet puis rejoint le réseau de l’opérateur.",
+  },
+  wizmage: {
+    alt: "Schéma : les images d’une page sont floutées, puis révélées une par une au clic.",
+    caption: "Chaque image est floutée individuellement jusqu’au clic.",
+  },
+  'nsfw-filter': {
+    alt: "Schéma : une IA locale analyse les images dans le navigateur et les masque sans les envoyer.",
+    caption: "L’analyse se fait dans le navigateur : les images ne sont pas téléversées.",
+  },
+  'have-i-been-pwned': {
+    alt: "Schéma : une adresse e-mail est comparée aux fuites connues, puis un résultat s’affiche.",
+    caption: "La vérification porte sur l’adresse e-mail, jamais sur le mot de passe.",
+  },
+  'presse-papiers': {
+    alt: "Schéma : plusieurs copies sont conservées dans un historique puis collées au choix.",
+    caption: "L’historique garde plusieurs entrées, mais reste local à la machine.",
+  },
+  esim: {
+    alt: "Schéma : un QR code installe un profil eSIM dans le téléphone, sans carte plastique.",
+    caption: "Le profil eSIM est téléchargé dans la puce intégrée ; aucune carte plastique n’est nécessaire.",
+  },
+  bitchat: {
+    alt: "Schéma : un message passe de téléphone en téléphone par Bluetooth, sans serveur central.",
+    caption: "Chaque téléphone peut relayer le message, jusqu’à sept sauts.",
+  },
+};
+
+function articleFigure(slug) {
+  const fig = ARTICLE_FIGURES[slug];
+  if (!fig) return '';
+  return `<figure class="article-figure">
+  <button class="article-figure-zoom" type="button" data-figure-zoom data-caption="${esc(fig.caption)}" aria-label="Agrandir le schéma explicatif">
+    <picture>
+      <source media="(max-width: 620px)" srcset="/assets/img/articles/${slug}-mobile.jpg">
+      <img src="/assets/img/articles/${slug}.jpg" alt="${esc(fig.alt)}" width="1600" height="900" loading="lazy" decoding="async">
+    </picture>
+    <span class="zoom-hint">Agrandir</span>
+  </button>
+  <figcaption>${esc(fig.caption)}</figcaption>
+</figure>`;
+}
+
 function articlePage(post, prev, next) {
   const related = posts.filter((p) => p !== post && p.category === post.category).slice(0, 3);
   const fill = posts.filter((p) => p !== post && p.category !== post.category && !related.includes(p)).slice(0, 3 - related.length);
   const rel = [...related, ...fill];
   const title = `${post.title} — ${SITE.name}`;
+  const figure = articleFigure(post.slug);
+  const bodyHtml = figure
+    ? post.bodyHtml.replace(/(<h2\b[^>]*>)/, `${figure}\n$1`)
+    : post.bodyHtml;
   const trans = TRANSLATIONS[post.slug] || [];
   const hreflang = [`<link rel="alternate" hreflang="fr" href="${SITE.url}/articles/${post.slug}.html">`]
     .concat(trans.map((l) => `<link rel="alternate" hreflang="${l}" href="${SITE.url}/${l}/articles/${post.slug}.html">`))
@@ -757,7 +853,7 @@ function articlePage(post, prev, next) {
 
     <div class="wrap">
       <div class="article-body">
-        ${post.bodyHtml}
+        ${bodyHtml}
       </div>
 
       ${post.source ? `<div class="source-box">

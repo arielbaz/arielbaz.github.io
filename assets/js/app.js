@@ -566,6 +566,53 @@
     d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
   });
 
+  /* ---------- Schémas d'articles : agrandissement ---------- */
+  (function () {
+    var triggers = document.querySelectorAll('[data-figure-zoom]');
+    if (!triggers.length) return;
+
+    var dlg = document.createElement('dialog');
+    dlg.className = 'figure-dialog';
+    dlg.setAttribute('aria-label', 'Schéma explicatif agrandi');
+    dlg.innerHTML =
+      '<button class="figure-dialog-close" type="button" aria-label="Fermer le schéma">✕</button>' +
+      '<img alt="">' +
+      '<p class="figure-dialog-caption"></p>';
+    document.body.appendChild(dlg);
+
+    var bigImg = dlg.querySelector('img');
+    var bigCaption = dlg.querySelector('.figure-dialog-caption');
+
+    function openFigure(trigger) {
+      var img = trigger.querySelector('img');
+      if (!img) return;
+      bigImg.src = img.currentSrc || img.src;
+      bigImg.alt = img.alt || '';
+      bigCaption.textContent = trigger.getAttribute('data-caption') || '';
+      if (typeof dlg.showModal === 'function') {
+        dlg.showModal();
+      } else {
+        window.open(bigImg.src, '_blank', 'noopener');
+      }
+    }
+
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-figure-zoom]');
+      if (trigger) {
+        e.preventDefault();
+        openFigure(trigger);
+        return;
+      }
+      if (e.target === dlg) dlg.close();
+    });
+
+    dlg.querySelector('.figure-dialog-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('close', function () {
+      bigImg.removeAttribute('src');
+      bigCaption.textContent = '';
+    });
+  })();
+
   /* ---------- Compte à rebours d'invitation ---------- */
   var cd = document.querySelector('[data-countdown]');
   if (cd) {

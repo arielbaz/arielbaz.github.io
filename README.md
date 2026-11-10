@@ -74,3 +74,20 @@ python3 tools/make-cards.py   # nécessite Pillow
 
 Les accroches et les couleurs par catégorie sont dans `PUNCH` et `PALETTE`,
 en haut du script.
+
+### Schémas explicatifs dans les articles
+
+En plus de l'image de tête, chaque article reçoit un schéma en trois étapes
+(`assets/img/articles/<slug>.jpg`, plus une variante verticale
+`<slug>-mobile.jpg`). Le schéma est inséré automatiquement avant le premier
+titre `##` ; son texte alternatif et sa légende sont définis dans
+`ARTICLE_FIGURES`, dans `tools/build.mjs`.
+
+Pour les régénérer après avoir modifié un texte :
+
+```bash
+python3 tools/make-article-figures.py   # nécessite Pillow
+```
+
+Les titres, résumés et étapes sont dans le dictionnaire `ARTICLES`, en haut du
+script. Les images s'ouvrent en grand au clic sur la page article.

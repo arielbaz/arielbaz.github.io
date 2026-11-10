@@ -543,6 +543,72 @@ h1.display {
 .article-body img { border-radius: var(--radius); }
 .article-body .lead { font-size: 20px; color: var(--ink-soft); line-height: 1.6; }
 
+/* Schéma explicatif inséré avant le premier titre */
+.article-figure { margin: 2.3em 0 2.5em; }
+.article-figure-zoom {
+  position: relative; display: block; width: 100%; padding: 0;
+  border: 0; background: none; border-radius: var(--radius-lg);
+  cursor: zoom-in; color: inherit;
+}
+.article-figure-zoom picture { display: block; }
+.article-figure-zoom img {
+  width: 100%; height: auto; border-radius: var(--radius-lg);
+  border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+  background: var(--bg-soft);
+}
+@media (max-width: 620px) {
+  .article-figure-zoom img { aspect-ratio: 2 / 3; object-fit: cover; }
+}
+.article-figure-zoom:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.zoom-hint {
+  position: absolute; right: 12px; bottom: 12px;
+  padding: 6px 11px; border-radius: 999px;
+  background: rgba(10, 10, 14, 0.66); color: #fff;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.01em;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; transform: translateY(3px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  pointer-events: none;
+}
+.article-figure-zoom:hover .zoom-hint,
+.article-figure-zoom:focus-visible .zoom-hint { opacity: 1; transform: none; }
+@media (hover: none) { .zoom-hint { opacity: 1; transform: none; } }
+.article-figure figcaption {
+  max-width: 60ch; margin: 11px auto 0; text-align: center;
+  color: var(--ink-faint); font-size: 12.5px; line-height: 1.5;
+}
+
+/* Lightbox des schémas */
+.figure-dialog {
+  width: auto; max-width: 96vw; max-height: 94vh;
+  margin: auto; padding: 0; border: 0;
+  background: transparent; color: #fff; overflow: visible;
+}
+.figure-dialog::backdrop {
+  background: rgba(8, 8, 12, 0.9);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+body:has(.figure-dialog[open]) { overflow: hidden; }
+.figure-dialog[open] { animation: dlgIn 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.figure-dialog img {
+  width: min(94vw, 1600px); max-height: 82vh; height: auto;
+  object-fit: contain; border-radius: 14px; background: #fff;
+  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.7);
+}
+.figure-dialog-close {
+  position: fixed; top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px;
+  z-index: 2; width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.14); color: #fff;
+  font-size: 17px; line-height: 1; cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.figure-dialog-close:hover { background: rgba(255, 255, 255, 0.24); }
+.figure-dialog-caption {
+  max-width: 70ch; margin: 12px auto 0; text-align: center;
+  color: rgba(255, 255, 255, 0.78); font-size: 13.5px; line-height: 1.5;
+}
+
 /* encart Pro-Tip */
 .protip {
   margin: 2em 0; padding: 22px 24px;
