@@ -7,47 +7,48 @@ Site 100 % statique, sans dépendance, hébergé sur GitHub Pages.
 
 ## Publier un nouvel article
 
-1. Crée un fichier dans `content/posts/mon-sujet.md` :
+### Sans rien installer (depuis GitHub, même sur téléphone)
 
-```md
----
-title: "Titre de l'article"
-slug: mon-sujet
-date: 2026-11-20
-category: Sécurité          # Productivité | Sécurité | Filtrage | Alternatives | Mobile
-tags: [mot-cle, autre]
-excerpt: "Une phrase de résumé, affichée sur les cartes."
-icon: shield                # shield, globe, lock, folder, camera, text, mic, book, usb,
-                            # eye, eye-off, wifi, phone, image, breach, clipboard, sim, layers
-source: https://exemple.com
-sourceLabel: exemple.com
-featured: true              # optionnel : article mis en avant sur l'accueil
----
+1. Va sur **github.com/arielbaz/arielbaz.github.io** → dossier `content/posts/`
+2. **Add file → Create new file**
+3. Nomme le fichier comme l'adresse de l'article : `mon-sujet.md`
+4. Copie le contenu de [`content/posts/_modele.md`](content/posts/_modele.md) et remplis-le
+5. **Commit changes**
 
-Premier paragraphe (chapô).
+Le robot GitHub régénère le site tout seul en une minute environ : accueil, page
+article, flux RSS, sitemap et image de partage. Rien d'autre à faire.
 
-## Une section
-
-Du texte avec du **gras**, des [liens](https://exemple.com) et du `code`.
-
-:::tip Le Pro-Tip ARIBAZ
-L'encart bleu qui met en avant l'astuce d'expert.
-:::
-```
-
-2. Génère le site :
+### En local (si Node est installé)
 
 ```bash
-node tools/build.mjs
-```
-
-3. Publie :
-
-```bash
+node tools/build.mjs        # régénère tout le site
 git add -A && git commit -m "Nouvel article : ..." && git push
 ```
 
-GitHub Pages republie automatiquement en une minute environ.
+### Les champs de l'en-tête
+
+| Champ | Rôle |
+|---|---|
+| `title` | titre affiché en gros |
+| `slug` | nom du fichier et adresse : `/articles/mon-sujet.html` |
+| `date` | `AAAA-MM-JJ` — sert au tri et à l'affichage |
+| `category` | Productivité, Sécurité, Filtrage, Alternatives ou Mobile |
+| `tags` | mots-clés (filtre la recherche) |
+| `excerpt` | la phrase affichée sur la carte |
+| `platforms` | `windows`, `mac`, `ios`, `android`, `chrome`, `web` |
+| `logo` | nom d'un fichier de `assets/img/logos/` (facultatif : sinon un pictogramme est utilisé) |
+| `icon` | pictogramme de secours : shield, lock, wifi, phone, eye, camera, text, mic, book… |
+| `source` / `sourceLabel` | lien officiel affiché en bas d'article |
+| `featured` | `true` pour épingler l'article en « dossier du moment » |
+
+### Le visuel de l'article
+
+Chaque article a une image dédiée dans `assets/img/cards/<slug>.jpg`. Sans image,
+le site utilise automatiquement le visuel générique du site : l'article reste
+parfaitement lisible, il n'a juste pas sa carte personnalisée.
+
+Pour en générer une : ajoute l'accroche dans `tools/make-cards.py` (dictionnaire
+`PUNCH`) puis lance `python3 tools/make-cards.py`.
 
 ## Structure
 

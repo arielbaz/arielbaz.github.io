@@ -287,7 +287,7 @@ function parsePost(file) {
 
 const posts = fs
   .readdirSync(POSTS_DIR)
-  .filter((f) => f.endsWith('.md'))
+  .filter((f) => f.endsWith('.md') && !f.startsWith('_'))
   .map(parsePost)
   .sort((a, b) => (a.date < b.date ? 1 : -1));
 
