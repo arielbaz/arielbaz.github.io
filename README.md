@@ -59,3 +59,17 @@ articles/        pages générées (ne pas éditer à la main)
 index.html       accueil généré
 feed.xml         flux RSS
 ```
+
+## Visuels d'articles
+
+Chaque article a une image dédiée (1600x900) dans `assets/img/cards/<slug>.jpg`,
+utilisée en tête d'article et comme image de partage (og:image).
+
+Pour les régénérer après avoir changé une accroche :
+
+```bash
+python3 tools/make-cards.py   # nécessite Pillow
+```
+
+Les accroches et les couleurs par catégorie sont dans `PUNCH` et `PALETTE`,
+en haut du script.
