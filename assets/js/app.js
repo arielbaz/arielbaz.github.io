@@ -104,7 +104,7 @@
 
   /* ---------- Cartes : inclinaison 3D + halo ---------- */
   if (finePointer && !reduceMotion) {
-    document.querySelectorAll('.post-card, .featured').forEach(function (card) {
+    document.querySelectorAll('.post-card, .featured, .svc').forEach(function (card) {
       var raf = null;
       card.addEventListener('pointermove', function (e) {
         if (raf) return;
@@ -493,6 +493,74 @@
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   })();
+
+
+  /* ---------- Fiches service (dialogs) ---------- */
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-service]');
+    if (trigger) {
+      var dlg = document.getElementById('svc-' + trigger.dataset.service);
+      if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
+      return;
+    }
+    var closer = e.target.closest('[data-close]');
+    if (closer) {
+      var d = closer.closest('dialog');
+      if (d) d.close();
+    }
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('dialog.svc-dialog'), function (d) {
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  });
+
+  /* ---------- Compte à rebours d'invitation ---------- */
+  var cd = document.querySelector('[data-countdown]');
+  if (cd) {
+    var target = new Date(cd.dataset.countdown).getTime();
+    var cells = {
+      days: cd.querySelector('[data-cd="days"]'),
+      hours: cd.querySelector('[data-cd="hours"]'),
+      minutes: cd.querySelector('[data-cd="minutes"]'),
+      seconds: cd.querySelector('[data-cd="seconds"]')
+    };
+    var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+    var tickCd = function () {
+      var diff = Math.max(0, target - Date.now());
+      if (cells.days) cells.days.textContent = Math.floor(diff / 86400000);
+      if (cells.hours) cells.hours.textContent = pad(Math.floor(diff / 3600000) % 24);
+      if (cells.minutes) cells.minutes.textContent = pad(Math.floor(diff / 60000) % 60);
+      if (cells.seconds) cells.seconds.textContent = pad(Math.floor(diff / 1000) % 60);
+      setTimeout(tickCd, 1000);
+    };
+    tickCd();
+  }
+
+  /* ---------- RSVP de l'invitation ---------- */
+  var rsvp = document.querySelector('[data-invite-rsvp]');
+  if (rsvp) {
+    var rhint = rsvp.querySelector('[data-form-hint]');
+    rsvp.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = e.submitter || rsvp.querySelector('[data-send]');
+      var mode = btn && btn.dataset.send === 'mail' ? 'mail' : 'wa';
+      var f = rsvp.elements;
+      var name = (f.name.value || '').trim();
+      if (!name) { f.name.focus(); return; }
+      var text = "Réponse à l'invitation de Sarah & David\n\n" +
+        name + '\nPrésence : ' + f.presence.value +
+        '\nAdultes : ' + f.adults.value + ' · Enfants : ' + f.kids.value +
+        ((f.message.value || '').trim() ? '\n\nMessage : ' + f.message.value.trim() : '');
+      if (mode === 'mail') {
+        location.href = 'mailto:' + (rsvp.dataset.mail || '') +
+          '?subject=' + encodeURIComponent('RSVP mariage — ' + name) +
+          '&body=' + encodeURIComponent(text);
+        if (rhint) { rhint.hidden = false; rhint.textContent = "Votre application mail s'ouvre avec la réponse pré-remplie."; }
+      } else {
+        window.open((rsvp.dataset.wa || 'https://wa.me/') + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        if (rhint) { rhint.hidden = false; rhint.textContent = 'WhatsApp s\u2019ouvre avec la réponse pré-remplie.'; }
+      }
+    });
+  }
 
   /* ---------- Partage ---------- */
   document.addEventListener('click', function (e) {

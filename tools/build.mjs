@@ -339,6 +339,7 @@ ${extra}
 function nav(active) {
   const links = [
     ['/', 'Actus', 'home'],
+    ['/invitation.html', 'Invitation', 'invitation'],
     ['/services.html', 'Services', 'services'],
     ['/contact.html', 'Contact', 'contact'],
     ['/apropos.html', 'À propos', 'apropos'],
@@ -379,6 +380,7 @@ function footer() {
         <div class="footer-col">
           <h4>Explorer</h4>
           <a href="/">Toutes les actus</a>
+          <a href="/invitation.html">Invitation</a>
           <a href="/services.html">Services</a>
           <a href="/apropos.html">À propos</a>
           <a href="/contact.html">Contact</a>
@@ -691,10 +693,101 @@ ${footer()}
 /* -------------------------------------------------------------------------- */
 /* Services                                                                    */
 /* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/* Détails des services (fiches)                                              */
+/* -------------------------------------------------------------------------- */
+const SLUG = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const SERVICE_DETAILS = {
+  'Réparation ordinateur & Mac': {
+    detail: "Diagnostic complet avant toute intervention : alimentation, disque, mémoire, écran, nappe, oxydation. On remplace ce qui est mort, on sauvegarde ce qui vit encore, et on teste sous charge avant de rendre la machine.",
+    includes: ['Diagnostic détaillé et devis avant intervention', 'Remplacement SSD, RAM, batterie, écran', 'Sauvegarde préalable des données', 'Test de charge et vérification finale'],
+    delai: '48 à 72 h selon les pièces',
+  },
+  'Micro-soudure & carte mère': {
+    detail: "Quand la carte mère est déclarée morte, on regarde au microscope : composant manquant, piste coupée, connecteur arraché. Je répare au composant, pas au remplacement de carte.",
+    includes: ['Diagnostic au composant, courts-circuits', 'Remplacement de connecteurs et de circuits', 'Reprise de pistes et de soudures', 'Test sous charge après réparation'],
+    delai: '1 à 2 semaines selon les pièces',
+  },
+  'Électronique & mobilité électrique': {
+    detail: "Vélos électriques, trottinettes, batteries : contrôleur qui chauffe, batterie qui coupe, écran muet. Diagnostic au multimètre et remplacement des éléments défaillants, sans tout jeter.",
+    includes: ['Diagnostic contrôleur / batterie / capteurs', 'Montage double batterie et autonomie', 'Réparation de faisceaux et connecteurs', 'Personnalisation d\u2019affichages'],
+    delai: '3 à 7 jours',
+  },
+  'Sites web & e-commerce': {
+    detail: "Un site qui charge vite, se lit sur téléphone et que tu peux faire évoluer sans moi. Vitrine, boutique, multilingue — avec paiement et facturation quand il faut.",
+    includes: ['Design et intégration sur mesure', 'WordPress / WooCommerce ou site statique', 'Paiement Stripe, facturation régionale', 'Prise en main pour modifier tes pages'],
+    delai: '2 à 4 semaines',
+  },
+  'Cartes de mariage numériques': {
+    detail: "Un lien unique et élégant qui remplace le PDF : les infos, le plan, le compte à rebours et les réponses en ligne. Aussi beau sur un téléphone que sur un grand écran.",
+    includes: ['Design sur mesure : couleurs, typographie', 'RSVP adultes / enfants', 'Itinéraire Waze et Google Maps', 'Aperçu soigné au partage WhatsApp'],
+    delai: '5 à 10 jours',
+  },
+  'Ingénieur du son': {
+    detail: "Sonorisation d\u2019événement, captation de voix, nettoyage et mixage. Le bon son est celui qu\u2019on ne remarque pas — jusqu\u2019au moment où il porte la salle.",
+    includes: ['Sonorisation de salle ou d\u2019extérieur', 'Captation et montage', 'Nettoyage de bruit, égalisation, mixage', 'Livraison de fichiers prêts à diffuser'],
+    delai: 'selon l\u2019événement',
+  },
+  'Automatisation & scripts': {
+    detail: "Tout ce que tu fais trois fois par semaine peut être fait par une machine. Sauvegardes, synchronisation, renommage, extraction : on l\u2019écrit une fois, ça tourne ensuite tout seul.",
+    includes: ['Scripts bash / zsh', 'Sauvegardes planifiées et vérifiées', 'Synchronisation entre machines', 'Documentation de ce qui tourne'],
+    delai: '2 à 5 jours',
+  },
+  'DevOps & auto-hébergement': {
+    detail: "Proxmox, NAS, Docker : une infrastructure qui redémarre toute seule et dont les sauvegardes ont déjà été testées. Le genre de setup qu\u2019on oublie parce qu\u2019il ne tombe jamais.",
+    includes: ['Installation Proxmox / OMV / Docker', 'Sauvegardes 3-2-1 et test de restauration', 'Monitoring et alertes', 'Documentation et accès complets'],
+    delai: '1 à 2 semaines',
+  },
+  'Filtrage internet & contrôle parental': {
+    detail: "DNS filtrants, contrôle parental, filtres d\u2019images : un web plus sain, sans transformer la maison en prison. On règle, on explique, et on vérifie que ça tient.",
+    includes: ['Configuration DNS familiale', 'Family Link et contrôle parental', 'Filtres d\u2019images dans le navigateur', 'Réglages IPv4 et IPv6'],
+    delai: '1 à 2 h',
+  },
+  'Réseau & Wi-Fi': {
+    detail: "Câblage, baie, 10 GbE, PoE et Wi-Fi maillé : la pièce du fond mérite aussi du bon débit. On mesure avant, on mesure après.",
+    includes: ['Étude et câblage', 'Baie de brassage et switch PoE', 'Wi-Fi maillé et couverture réelle', 'Tests de débit et de latence'],
+    delai: '1 à 3 jours',
+  },
+  'Conseil & audit': {
+    detail: "Avant d\u2019acheter, demande. Un audit de trente minutes évite souvent trois cents euros de matériel inutile — et quelques mauvaises surprises.",
+    includes: ['Choix de matériel adapté', 'Audit sauvegardes et sécurité', 'Détection d\u2019arnaques et de faux sites', 'Recommandations écrites'],
+    delai: '48 h',
+  },
+};
+
+function serviceDialog(it, family) {
+  const slug = SLUG(it.title);
+  const d = SERVICE_DETAILS[it.title] || { detail: it.text, includes: it.bullets, delai: 'sur devis' };
+  const waText = encodeURIComponent('Bonjour ARIBAZ, je voudrais un devis pour : ' + it.title);
+  return `<dialog class="svc-dialog" id="svc-${slug}" aria-labelledby="svc-${slug}-t" style="--brand:${family.color}">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:${family.color}">${esc(family.brand)}</span>
+    <h3 id="svc-${slug}-t">${esc(it.title)}</h3>
+    <p class="dlg-detail">${esc(d.detail)}</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list">${d.includes.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+    <div class="dlg-meta">
+      <span>${icon('clock')} Délai : ${esc(d.delai)}</span>
+      <span>${icon('check')} Devis gratuit</span>
+    </div>
+    ${it.href ? `<a class="dlg-link" href="${it.href}">${esc(it.hrefLabel || 'En savoir plus')} ${icon('arrow')}</a>` : ''}
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="${SITE.waDirect}?text=${waText}" target="_blank" rel="noopener">${icon('whatsapp')} Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:${SITE.email}?subject=${encodeURIComponent('Devis — ' + it.title)}">Par email</a>
+    </div>
+  </div>
+</dialog>`;
+}
+
 const SERVICES = [
   {
-    num: '01', title: 'Réparer', sub: 'Le matériel avant la poubelle.',
-    desc: 'Un portable qui chauffe, un disque qui claque, une carte mère que le fabricant a déclarée morte : on regarde avant de remplacer.',
+    brand: 'ARIBAZ Electronics', slug: 'electronics', color: '#0a84ff',
+    tagline: 'Le matériel, réparé au bon niveau.',
+    desc: 'Du composant à la machine complète : diagnostic, micro-soudure, réparation. Ce qui peut être sauvé le sera.',
     items: [
       { icon: 'wrench', title: 'Réparation ordinateur & Mac', text: 'Diagnostic complet, SSD, RAM, batterie, écran, nappes. Sauvegarde des données incluse quand c\u2019est possible.', bullets: ['Diagnostic honnête, pas de devis à l\u2019aveugle', 'Récupération de données', 'Nettoyage & pâte thermique'] },
       { icon: 'chip', title: 'Micro-soudure & carte mère', text: 'Quand le devis officiel dit « irréparable », il reste souvent quelque chose à tenter.', bullets: ['Diagnostic au composant', 'Remplacement de connecteurs', 'Réparation d\u2019alimentations'] },
@@ -702,18 +795,27 @@ const SERVICES = [
     ],
   },
   {
-    num: '02', title: 'Construire', sub: 'Du code, du son et du papier qu\u2019on ne jette pas.',
-    desc: 'Des sites qui chargent vite, des cartes de mariage qu\u2019on a envie d\u2019ouvrir, du son qui ne grésille pas.',
+    brand: 'ARIBAZ Events', slug: 'events', color: '#bf5af2',
+    tagline: 'Les grands moments, en mieux.',
+    desc: 'Invitations digitales, cartes de mariage, sonorisation : ce qui se voit et ce qui s\u2019entend, sans fausse note.',
+    items: [
+      { icon: 'heart', title: 'Cartes de mariage numériques', text: 'Un lien élégant, avec les infos, le plan et les réponses — plutôt qu\u2019un PDF illisible sur téléphone.', bullets: ['Design sur mesure', 'RSVP en ligne', 'Compte à rebours & plan'], href: '/invitation.html', hrefLabel: 'Voir la page Invitation' },
+      { icon: 'music', title: 'Ingénieur du son', text: 'Sonorisation d\u2019événement, captation, nettoyage et mixage de voix.', bullets: ['Sonorisation événement', 'Enregistrement & montage', 'Restauration audio'] },
+    ],
+  },
+  {
+    brand: 'ARIBAZ Web', slug: 'web', color: '#30b0c7',
+    tagline: 'Des sites qui tiennent debout.',
+    desc: 'Vitrines, boutiques, outils internes : rapide, lisible, et modifiable sans moi.',
     items: [
       { icon: 'globe', title: 'Sites web & e-commerce', text: 'Vitrine, boutique, multilingue. Conçu pour être rapide, lisible et modifiable sans moi.', bullets: ['WordPress / WooCommerce', 'Paiement Stripe & facturation', 'Performance & SEO de base'] },
-      { icon: 'heart', title: 'Cartes de mariage numériques', text: 'Un lien élégant, avec les infos, le plan et les réponses — plutôt qu\u2019un PDF illisible sur téléphone.', bullets: ['Design sur mesure', 'RSVP en ligne', 'Compte à rebours & plan'] },
-      { icon: 'music', title: 'Ingénieur du son', text: 'Sonorisation d\u2019événement, captation, nettoyage et mixage de voix.', bullets: ['Sonorisation événement', 'Enregistrement & montage', 'Restauration audio'] },
       { icon: 'code', title: 'Automatisation & scripts', text: 'Tout ce que tu fais trois fois par semaine peut être fait par une machine.', bullets: ['Bash / zsh / cron', 'Sauvegardes automatiques', 'Synchronisation de fichiers'] },
     ],
   },
   {
-    num: '03', title: 'Protéger', sub: 'Un internet propre, et des données chez toi.',
-    desc: 'Filtrage, sauvegardes, réseau : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
+    brand: 'ARIBAZ Systems', slug: 'systems', color: '#ff9f0a',
+    tagline: 'L\u2019infrastructure qui ne se voit pas.',
+    desc: 'Réseau, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
     items: [
       { icon: 'layers', title: 'DevOps & auto-hébergement', text: 'Proxmox, NAS, Docker, sauvegardes : une infrastructure qui tient debout et se répare toute seule.', bullets: ['Proxmox / OMV / Docker', 'Sauvegardes 3-2-1 vérifiées', 'Monitoring & alertes'] },
       { icon: 'eye', title: 'Filtrage internet & contrôle parental', text: 'DNS, filtres d\u2019images, contrôle parental : un web plus sain, sans transformer la maison en prison.', bullets: ['DNS filtrants', 'Family Link & co.', 'Filtres navigateur'] },
@@ -723,6 +825,7 @@ const SERVICES = [
   },
 ];
 
+
 function servicesPage() {
   const title = `Services — ${SITE.name}`;
   const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, filtrage internet. Du travail propre, expliqué sans jargon.";
@@ -731,8 +834,8 @@ function servicesPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>Services</span>
-      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Ce que je sais faire <span class="gradient-text">de mes dix doigts.</span></h1>
-      <p class="lede" style="margin-inline:0;max-width:52ch">Réparer plutôt que remplacer, construire plutôt que sous-traiter. Si ton besoin n'est pas dans la liste, écris quand même : c'est souvent là que ça devient intéressant.</p>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Quatre maisons, <span class="gradient-text">un seul artisan.</span></h1>
+      <p class="lede" style="margin-inline:0;max-width:52ch">ARIBAZ Electronics, Events, Web et Systems : les mêmes mains, la même manie du travail propre. Si ton besoin n'est pas dans la liste, écris quand même.</p>
       <div class="hero-meta" style="justify-content:flex-start">
         <span>${icon('check')} Jérusalem & à distance</span>
         <span>${icon('clock')} Réponse sous 24 h</span>
@@ -743,19 +846,32 @@ function servicesPage() {
 
   <section class="section" style="padding-top:26px">
     <div class="wrap">
-      ${SERVICES.map((f) => `<div class="family">
-        <div class="family-head"><span class="family-num">${f.num}</span><h2>${f.title}</h2></div>
-        <p>${f.sub} ${f.desc}</p>
+      ${SERVICES.map((f) => `<div class="family" id="${f.slug}" style="--brand:${f.color}">
+        <div class="family-head">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <div><span class="family-num">ARIBAZ</span><h2>${f.brand.replace('ARIBAZ ', '')}</h2></div>
+        </div>
+        <p><strong>${f.tagline}</strong> ${f.desc}</p>
         <div class="svc-grid">
-          ${f.items.map((it) => `<article class="svc">
-            <div class="ico">${icon(it.icon)}</div>
-            <h3>${it.title}</h3>
-            <p>${it.text}</p>
-            <ul>${it.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>
-            <div class="svc-foot"><span>Sur devis</span><strong>${icon('arrow')}</strong></div>
+          ${f.items.map((it) => `<article class="svc" style="--brand:${f.color}">
+            <div class="svc-art">
+              <span class="svc-tile">${icon(it.icon)}</span>
+              <span class="svc-mini mini-a">${icon('clock')}</span>
+              <span class="svc-mini mini-b">${icon('check')}</span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">${f.brand}</span>
+              <h3>${it.title}</h3>
+              <p>${it.text}</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="${SLUG(it.title)}" aria-haspopup="dialog">Détails ${icon('arrow')}</button>
+              </div>
+            </div>
           </article>`).join('')}
         </div>
       </div>`).join('\n      ')}
+      ${SERVICES.map((f) => f.items.map((it) => serviceDialog(it, f)).join('')).join('')}
     </div>
   </section>
 
@@ -968,6 +1084,240 @@ ${footer()}
   return head({ title, description: desc, url: '/contact.html' }) + body;
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* Invitation                                                                  */
+/* -------------------------------------------------------------------------- */
+function invitationPage() {
+  const title = `Invitation — ${SITE.name} Events`;
+  const desc = "Faire-part et sites d'invitation digitaux : design sur mesure, musique, itinéraire, RSVP adultes/enfants, galerie photo. Livré par un simple lien WhatsApp.";
+  const features = [
+    { icon: 'heart', t: 'Design sur mesure', d: 'Jamais un modèle : vos couleurs, vos prénoms, votre histoire.' },
+    { icon: 'music', t: 'Musique à l\u2019ouverture', d: 'Une mélodie choisie avec vous, qui accompagne le premier regard.' },
+    { icon: 'wifi', t: 'Itinéraire en un clic', d: 'Waze ou Google Maps, un bouton par lieu. Plus personne ne se perd.' },
+    { icon: 'check', t: 'RSVP adultes & enfants', d: 'Les réponses comptées, le récap prêt pour le traiteur.' },
+    { icon: 'image', t: 'Galerie photo', d: 'Avant, pendant, après : les souvenirs se déposent au même endroit.' },
+    { icon: 'whatsapp', t: 'Aperçu WhatsApp soigné', d: 'Un lien qui s\u2019ouvre avec un beau visuel, pas une URL nue.' },
+  ];
+  const steps = [
+    ['On échange sur WhatsApp', 'Date, lieux, style, nombre d\u2019invités. Deux messages suffisent pour démarrer.'],
+    ['Je crée, tu reçois un lien', 'Un premier aperçu en 48 h, à ouvrir sur ton téléphone.'],
+    ['Ajustements illimités', 'Les prénoms, les couleurs, une phrase, un horaire : on peaufine jusqu\u2019au bon rendu.'],
+    ['Le lien définitif', 'En ligne à vie, sans abonnement. Tu le partages, c\u2019est tout.'],
+  ];
+  const prices = [
+    { t: 'Faire-part digital', d: 'Le classique, envoyé sur WhatsApp.', tag: '', main: false, items: ['Design personnalisé', 'PDF haute définition + image', 'Deux séries d\u2019ajustements'] },
+    { t: 'Site d\u2019invitation', d: 'La formule la plus demandée.', tag: 'Le plus choisi', main: true, items: ['Tout le faire-part', 'RSVP adultes / enfants', 'Itinéraire Waze & Maps', 'Musique et galerie photo'] },
+    { t: 'Vidéo d\u2019invitation', d: 'Une animation courte, à partager.', tag: '', main: false, items: ['15 à 30 secondes', 'Musique et typographie', 'Formats WhatsApp & Instagram'] },
+  ];
+  const faq = [
+    ['Combien de temps pour recevoir mon invitation ?', 'Compte 5 à 10 jours selon la formule, à partir du moment où j\u2019ai la date, les lieux et le style. Si c\u2019est urgent, dis-le : on peut souvent accélérer.'],
+    ['Et si je change d\u2019avis sur le design ?', 'Les ajustements sont illimités avant validation : couleurs, typographie, textes, ordre des sections. On ne publie que quand c\u2019est juste.'],
+    ['Le lien reste en ligne combien de temps ?', 'À vie, sans abonnement. Le lien reste actif après l\u2019événement, pour les photos et les souvenirs.'],
+    ['Peut-on compter les enfants séparément ?', 'Oui. Le RSVP distingue adultes et enfants, et le récap se génère en un clic pour le traiteur.'],
+    ['Ça marche sans installer d\u2019application ?', 'Oui, c\u2019est un simple lien : il s\u2019ouvre dans le navigateur, sur iPhone comme sur Android.'],
+  ];
+  const body = `${nav('invitation')}
+<main id="contenu">
+  <section class="inv-hero">
+    <div class="wrap">
+      <div class="inv-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>${SITE.name} Events</span>
+          <h1>Chaque invitation <span class="gradient-text">raconte une histoire.</span></h1>
+          <p class="lede">Un lien élégant à envoyer sur WhatsApp : la date, le lieu, l\u2019itinéraire, la musique et les réponses de vos invités. Sans application, sans PDF illisible.</p>
+          <div class="hero-actions" style="justify-content:flex-start">
+            <a class="btn btn-wa" href="${SITE.waDirect}?text=${encodeURIComponent("Bonjour ARIBAZ, je voudrais une invitation pour :")}" target="_blank" rel="noopener">${icon('whatsapp')} Préparer mon invitation</a>
+            <a class="btn btn-ghost" href="/invitation/demo.html">Voir la démo ${icon('arrow')}</a>
+          </div>
+          <div class="hero-meta" style="justify-content:flex-start;margin-top:26px">
+            <span>${icon('clock')} Livré en 5 à 10 jours</span>
+            <span>${icon('check')} Ajustements illimités</span>
+            <span>${icon('shield')} Lien en ligne à vie</span>
+          </div>
+        </div>
+        <div class="inv-mock" aria-hidden="true">
+          <div>
+            <p class="m-kicker">Nous nous marions</p>
+            <p class="m-names">Sarah<br><em>&</em><br>David</p>
+            <div class="m-rule"></div>
+            <p class="m-date">14 juin 2027</p>
+            <p class="m-place">Jérusalem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Ce qui est <span class="accent">inclus</span></h2><p>Pas une page blanche avec deux prénoms. Une vraie invitation, pensée pour le téléphone.</p></div></div>
+      <div class="inv-features">
+        ${features.map((f) => `<div class="inv-feature reveal"><div class="ico">${icon(f.icon)}</div><h3>${f.t}</h3><p>${f.d}</p></div>`).join('')}
+      </div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:34px">
+        <a class="btn btn-primary" href="/invitation/demo.html">Ouvrir l\u2019invitation de démonstration ${icon('arrow')}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Comment ça marche</h2><p>Quatre étapes, aucune plateforme à apprendre.</p></div></div>
+      <div class="steps">
+        ${steps.map(([t, d]) => `<div class="step"><h3>${t}</h3><p>${d}</p></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Pour quels <span class="accent">événements</span></h2><p>Le même soin, quel que soit le prétexte.</p></div></div>
+      <div class="chips" style="gap:10px">
+        ${['Mariage', 'Bar & Bat Mitsva', 'Brit Mila', 'Naissance', 'Anniversaire', 'Fiançailles'].map((t) => `<span class="chip" style="padding:10px 18px;font-size:14px">${t}</span>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Trois formules</h2><p>Sur devis, selon le nombre de sections et les options.</p></div></div>
+      <div class="inv-price-grid">
+        ${prices.map((p) => `<div class="inv-price${p.main ? ' is-main' : ''}">
+          ${p.tag ? `<span class="tag-main">${p.tag}</span>` : ''}
+          <h3>${p.t}</h3>
+          <p class="p-desc">${p.d}</p>
+          <ul>${p.items.map((i) => `<li>${i}</li>`).join('')}</ul>
+          <div class="p-foot"><span class="p-price">Sur devis</span><a class="link-arrow" href="${SITE.waDirect}?text=${encodeURIComponent('Bonjour ARIBAZ, je voudrais un devis pour : ' + p.t)}" target="_blank" rel="noopener">Demander ${icon('arrow')}</a></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Les questions <span class="accent">qu\u2019on me pose</span></h2><p>Et les réponses honnêtes.</p></div></div>
+      <div class="inv-faq">
+        ${faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Parlons de votre événement</h2><p>Deux lignes, une date, et je vous dis ce qui est possible.</p></div></div>
+      <div class="contact-grid">
+        <div class="contact-card wa">
+          <h3>${icon('whatsapp')} WhatsApp</h3>
+          <p>Le plus simple : envoyez la date et les lieux. Je réponds sous 24 h. ${SITE.phone}</p>
+          <a class="btn btn-wa" href="${SITE.waDirect}?text=${encodeURIComponent("Bonjour ARIBAZ, je voudrais une invitation pour :")}" target="_blank" rel="noopener">Écrire sur WhatsApp ${icon('arrow-up-right')}</a>
+        </div>
+        <div class="contact-card">
+          <h3>${icon('link')} Email</h3>
+          <p>Pour un devis détaillé ou des références.</p>
+          <a class="btn btn-primary" href="mailto:${SITE.email}?subject=${encodeURIComponent('Invitation — demande de devis')}">${SITE.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+${footer()}
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>`;
+  return head({ title, description: desc, url: '/invitation.html' }) + body;
+}
+
+function invitationDemoPage() {
+  const title = `Sarah & David — 14 juin 2027 (démo) — ${SITE.name}`;
+  const desc = "Invitation de démonstration : compte à rebours, programme, itinéraire et réponses en ligne.";
+  const maps = 'https://www.google.com/maps/search/?api=1&query=J%C3%A9rusalem';
+  const waze = 'https://waze.com/ul?q=J%C3%A9rusalem&navigate=yes';
+  const body = `<div class="invite">
+  <header class="invite-top">
+    <a href="/invitation.html">← ${SITE.name} Events</a>
+    <span class="tag">Invitation de démonstration</span>
+  </header>
+
+  <main>
+    <section class="invite-hero">
+      <p class="invite-kicker">Nous nous marions</p>
+      <h1 class="invite-names">Sarah <em>&</em> David</h1>
+      <p class="invite-sub">14 juin 2027 · Jérusalem</p>
+
+      <div class="invite-countdown" data-countdown="2027-06-14T17:00:00+03:00" aria-label="Compte à rebours">
+        <div><b data-cd="days">—</b><span>jours</span></div>
+        <div><b data-cd="hours">—</b><span>heures</span></div>
+        <div><b data-cd="minutes">—</b><span>minutes</span></div>
+        <div><b data-cd="seconds">—</b><span>secondes</span></div>
+      </div>
+
+      <a class="btn btn-primary" href="#rsvp">Répondre à l\u2019invitation</a>
+    </section>
+
+    <section class="invite-section">
+      <h2>Notre histoire</h2>
+      <p>Tout a commencé par un message envoyé à 23 h 47, un dimanche, à propos d\u2019un film que personne n\u2019avait vu. Six ans plus tard, on se marie — et on a très envie que vous soyez là.</p>
+    </section>
+
+    <section class="invite-section">
+      <h2>Le programme</h2>
+      <div class="invite-program">
+        <div class="step-row"><span class="h">17 h 00</span><div><h3>Cérémonie</h3><p>Sous les pins, au coucher du soleil.</p></div></div>
+        <div class="step-row"><span class="h">18 h 30</span><div><h3>Cocktail</h3><p>Sur la terrasse, verres et mezze.</p></div></div>
+        <div class="step-row"><span class="h">20 h 30</span><div><h3>Dîner &amp; danse</h3><p>Jusqu\u2019au bout de la nuit, promis.</p></div></div>
+      </div>
+    </section>
+
+    <section class="invite-section">
+      <h2>Le lieu</h2>
+      <div class="invite-venue">
+        <p class="addr">Domaine des Pins — Route de Jérusalem, Israël</p>
+        <div class="maps">
+          <a class="btn btn-ghost" href="${waze}" target="_blank" rel="noopener">Ouvrir dans Waze</a>
+          <a class="btn btn-ghost" href="${maps}" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="invite-section" id="rsvp">
+      <h2>Répondre</h2>
+      <p style="margin-bottom:26px">Dites-nous si vous serez là — et combien de petits gourmands vous amenez.</p>
+      <form class="invite-rsvp" data-invite-rsvp data-wa="${SITE.waDirect}" data-mail="${SITE.email}" novalidate>
+        <label>Votre nom
+          <input type="text" name="name" placeholder="Nom et prénom" autocomplete="name">
+        </label>
+        <div class="row">
+          <label>Présence
+            <select name="presence"><option>Oui, avec plaisir</option><option>Non, avec regret</option></select>
+          </label>
+          <label>Adultes
+            <select name="adults"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+          </label>
+        </div>
+        <label>Enfants
+          <select name="kids"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+        </label>
+        <label>Un mot pour les mariés
+          <textarea name="message" rows="3" placeholder="Facultatif"></textarea>
+        </label>
+        <div class="actions">
+          <button class="btn btn-wa" type="submit" data-send="wa">Envoyer sur WhatsApp</button>
+          <button class="btn btn-ghost" type="submit" data-send="mail">Par email</button>
+        </div>
+        <p class="form-hint" data-form-hint hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="invite-foot">Invitation de démonstration — la vôtre sera à votre image. <a href="/invitation.html">En savoir plus</a></footer>
+</div>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>`;
+  return head({ title, description: desc, url: '/invitation/demo.html' }) + body;
+}
+
 function notFoundPage() {
   return head({ title: `Page introuvable — ${SITE.name}`, description: 'Cette page n\u2019existe pas (ou plus).', url: '/404.html' }) + `${nav('')}
 <main id="contenu">
@@ -1017,6 +1367,8 @@ function sitemap() {
   const urls = [
     { loc: '/', pri: '1.0', mod: posts[0].date },
     { loc: '/services.html', pri: '0.7', mod: posts[0].date },
+    { loc: '/invitation.html', pri: '0.8', mod: posts[0].date },
+    { loc: '/invitation/demo.html', pri: '0.6', mod: posts[0].date },
     { loc: '/contact.html', pri: '0.6', mod: posts[0].date },
     { loc: '/apropos.html', pri: '0.5', mod: posts[0].date },
     ...posts.map((p) => ({ loc: `/articles/${p.slug}.html`, pri: '0.8', mod: p.date })),
@@ -1053,6 +1405,8 @@ posts.forEach((p, idx) => {
 write('apropos.html', aboutPage());
 write('services.html', servicesPage());
 write('contact.html', contactPage());
+write('invitation.html', invitationPage());
+write('invitation/demo.html', invitationDemoPage());
 write('404.html', notFoundPage());
 write('feed.xml', feed());
 write('sitemap.xml', sitemap());

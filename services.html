@@ -26,7 +26,7 @@
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="ARIBAZ — Flux RSS" href="/feed.xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=0d3161349e">
+<link rel="stylesheet" href="/assets/css/style.css?v=2819798179">
 <script>(function(){try{var t=localStorage.getItem('aribaz-theme');var d=(t==='dark')?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 
 </head>
@@ -43,6 +43,7 @@
     </a>
     <nav class="nav-links" id="menu" aria-label="Navigation principale">
       <a href="/">Actus</a>
+      <a href="/invitation.html">Invitation</a>
       <a href="/services.html" aria-current="page">Services</a>
       <a href="/contact.html">Contact</a>
       <a href="/apropos.html">À propos</a>
@@ -58,8 +59,8 @@
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>Services</span>
-      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Ce que je sais faire <span class="gradient-text">de mes dix doigts.</span></h1>
-      <p class="lede" style="margin-inline:0;max-width:52ch">Réparer plutôt que remplacer, construire plutôt que sous-traiter. Si ton besoin n'est pas dans la liste, écris quand même : c'est souvent là que ça devient intéressant.</p>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Quatre maisons, <span class="gradient-text">un seul artisan.</span></h1>
+      <p class="lede" style="margin-inline:0;max-width:52ch">ARIBAZ Electronics, Events, Web et Systems : les mêmes mains, la même manie du travail propre. Si ton besoin n'est pas dans la liste, écris quand même.</p>
       <div class="hero-meta" style="justify-content:flex-start">
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Jérusalem & à distance</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Réponse sous 24 h</span>
@@ -70,93 +71,410 @@
 
   <section class="section" style="padding-top:26px">
     <div class="wrap">
-      <div class="family">
-        <div class="family-head"><span class="family-num">01</span><h2>Réparer</h2></div>
-        <p>Le matériel avant la poubelle. Un portable qui chauffe, un disque qui claque, une carte mère que le fabricant a déclarée morte : on regarde avant de remplacer.</p>
+      <div class="family" id="electronics" style="--brand:#0a84ff">
+        <div class="family-head">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <div><span class="family-num">ARIBAZ</span><h2>Electronics</h2></div>
+        </div>
+        <p><strong>Le matériel, réparé au bon niveau.</strong> Du composant à la machine complète : diagnostic, micro-soudure, réparation. Ce qui peut être sauvé le sera.</p>
         <div class="svc-grid">
-          <article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.2 4.8a4 4 0 0 0 4 6.9L9.6 21.3a2.3 2.3 0 1 1-3.3-3.3L16 8.4a4 4 0 0 0-0.8-3.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Réparation ordinateur & Mac</h3>
-            <p>Diagnostic complet, SSD, RAM, batterie, écran, nappes. Sauvegarde des données incluse quand c’est possible.</p>
-            <ul><li>Diagnostic honnête, pas de devis à l’aveugle</li><li>Récupération de données</li><li>Nettoyage & pâte thermique</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Micro-soudure & carte mère</h3>
-            <p>Quand le devis officiel dit « irréparable », il reste souvent quelque chose à tenter.</p>
-            <ul><li>Diagnostic au composant</li><li>Remplacement de connecteurs</li><li>Réparation d’alimentations</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="17" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 17 3-7h4M12 10l3.5 7M14 7h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Électronique & mobilité électrique</h3>
-            <p>Vélos électriques, contrôleurs, batteries, affichages : le même métier, avec du couple en plus.</p>
-            <ul><li>Contrôleurs 48V</li><li>Double batterie & autonomie</li><li>Diagnostic de capteurs</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
+          <article class="svc" style="--brand:#0a84ff">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.2 4.8a4 4 0 0 0 4 6.9L9.6 21.3a2.3 2.3 0 1 1-3.3-3.3L16 8.4a4 4 0 0 0-0.8-3.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Electronics</span>
+              <h3>Réparation ordinateur & Mac</h3>
+              <p>Diagnostic complet, SSD, RAM, batterie, écran, nappes. Sauvegarde des données incluse quand c’est possible.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="reparation-ordinateur-mac" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#0a84ff">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Electronics</span>
+              <h3>Micro-soudure & carte mère</h3>
+              <p>Quand le devis officiel dit « irréparable », il reste souvent quelque chose à tenter.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="micro-soudure-carte-mere" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#0a84ff">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="17" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="17" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 17 3-7h4M12 10l3.5 7M14 7h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Electronics</span>
+              <h3>Électronique & mobilité électrique</h3>
+              <p>Vélos électriques, contrôleurs, batteries, affichages : le même métier, avec du couple en plus.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="electronique-mobilite-electrique" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
           </article>
         </div>
       </div>
-      <div class="family">
-        <div class="family-head"><span class="family-num">02</span><h2>Construire</h2></div>
-        <p>Du code, du son et du papier qu’on ne jette pas. Des sites qui chargent vite, des cartes de mariage qu’on a envie d’ouvrir, du son qui ne grésille pas.</p>
+      <div class="family" id="events" style="--brand:#bf5af2">
+        <div class="family-head">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <div><span class="family-num">ARIBAZ</span><h2>Events</h2></div>
+        </div>
+        <p><strong>Les grands moments, en mieux.</strong> Invitations digitales, cartes de mariage, sonorisation : ce qui se voit et ce qui s’entend, sans fausse note.</p>
         <div class="svc-grid">
-          <article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.3 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.3-3.6-8.5S9.6 5.9 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Sites web & e-commerce</h3>
-            <p>Vitrine, boutique, multilingue. Conçu pour être rapide, lisible et modifiable sans moi.</p>
-            <ul><li>WordPress / WooCommerce</li><li>Paiement Stripe & facturation</li><li>Performance & SEO de base</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.4-7.5-9.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8C19.5 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Cartes de mariage numériques</h3>
-            <p>Un lien élégant, avec les infos, le plan et les réponses — plutôt qu’un PDF illisible sur téléphone.</p>
-            <ul><li>Design sur mesure</li><li>RSVP en ligne</li><li>Compte à rebours & plan</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l10-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="16" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Ingénieur du son</h3>
-            <p>Sonorisation d’événement, captation, nettoyage et mixage de voix.</p>
-            <ul><li>Sonorisation événement</li><li>Enregistrement & montage</li><li>Restauration audio</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Automatisation & scripts</h3>
-            <p>Tout ce que tu fais trois fois par semaine peut être fait par une machine.</p>
-            <ul><li>Bash / zsh / cron</li><li>Sauvegardes automatiques</li><li>Synchronisation de fichiers</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
+          <article class="svc" style="--brand:#bf5af2">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.4-7.5-9.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8C19.5 15.6 12 20 12 20Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Events</span>
+              <h3>Cartes de mariage numériques</h3>
+              <p>Un lien élégant, avec les infos, le plan et les réponses — plutôt qu’un PDF illisible sur téléphone.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="cartes-de-mariage-numeriques" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#bf5af2">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l10-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16.5" cy="16" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Events</span>
+              <h3>Ingénieur du son</h3>
+              <p>Sonorisation d’événement, captation, nettoyage et mixage de voix.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="ingenieur-du-son" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
           </article>
         </div>
       </div>
-      <div class="family">
-        <div class="family-head"><span class="family-num">03</span><h2>Protéger</h2></div>
-        <p>Un internet propre, et des données chez toi. Filtrage, sauvegardes, réseau : ce qui doit tourner sans toi, et sans dépendre d’un géant.</p>
+      <div class="family" id="web" style="--brand:#30b0c7">
+        <div class="family-head">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <div><span class="family-num">ARIBAZ</span><h2>Web</h2></div>
+        </div>
+        <p><strong>Des sites qui tiennent debout.</strong> Vitrines, boutiques, outils internes : rapide, lisible, et modifiable sans moi.</p>
         <div class="svc-grid">
-          <article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.4 8.4 4.4L12 12.2 3.6 7.8 12 3.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m3.6 12.2 8.4 4.4 8.4-4.4M3.6 16.6l8.4 4.4 8.4-4.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>DevOps & auto-hébergement</h3>
-            <p>Proxmox, NAS, Docker, sauvegardes : une infrastructure qui tient debout et se répare toute seule.</p>
-            <ul><li>Proxmox / OMV / Docker</li><li>Sauvegardes 3-2-1 vérifiées</li><li>Monitoring & alertes</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 12S6 5.8 12 5.8 21.4 12 21.4 12 18 18.2 12 18.2 2.6 12 2.6 12Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Filtrage internet & contrôle parental</h3>
-            <p>DNS, filtres d’images, contrôle parental : un web plus sain, sans transformer la maison en prison.</p>
-            <ul><li>DNS filtrants</li><li>Family Link & co.</li><li>Filtres navigateur</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9.2a14 14 0 0 1 19 0M5.8 12.6a9.4 9.4 0 0 1 12.4 0M9 16a4.7 4.7 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="19.2" r="1.1" fill="currentColor" stroke="none"/></svg></div>
-            <h3>Réseau & Wi-Fi</h3>
-            <p>Du câble, du 10 GbE, du PoE, et un Wi-Fi qui couvre vraiment la pièce du fond.</p>
-            <ul><li>Câblage & baie</li><li>SFP+ / PoE</li><li>Wi-Fi maillé</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
-          </article><article class="svc">
-            <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.8 7.5 9 4.3-1.2 7.5-4.4 7.5-9V6L12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Conseil & audit</h3>
-            <p>Avant d’acheter, demande. Ça coûte moins cher que de se tromper.</p>
-            <ul><li>Choix de matériel</li><li>Audit sécurité & sauvegardes</li><li>Détection d’arnaques</li></ul>
-            <div class="svc-foot"><span>Sur devis</span><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></strong></div>
+          <article class="svc" style="--brand:#30b0c7">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.3 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.3-3.6-8.5S9.6 5.9 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Web</span>
+              <h3>Sites web & e-commerce</h3>
+              <p>Vitrine, boutique, multilingue. Conçu pour être rapide, lisible et modifiable sans moi.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="sites-web-e-commerce" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#30b0c7">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Web</span>
+              <h3>Automatisation & scripts</h3>
+              <p>Tout ce que tu fais trois fois par semaine peut être fait par une machine.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="automatisation-scripts" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
           </article>
         </div>
       </div>
+      <div class="family" id="systems" style="--brand:#ff9f0a">
+        <div class="family-head">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <div><span class="family-num">ARIBAZ</span><h2>Systems</h2></div>
+        </div>
+        <p><strong>L’infrastructure qui ne se voit pas.</strong> Réseau, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d’un géant.</p>
+        <div class="svc-grid">
+          <article class="svc" style="--brand:#ff9f0a">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.4 8.4 4.4L12 12.2 3.6 7.8 12 3.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m3.6 12.2 8.4 4.4 8.4-4.4M3.6 16.6l8.4 4.4 8.4-4.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Systems</span>
+              <h3>DevOps & auto-hébergement</h3>
+              <p>Proxmox, NAS, Docker, sauvegardes : une infrastructure qui tient debout et se répare toute seule.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="devops-auto-hebergement" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#ff9f0a">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 12S6 5.8 12 5.8 21.4 12 21.4 12 18 18.2 12 18.2 2.6 12 2.6 12Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Systems</span>
+              <h3>Filtrage internet & contrôle parental</h3>
+              <p>DNS, filtres d’images, contrôle parental : un web plus sain, sans transformer la maison en prison.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="filtrage-internet-controle-parental" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#ff9f0a">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9.2a14 14 0 0 1 19 0M5.8 12.6a9.4 9.4 0 0 1 12.4 0M9 16a4.7 4.7 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="19.2" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Systems</span>
+              <h3>Réseau & Wi-Fi</h3>
+              <p>Du câble, du 10 GbE, du PoE, et un Wi-Fi qui couvre vraiment la pièce du fond.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="reseau-wi-fi" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article><article class="svc" style="--brand:#ff9f0a">
+            <div class="svc-art">
+              <span class="svc-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.8 7.5 9 4.3-1.2 7.5-4.4 7.5-9V6L12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-a"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="svc-mini mini-b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="svc-body">
+              <span class="svc-brand">ARIBAZ Systems</span>
+              <h3>Conseil & audit</h3>
+              <p>Avant d’acheter, demande. Ça coûte moins cher que de se tromper.</p>
+              <div class="svc-foot">
+                <span>Sur devis</span>
+                <button class="svc-more" type="button" data-service="conseil-audit" aria-haspopup="dialog">Détails <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <dialog class="svc-dialog" id="svc-reparation-ordinateur-mac" aria-labelledby="svc-reparation-ordinateur-mac-t" style="--brand:#0a84ff">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#0a84ff">ARIBAZ Electronics</span>
+    <h3 id="svc-reparation-ordinateur-mac-t">Réparation ordinateur &amp; Mac</h3>
+    <p class="dlg-detail">Diagnostic complet avant toute intervention : alimentation, disque, mémoire, écran, nappe, oxydation. On remplace ce qui est mort, on sauvegarde ce qui vit encore, et on teste sous charge avant de rendre la machine.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Diagnostic détaillé et devis avant intervention</li><li>Remplacement SSD, RAM, batterie, écran</li><li>Sauvegarde préalable des données</li><li>Test de charge et vérification finale</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 48 à 72 h selon les pièces</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20R%C3%A9paration%20ordinateur%20%26%20Mac" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20R%C3%A9paration%20ordinateur%20%26%20Mac">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-micro-soudure-carte-mere" aria-labelledby="svc-micro-soudure-carte-mere-t" style="--brand:#0a84ff">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#0a84ff">ARIBAZ Electronics</span>
+    <h3 id="svc-micro-soudure-carte-mere-t">Micro-soudure &amp; carte mère</h3>
+    <p class="dlg-detail">Quand la carte mère est déclarée morte, on regarde au microscope : composant manquant, piste coupée, connecteur arraché. Je répare au composant, pas au remplacement de carte.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Diagnostic au composant, courts-circuits</li><li>Remplacement de connecteurs et de circuits</li><li>Reprise de pistes et de soudures</li><li>Test sous charge après réparation</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 1 à 2 semaines selon les pièces</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Micro-soudure%20%26%20carte%20m%C3%A8re" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Micro-soudure%20%26%20carte%20m%C3%A8re">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-electronique-mobilite-electrique" aria-labelledby="svc-electronique-mobilite-electrique-t" style="--brand:#0a84ff">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#0a84ff">ARIBAZ Electronics</span>
+    <h3 id="svc-electronique-mobilite-electrique-t">Électronique &amp; mobilité électrique</h3>
+    <p class="dlg-detail">Vélos électriques, trottinettes, batteries : contrôleur qui chauffe, batterie qui coupe, écran muet. Diagnostic au multimètre et remplacement des éléments défaillants, sans tout jeter.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Diagnostic contrôleur / batterie / capteurs</li><li>Montage double batterie et autonomie</li><li>Réparation de faisceaux et connecteurs</li><li>Personnalisation d’affichages</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 3 à 7 jours</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20%C3%89lectronique%20%26%20mobilit%C3%A9%20%C3%A9lectrique" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20%C3%89lectronique%20%26%20mobilit%C3%A9%20%C3%A9lectrique">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-cartes-de-mariage-numeriques" aria-labelledby="svc-cartes-de-mariage-numeriques-t" style="--brand:#bf5af2">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#bf5af2">ARIBAZ Events</span>
+    <h3 id="svc-cartes-de-mariage-numeriques-t">Cartes de mariage numériques</h3>
+    <p class="dlg-detail">Un lien unique et élégant qui remplace le PDF : les infos, le plan, le compte à rebours et les réponses en ligne. Aussi beau sur un téléphone que sur un grand écran.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Design sur mesure : couleurs, typographie</li><li>RSVP adultes / enfants</li><li>Itinéraire Waze et Google Maps</li><li>Aperçu soigné au partage WhatsApp</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 5 à 10 jours</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    <a class="dlg-link" href="/invitation.html">Voir la page Invitation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Cartes%20de%20mariage%20num%C3%A9riques" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Cartes%20de%20mariage%20num%C3%A9riques">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-ingenieur-du-son" aria-labelledby="svc-ingenieur-du-son-t" style="--brand:#bf5af2">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#bf5af2">ARIBAZ Events</span>
+    <h3 id="svc-ingenieur-du-son-t">Ingénieur du son</h3>
+    <p class="dlg-detail">Sonorisation d’événement, captation de voix, nettoyage et mixage. Le bon son est celui qu’on ne remarque pas — jusqu’au moment où il porte la salle.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Sonorisation de salle ou d’extérieur</li><li>Captation et montage</li><li>Nettoyage de bruit, égalisation, mixage</li><li>Livraison de fichiers prêts à diffuser</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : selon l’événement</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Ing%C3%A9nieur%20du%20son" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Ing%C3%A9nieur%20du%20son">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-sites-web-e-commerce" aria-labelledby="svc-sites-web-e-commerce-t" style="--brand:#30b0c7">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#30b0c7">ARIBAZ Web</span>
+    <h3 id="svc-sites-web-e-commerce-t">Sites web &amp; e-commerce</h3>
+    <p class="dlg-detail">Un site qui charge vite, se lit sur téléphone et que tu peux faire évoluer sans moi. Vitrine, boutique, multilingue — avec paiement et facturation quand il faut.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Design et intégration sur mesure</li><li>WordPress / WooCommerce ou site statique</li><li>Paiement Stripe, facturation régionale</li><li>Prise en main pour modifier tes pages</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 2 à 4 semaines</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Sites%20web%20%26%20e-commerce" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Sites%20web%20%26%20e-commerce">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-automatisation-scripts" aria-labelledby="svc-automatisation-scripts-t" style="--brand:#30b0c7">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#30b0c7">ARIBAZ Web</span>
+    <h3 id="svc-automatisation-scripts-t">Automatisation &amp; scripts</h3>
+    <p class="dlg-detail">Tout ce que tu fais trois fois par semaine peut être fait par une machine. Sauvegardes, synchronisation, renommage, extraction : on l’écrit une fois, ça tourne ensuite tout seul.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Scripts bash / zsh</li><li>Sauvegardes planifiées et vérifiées</li><li>Synchronisation entre machines</li><li>Documentation de ce qui tourne</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 2 à 5 jours</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Automatisation%20%26%20scripts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Automatisation%20%26%20scripts">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-devops-auto-hebergement" aria-labelledby="svc-devops-auto-hebergement-t" style="--brand:#ff9f0a">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#ff9f0a">ARIBAZ Systems</span>
+    <h3 id="svc-devops-auto-hebergement-t">DevOps &amp; auto-hébergement</h3>
+    <p class="dlg-detail">Proxmox, NAS, Docker : une infrastructure qui redémarre toute seule et dont les sauvegardes ont déjà été testées. Le genre de setup qu’on oublie parce qu’il ne tombe jamais.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Installation Proxmox / OMV / Docker</li><li>Sauvegardes 3-2-1 et test de restauration</li><li>Monitoring et alertes</li><li>Documentation et accès complets</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 1 à 2 semaines</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20DevOps%20%26%20auto-h%C3%A9bergement" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20DevOps%20%26%20auto-h%C3%A9bergement">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-filtrage-internet-controle-parental" aria-labelledby="svc-filtrage-internet-controle-parental-t" style="--brand:#ff9f0a">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#ff9f0a">ARIBAZ Systems</span>
+    <h3 id="svc-filtrage-internet-controle-parental-t">Filtrage internet &amp; contrôle parental</h3>
+    <p class="dlg-detail">DNS filtrants, contrôle parental, filtres d’images : un web plus sain, sans transformer la maison en prison. On règle, on explique, et on vérifie que ça tient.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Configuration DNS familiale</li><li>Family Link et contrôle parental</li><li>Filtres d’images dans le navigateur</li><li>Réglages IPv4 et IPv6</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 1 à 2 h</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Filtrage%20internet%20%26%20contr%C3%B4le%20parental" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Filtrage%20internet%20%26%20contr%C3%B4le%20parental">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-reseau-wi-fi" aria-labelledby="svc-reseau-wi-fi-t" style="--brand:#ff9f0a">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#ff9f0a">ARIBAZ Systems</span>
+    <h3 id="svc-reseau-wi-fi-t">Réseau &amp; Wi-Fi</h3>
+    <p class="dlg-detail">Câblage, baie, 10 GbE, PoE et Wi-Fi maillé : la pièce du fond mérite aussi du bon débit. On mesure avant, on mesure après.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Étude et câblage</li><li>Baie de brassage et switch PoE</li><li>Wi-Fi maillé et couverture réelle</li><li>Tests de débit et de latence</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 1 à 3 jours</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20R%C3%A9seau%20%26%20Wi-Fi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20R%C3%A9seau%20%26%20Wi-Fi">Par email</a>
+    </div>
+  </div>
+</dialog><dialog class="svc-dialog" id="svc-conseil-audit" aria-labelledby="svc-conseil-audit-t" style="--brand:#ff9f0a">
+  <div class="svc-dialog-inner">
+    <button class="dlg-close" type="button" data-close aria-label="Fermer">✕</button>
+    <span class="dlg-kicker" style="color:#ff9f0a">ARIBAZ Systems</span>
+    <h3 id="svc-conseil-audit-t">Conseil &amp; audit</h3>
+    <p class="dlg-detail">Avant d’acheter, demande. Un audit de trente minutes évite souvent trois cents euros de matériel inutile — et quelques mauvaises surprises.</p>
+    <h4>Ce qui est inclus</h4>
+    <ul class="dlg-list"><li>Choix de matériel adapté</li><li>Audit sauvegardes et sécurité</li><li>Détection d’arnaques et de faux sites</li><li>Recommandations écrites</li></ul>
+    <div class="dlg-meta">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Délai : 48 h</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Devis gratuit</span>
+    </div>
+    
+    <div class="dlg-actions">
+      <a class="btn btn-wa" href="https://wa.me/972557731349?text=Bonjour%20ARIBAZ%2C%20je%20voudrais%20un%20devis%20pour%20%3A%20Conseil%20%26%20audit" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Demander un devis</a>
+      <a class="btn btn-ghost" href="mailto:arielelbaz20@gmail.com?subject=Devis%20%E2%80%94%20Conseil%20%26%20audit">Par email</a>
+    </div>
+  </div>
+</dialog>
     </div>
   </section>
 
@@ -224,6 +542,7 @@
         <div class="footer-col">
           <h4>Explorer</h4>
           <a href="/">Toutes les actus</a>
+          <a href="/invitation.html">Invitation</a>
           <a href="/services.html">Services</a>
           <a href="/apropos.html">À propos</a>
           <a href="/contact.html">Contact</a>
@@ -249,6 +568,6 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/app.js?v=5a840810f4" defer></script>
+<script src="/assets/js/app.js?v=e4d8e7e209" defer></script>
 </body>
 </html>
