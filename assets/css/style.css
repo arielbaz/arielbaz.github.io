@@ -1711,3 +1711,7 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 [dir="rtl"] .lang-article .article-body code { direction: ltr; unicode-bidi: embed; }
 [dir="rtl"] .lang-article .article-body h1 { font-family: var(--font-sans); }
 [dir="rtl"] .lang-foot, [dir="rtl"] .source-box { flex-direction: row-reverse; }
+
+/* Grille 2×2 (4 cartes) — fiche Aribaz Filter */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+@media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
