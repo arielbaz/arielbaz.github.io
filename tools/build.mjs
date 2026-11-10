@@ -1111,7 +1111,7 @@ function filtresPage() {
       <span class="eyebrow"><span class="dot"></span>ARIBAZ Systems · Aribaz Filter</span>
       <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:20ch">Un Internet propre, <span class="gradient-text">partout dans la maison.</span></h1>
       <p class="lede" style="margin-inline:0;max-width:56ch">Aribaz Filter ne laisse passer que les sites autorisés. Le filtre tourne sur l\u2019appareil lui-même : ta navigation ne transite par aucun serveur, ni les nôtres ni ceux d\u2019un géant. Android, Windows, iPhone, iPad, Mac, et les navigateurs Chrome, Edge et Brave.</p>
-      <div class="hero-actions">
+      <div class="hero-actions" style="justify-content:flex-start">
         <a class="btn btn-primary" href="${FILTER_APP}/fr">Commencer — c\u2019est gratuit ${icon('arrow')}</a>
         <a class="btn btn-ghost" href="#comment">${icon('layers')} Comment ça marche</a>
       </div>
