@@ -733,7 +733,7 @@ const ARTICLE_FIGURES = {
     caption: "Capture, retouche et export s’enchaînent dans la même fenêtre.",
   },
   onlyoffice: {
-    alt: "Schéma : ouverture d’un fichier Office, modification puis enregistrement sans conversion.",
+    alt: "Trois fichiers DOCX, XLSX et PPTX validés, face à un abonnement barré et à un prix de zéro euro.",
     caption: "Les formats .docx, .xlsx et .pptx sont ouverts directement, sans conversion forcée.",
   },
   handy: {
@@ -790,11 +790,8 @@ function articleFigure(slug) {
   const fig = ARTICLE_FIGURES[slug];
   if (!fig) return '';
   return `<figure class="article-figure">
-  <button class="article-figure-zoom" type="button" data-figure-zoom data-caption="${esc(fig.caption)}" aria-label="Agrandir le schéma explicatif">
-    <picture>
-      <source media="(max-width: 620px)" srcset="/assets/img/articles/${slug}-mobile.jpg">
-      <img src="/assets/img/articles/${slug}.jpg" alt="${esc(fig.alt)}" width="1600" height="900" loading="lazy" decoding="async">
-    </picture>
+  <button class="article-figure-zoom" type="button" data-figure-zoom data-caption="${esc(fig.caption)}" aria-label="Agrandir l’illustration explicative">
+    <img src="/assets/img/articles/${slug}.svg" alt="${esc(fig.alt)}" width="1200" height="900" loading="lazy" decoding="async">
     <span class="zoom-hint">Agrandir</span>
   </button>
   <figcaption>${esc(fig.caption)}</figcaption>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecebff"/><stop offset="1" stop-color="#c3c0ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1e1e37" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a47c4"/>
+    </marker>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#22223a" opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1080" cy="60" r="260" fill="#fff" opacity=".22"/>
+  <circle cx="110" cy="850" r="300" fill="#fff" opacity=".18"/>
+  <rect x="36" y="36" width="1128" height="828" rx="44" fill="#fff" fill-opacity=".94" filter="url(#shadow)"/>
+  <rect x="36" y="36" width="1128" height="828" rx="44" fill="url(#dots)" opacity=".35"/>
+  <circle cx="76" cy="86" r="7" fill="#4a47c4"/>
+  <text x="96" y="94" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#4a47c4" text-anchor="start" letter-spacing="1.2" opacity="1">SÉCURITÉ</text>
+  <text x="1128" y="94" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#8a8a94" text-anchor="end" letter-spacing="1.2" opacity="1">ARIBAZ · ILLUSTRATION</text>
+  <text x="72" y="185" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" fill="#18181c" text-anchor="start" letter-spacing="0" opacity="1">Ton adresse a-t-elle</text><text x="72" y="253" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" fill="#18181c" text-anchor="start" letter-spacing="0" opacity="1">fuité ?</text>
+  <rect x="100" y="360" width="480" height="82" rx="41" fill="#fff" stroke="#d9d9e4" /><text x="130" y="410" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#18181c" text-anchor="start" letter-spacing="0" opacity="1">toi@exemple.com</text><text x="130" y="320" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#5f5f6b" text-anchor="start" letter-spacing="0" opacity="1">Ton adresse e-mail</text><path d="M600 400 C660 400 700 400 745 400" fill="none" stroke="#4a47c4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 8" marker-end="url(#arrow)" opacity="1"/><rect x="760" y="300" width="280" height="240" rx="18" fill="#fff" stroke="#d9d9e4" /><text x="784" y="350" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#c93b4b" text-anchor="start" letter-spacing="0" opacity="1">FUITE 01</text><rect x="784" y="380" width="200" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="784" y="404" width="160" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="778" y="330" width="280" height="240" rx="18" fill="#fff" stroke="#d9d9e4" /><text x="802" y="380" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#c93b4b" text-anchor="start" letter-spacing="0" opacity="1">FUITE 02</text><rect x="802" y="410" width="200" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="802" y="434" width="160" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="796" y="360" width="280" height="240" rx="18" fill="#fff" stroke="#d9d9e4" /><text x="820" y="410" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#c93b4b" text-anchor="start" letter-spacing="0" opacity="1">FUITE 03</text><rect x="820" y="440" width="200" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="820" y="464" width="160" height="10" rx="5" fill="#eeeef5" stroke="none" /><rect x="760" y="560" width="300" height="54" rx="27" fill="#4a47c4" stroke="none" /><text x="910" y="596" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0" opacity="1">3 fuites connues</text><rect x="100" y="560" width="480" height="82" rx="41" fill="#fff" stroke="#e5c3c8" /><text x="130" y="610" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#8a8a94" text-anchor="start" letter-spacing="0" opacity="1">••••••••••</text><g><circle cx="580" cy="560" r="22" fill="#fff" stroke="#c93b4b" stroke-width="3" /><path d="M572.3 552.3 L587.7 567.7 M587.7 552.3 L572.3 567.7" stroke="#c93b4b" stroke-width="4" stroke-linecap="round"/></g><text x="130" y="670" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#c93b4b" text-anchor="start" letter-spacing="0" opacity="1">Le mot de passe n’est jamais demandé</text><text x="600" y="790" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="#5f5f6b" text-anchor="middle" letter-spacing="0" opacity="1">Vérifie ton adresse, puis change les mots de passe exposés.</text>
+  <text x="1128" y="824" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#18181c" text-anchor="end" letter-spacing="0" opacity="0.55">ARIBAZ</text>
+</svg>

@@ -77,17 +77,17 @@ en haut du script.
 
 ### Schémas explicatifs dans les articles
 
-En plus de l'image de tête, chaque article reçoit un schéma en trois étapes
-(`assets/img/articles/<slug>.jpg`, plus une variante verticale
-`<slug>-mobile.jpg`). Le schéma est inséré automatiquement avant le premier
-titre `##` ; son texte alternatif et sa légende sont définis dans
-`ARTICLE_FIGURES`, dans `tools/build.mjs`.
+En plus de l'image de tête, chaque article reçoit une illustration explicative
+SVG (`assets/img/articles/<slug>.svg`) adaptée à son contenu : réseau maillé,
+fenêtre de navigateur, transfert local, tableau de bord, etc. Elle est insérée
+automatiquement avant le premier titre `##` ; son texte alternatif et sa légende
+sont définis dans `ARTICLE_FIGURES`, dans `tools/build.mjs`.
 
 Pour les régénérer après avoir modifié un texte :
 
 ```bash
-python3 tools/make-article-figures.py   # nécessite Pillow
+python3 tools/make-article-illustrations.py
 ```
 
-Les titres, résumés et étapes sont dans le dictionnaire `ARTICLES`, en haut du
-script. Les images s'ouvrent en grand au clic sur la page article.
+Les titres et les scènes sont dans `SCENES`, à la fin du script. Les images
+s'ouvrent en grand au clic sur la page article.
