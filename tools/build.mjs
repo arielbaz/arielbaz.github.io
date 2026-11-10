@@ -142,6 +142,118 @@ function platforms(post) {
     .join('')}</span>`;
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* Traductions                                                                */
+/* -------------------------------------------------------------------------- */
+const TRANSLATIONS = { bitchat: ['en', 'he'] };
+const LANG_META = {
+  fr: { short: 'FR', dir: 'ltr', locale: 'fr_FR', label: 'Français' },
+  en: { short: 'EN', dir: 'ltr', locale: 'en_US', label: 'English' },
+  he: { short: 'HE', dir: 'rtl', locale: 'he_IL', label: 'עברית' },
+};
+const LANG_STRINGS = {
+  en: { back: 'Back to all articles', readIn: 'Read in', source: 'Official site', journal: 'The journal', min: 'min read' },
+  he: { back: 'חזרה לכל הכתבות', readIn: 'לקריאה ב', source: 'האתר הרשמי', journal: 'הכתבות', min: 'דקות קריאה' },
+};
+
+function loadTranslation(slug, lang) {
+  const file = path.join(ROOT, 'content', 'i18n', `${slug}.${lang}.md`);
+  if (!fs.existsSync(file)) return null;
+  const raw = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) return null;
+  const meta = {};
+  for (const line of m[1].split('\n')) {
+    const kv = line.match(/^([a-zA-Z_]+):\s*(.*)$/);
+    if (kv) meta[kv[1]] = kv[2].replace(/^["']|["']$/g, '');
+  }
+  return { title: meta.title || '', excerpt: meta.excerpt || '', html: markdown(m[2].trim()) };
+}
+
+function langSwitch(post, current) {
+  const langs = ['fr', ...(TRANSLATIONS[post.slug] || [])];
+  return `<div class="lang-switch" role="group" aria-label="Langue">${langs.map((l) => {
+    const href = l === 'fr' ? `/articles/${post.slug}.html` : `/${l}/articles/${post.slug}.html`;
+    return l === current
+      ? `<span aria-current="true">${LANG_META[l].short}</span>`
+      : `<a href="${href}" hreflang="${l}" lang="${l}" title="${LANG_META[l].label}">${LANG_META[l].short}</a>`;
+  }).join('')}</div>`;
+}
+
+function translatedArticlePage(post, lang) {
+  const t = loadTranslation(post.slug, lang);
+  if (!t) return null;
+  const L = LANG_META[lang];
+  const T = LANG_STRINGS[lang] || LANG_STRINGS.en;
+  const url = `/${lang}/articles/${post.slug}.html`;
+  const title = `${t.title} — ${SITE.name}`;
+  const alts = ['fr', ...(TRANSLATIONS[post.slug] || [])]
+    .map((l) => `<link rel="alternate" hreflang="${l}" href="${SITE.url}${l === 'fr' ? '' : '/' + l}/articles/${post.slug}.html">`)
+    .join('\n');
+  const extra = `${alts}\n<link rel="alternate" hreflang="x-default" href="${SITE.url}/articles/${post.slug}.html">`;
+  return head({ title, description: t.excerpt, url, image: `/assets/img/cards/${post.slug}.jpg`, type: 'article', lang, dir: L.dir, locale: L.locale, extra }) + `
+<div class="lang-page">
+  <header class="lang-top">
+    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27"></a>
+    ${langSwitch(post, lang)}
+  </header>
+  <article class="lang-article">
+    <span class="pill" data-cat="${esc(post.category)}">${esc(post.category)}</span>
+    <h1>${esc(t.title)}</h1>
+    <p class="dek">${esc(t.excerpt)}</p>
+    <img class="lang-hero" src="/assets/img/cards/${post.slug}.jpg" alt="" width="1600" height="900">
+    <div class="article-body lang-body">${t.html}</div>
+    ${post.source ? `<div class="source-box"><div><div class="k">${T.source}</div><div class="v">${esc(post.sourceLabel || post.source)}</div></div><a class="btn btn-primary" href="${post.source}" target="_blank" rel="noopener">${SITE.name} ${icon('arrow-up-right')}</a></div>` : ''}
+    <div class="lang-foot">
+      <a class="link-arrow" href="/${lang}/">← ${T.back}</a>
+      <a class="link-arrow" href="${SITE.whatsapp}" target="_blank" rel="noopener">WhatsApp ${icon('arrow-up-right')}</a>
+    </div>
+  </article>
+</div>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>`;
+}
+
+function langIndexPage(lang) {
+  const L = LANG_META[lang];
+  const T = LANG_STRINGS[lang] || LANG_STRINGS.en;
+  const list = Object.keys(TRANSLATIONS).filter((slug) => (TRANSLATIONS[slug] || []).includes(lang));
+  const labels = lang === 'he'
+    ? { title: 'ARIBAZ — הכתבות', lede: 'מדריכים קצרים, כלים חינמיים ואינטרנט נקי יותר. בינתיים באנגלית ובעברית.', all: 'הכל' }
+    : { title: 'ARIBAZ — Articles', lede: 'Short guides, free tools and a cleaner internet. Translated progressively.', all: 'All' };
+  return head({ title: labels.title, description: labels.lede, url: `/${lang}/`, lang, dir: L.dir, locale: L.locale }) + `
+<div class="lang-page">
+  <header class="lang-top">
+    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27"></a>
+    <div class="lang-switch"><a href="/" hreflang="fr" lang="fr">FR</a><span aria-current="true">${L.short}</span></div>
+  </header>
+  <article class="lang-article">
+    <h1>${labels.title}</h1>
+    <p class="dek">${labels.lede}</p>
+    <div class="card-grid" style="margin-top:30px">
+      ${list.map((slug) => {
+        const post = posts.find((p) => p.slug === slug);
+        const t = loadTranslation(slug, lang);
+        if (!post || !t) return '';
+        return `<a class="post-card" href="/${lang}/articles/${slug}.html">
+          <div class="card-art ${post.cat.art}">${artVisual(post)}</div>
+          <div class="card-body">
+            <div class="card-meta"><span class="pill" data-cat="${esc(post.category)}">${esc(post.category)}</span><span>${fmtDate(post.date)}</span></div>
+            <h3>${esc(t.title)}</h3>
+            <p>${esc(t.excerpt)}</p>
+          </div>
+        </a>`;
+      }).join('')}
+    </div>
+  </article>
+</div>
+<script src="/assets/js/app.js" defer></script>
+</body>
+</html>`;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Utilitaires                                                                */
 /* -------------------------------------------------------------------------- */
@@ -298,11 +410,11 @@ if (!posts.length) throw new Error('Aucun article trouvé.');
 /* -------------------------------------------------------------------------- */
 const THEME_BOOT = `<script>(function(){try{var t=localStorage.getItem('aribaz-theme');var d=(t==='dark')?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>`;
 
-function head({ title, description, url, image = '/assets/img/og.png', type = 'website', extra = '' }) {
+function head({ title, description, url, image = '/assets/img/og.png', type = 'website', extra = '', lang = 'fr', dir = 'ltr', locale = 'fr_FR' }) {
   const full = url.startsWith('http') ? url : SITE.url + url;
   const ogImage = SITE.url + image;
   return `<!doctype html>
-<html lang="fr" data-theme="light">
+<html lang="${lang}" dir="${dir}" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -313,7 +425,7 @@ function head({ title, description, url, image = '/assets/img/og.png', type = 'w
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="${type}">
 <meta property="og:site_name" content="${SITE.name}">
-<meta property="og:locale" content="fr_FR">
+<meta property="og:locale" content="${locale}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${full}">
@@ -339,7 +451,6 @@ ${extra}
 function nav(active) {
   const links = [
     ['/', 'Actus', 'home'],
-    ['/invitation.html', 'Invitation', 'invitation'],
     ['/services.html', 'Services', 'services'],
     ['/contact.html', 'Contact', 'contact'],
     ['/apropos.html', 'À propos', 'apropos'],
@@ -602,6 +713,10 @@ function articlePage(post, prev, next) {
   const fill = posts.filter((p) => p !== post && p.category !== post.category && !related.includes(p)).slice(0, 3 - related.length);
   const rel = [...related, ...fill];
   const title = `${post.title} — ${SITE.name}`;
+  const trans = TRANSLATIONS[post.slug] || [];
+  const hreflang = [`<link rel="alternate" hreflang="fr" href="${SITE.url}/articles/${post.slug}.html">`]
+    .concat(trans.map((l) => `<link rel="alternate" hreflang="${l}" href="${SITE.url}/${l}/articles/${post.slug}.html">`))
+    .join('\n');
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -616,7 +731,7 @@ function articlePage(post, prev, next) {
     keywords: post.tags.join(', '),
   })}</script>`;
 
-  return head({ title, description: post.excerpt, url: `/articles/${post.slug}.html`, type: 'article', image: `/assets/img/cards/${post.slug}.jpg`, extra: jsonld }) + `${nav('articles')}
+  return head({ title, description: post.excerpt, url: `/articles/${post.slug}.html`, type: 'article', image: `/assets/img/cards/${post.slug}.jpg`, extra: hreflang + '\n' + jsonld }) + `${nav('articles')}
 <div class="progress" aria-hidden="true"></div>
 <main id="contenu">
   <article>
@@ -627,6 +742,7 @@ function articlePage(post, prev, next) {
           <span>${fmtDate(post.date)}</span>
           <span>·</span>
           <span>${post.readTime} min de lecture</span>
+          ${trans.length ? langSwitch(post, 'fr') : ''}
         </div>
         <h1>${esc(post.title)}</h1>
         <p class="dek">${esc(post.excerpt)}</p>
@@ -1095,7 +1211,7 @@ function invitationPage() {
     { icon: 'heart', t: 'Design sur mesure', d: 'Jamais un modèle : vos couleurs, vos prénoms, votre histoire.' },
     { icon: 'music', t: 'Musique à l\u2019ouverture', d: 'Une mélodie choisie avec vous, qui accompagne le premier regard.' },
     { icon: 'wifi', t: 'Itinéraire en un clic', d: 'Waze ou Google Maps, un bouton par lieu. Plus personne ne se perd.' },
-    { icon: 'check', t: 'RSVP adultes & enfants', d: 'Les réponses comptées, le récap prêt pour le traiteur.' },
+    { icon: 'check', t: 'RSVP par famille et par sexe', d: 'Les deux côtés, chaque famille, hommes et femmes, adultes et enfants : le récap tombe juste pour le traiteur.' },
     { icon: 'image', t: 'Galerie photo', d: 'Avant, pendant, après : les souvenirs se déposent au même endroit.' },
     { icon: 'whatsapp', t: 'Aperçu WhatsApp soigné', d: 'Un lien qui s\u2019ouvre avec un beau visuel, pas une URL nue.' },
   ];
@@ -1107,14 +1223,14 @@ function invitationPage() {
   ];
   const prices = [
     { t: 'Faire-part digital', d: 'Le classique, envoyé sur WhatsApp.', tag: '', main: false, items: ['Design personnalisé', 'PDF haute définition + image', 'Deux séries d\u2019ajustements'] },
-    { t: 'Site d\u2019invitation', d: 'La formule la plus demandée.', tag: 'Le plus choisi', main: true, items: ['Tout le faire-part', 'RSVP adultes / enfants', 'Itinéraire Waze & Maps', 'Musique et galerie photo'] },
+    { t: 'Site d\u2019invitation', d: 'La formule la plus demandée.', tag: 'Le plus choisi', main: true, items: ['Tout le faire-part', 'RSVP deux côtés, familles, H/F, adultes/enfants', 'Itinéraire Waze & Maps', 'Musique et galerie photo'] },
     { t: 'Vidéo d\u2019invitation', d: 'Une animation courte, à partager.', tag: '', main: false, items: ['15 à 30 secondes', 'Musique et typographie', 'Formats WhatsApp & Instagram'] },
   ];
   const faq = [
     ['Combien de temps pour recevoir mon invitation ?', 'Compte 5 à 10 jours selon la formule, à partir du moment où j\u2019ai la date, les lieux et le style. Si c\u2019est urgent, dis-le : on peut souvent accélérer.'],
     ['Et si je change d\u2019avis sur le design ?', 'Les ajustements sont illimités avant validation : couleurs, typographie, textes, ordre des sections. On ne publie que quand c\u2019est juste.'],
     ['Le lien reste en ligne combien de temps ?', 'À vie, sans abonnement. Le lien reste actif après l\u2019événement, pour les photos et les souvenirs.'],
-    ['Peut-on compter les enfants séparément ?', 'Oui. Le RSVP distingue adultes et enfants, et le récap se génère en un clic pour le traiteur.'],
+    ['Peut-on gérer les deux côtés et compter les enfants ?', 'Oui. Le RSVP distingue le côté de la mariée et celui du marié, chaque famille, les hommes et les femmes, puis les adultes et les enfants. Le récap se génère en un clic pour le traiteur.'],
     ['Ça marche sans installer d\u2019application ?', 'Oui, c\u2019est un simple lien : il s\u2019ouvre dans le navigateur, sur iPhone comme sur Android.'],
   ];
   const body = `${nav('invitation')}
@@ -1282,11 +1398,19 @@ function invitationDemoPage() {
 
     <section class="invite-section" id="rsvp">
       <h2>Répondre</h2>
-      <p style="margin-bottom:26px">Dites-nous si vous serez là — et combien de petits gourmands vous amenez.</p>
+      <p style="margin-bottom:26px">Dites-nous de quel côté vous venez, combien vous êtes — et combien de petits gourmands vous amenez.</p>
       <form class="invite-rsvp" data-invite-rsvp data-wa="${SITE.waDirect}" data-mail="${SITE.email}" novalidate>
         <label>Votre nom
           <input type="text" name="name" placeholder="Nom et prénom" autocomplete="name">
         </label>
+        <div class="row">
+          <label>Côté
+            <select name="side"><option>Côté Sarah</option><option>Côté David</option></select>
+          </label>
+          <label>Vous êtes
+            <select name="gender"><option>Femme</option><option>Homme</option></select>
+          </label>
+        </div>
         <div class="row">
           <label>Présence
             <select name="presence"><option>Oui, avec plaisir</option><option>Non, avec regret</option></select>
@@ -1372,6 +1496,8 @@ function sitemap() {
     { loc: '/contact.html', pri: '0.6', mod: posts[0].date },
     { loc: '/apropos.html', pri: '0.5', mod: posts[0].date },
     ...posts.map((p) => ({ loc: `/articles/${p.slug}.html`, pri: '0.8', mod: p.date })),
+    ...Object.keys(TRANSLATIONS).flatMap((slug) => (TRANSLATIONS[slug] || []).map((l) => ({ loc: `/${l}/articles/${slug}.html`, pri: '0.6', mod: posts[0].date }))),
+    ...['en', 'he'].map((l) => ({ loc: `/${l}/`, pri: '0.5', mod: posts[0].date })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1397,6 +1523,16 @@ fs.mkdirSync(path.join(ROOT, 'articles'), { recursive: true });
 
 write('index.html', homePage());
 write('articles/index.html', articlesPage());
+Object.keys(TRANSLATIONS).forEach((slug) => {
+  const p = posts.find((x) => x.slug === slug);
+  if (!p) return;
+  (TRANSLATIONS[slug] || []).forEach((lang) => {
+    const page = translatedArticlePage(p, lang);
+    if (page) write(`${lang}/articles/${p.slug}.html`, page);
+  });
+});
+['en', 'he'].forEach((lang) => write(`${lang}/index.html`, langIndexPage(lang)));
+
 posts.forEach((p, idx) => {
   const prev = posts[idx + 1] || null; // plus ancien
   const next = posts[idx - 1] || null; // plus récent

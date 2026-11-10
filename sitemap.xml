@@ -24,4 +24,8 @@
   <url><loc>https://aribaz.com/articles/have-i-been-pwned.html</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://aribaz.com/articles/presse-papiers.html</loc><lastmod>2026-06-24</lastmod><priority>0.8</priority></url>
   <url><loc>https://aribaz.com/articles/esim.html</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aribaz.com/en/articles/bitchat.html</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aribaz.com/he/articles/bitchat.html</loc><lastmod>2026-11-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aribaz.com/en/</loc><lastmod>2026-11-10</lastmod><priority>0.5</priority></url>
+  <url><loc>https://aribaz.com/he/</loc><lastmod>2026-11-10</lastmod><priority>0.5</priority></url>
 </urlset>

@@ -547,7 +547,8 @@
       var name = (f.name.value || '').trim();
       if (!name) { f.name.focus(); return; }
       var text = "Réponse à l'invitation de Sarah & David\n\n" +
-        name + '\nPrésence : ' + f.presence.value +
+        name + '\nCôté : ' + f.side.value + ' · ' + f.gender.value +
+        '\nPrésence : ' + f.presence.value +
         '\nAdultes : ' + f.adults.value + ' · Enfants : ' + f.kids.value +
         ((f.message.value || '').trim() ? '\n\nMessage : ' + f.message.value.trim() : '');
       if (mode === 'mail') {
