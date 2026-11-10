@@ -456,6 +456,44 @@
 
   initTitleFx();
 
+
+  /* ---------- Retour en haut, avec anneau de progression ---------- */
+  (function () {
+    if (document.querySelector('.to-top')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'to-top';
+    btn.setAttribute('aria-label', 'Remonter en haut de la page');
+    btn.innerHTML =
+      '<svg viewBox="0 0 46 46" aria-hidden="true">' +
+        '<defs><linearGradient id="toTopGrad" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0" stop-color="#0a84ff"/><stop offset="1" stop-color="#bf5af2"/>' +
+        '</linearGradient></defs>' +
+        '<circle class="ring" cx="23" cy="23" r="21"/>' +
+      '</svg>' +
+      '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+    document.body.appendChild(btn);
+
+    var ring = btn.querySelector('.ring');
+    var len = 2 * Math.PI * 21;
+    ring.setAttribute('stroke-dasharray', len.toFixed(1));
+    ring.setAttribute('stroke-dashoffset', len.toFixed(1));
+
+    var update = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      ring.setAttribute('stroke-dashoffset', (len * (1 - p)).toFixed(1));
+      btn.classList.toggle('is-on', window.scrollY > 600);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  })();
+
   /* ---------- Partage ---------- */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-share]');

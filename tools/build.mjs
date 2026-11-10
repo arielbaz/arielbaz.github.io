@@ -397,6 +397,7 @@ function footer() {
         </div>
       </div>
     </div>
+    <div class="footer-word" aria-hidden="true">ARIBAZ</div>
     <div class="footer-bottom">
       <span>© ${new Date().getFullYear()} ${SITE.name}. Écrit et testé à la main.</span>
       <span><a href="/feed.xml">RSS</a> · <a href="${SITE.github}" target="_blank" rel="noopener">Code source</a></span>
@@ -408,7 +409,7 @@ function footer() {
 function artVisual(post) {
   if (!post.logo) return icon(post.icon);
   const full = LOGO_MANIFEST[post.logo] && LOGO_MANIFEST[post.logo].full;
-  return `<span class="app-tile${full ? ' full' : ''}"><img src="/assets/img/logos/${post.logo}.png" alt="" loading="lazy" width="256" height="256"></span>`;
+  return `<span class="app-tile${full ? ' full' : ''}"><img src="/assets/img/logos/${post.logo}.png" alt="" loading="lazy" width="256" height="256"></span><span class="art-shine" aria-hidden="true"></span>`;
 }
 
 function card(post, { reveal = true, delay = 0 } = {}) {
@@ -469,6 +470,7 @@ function homePage() {
         <span>${icon('clock')} <b>2 à 4</b>&nbsp;par mois</span>
         <span>${icon('check')} <b>0</b>&nbsp;cookie, <b>0</b>&nbsp;pub</span>
       </div>
+      <a class="scroll-cue" href="#journal" aria-label="Voir les actus"><span></span></a>
     </div>
   </section>
 
