@@ -195,7 +195,7 @@ function translatedArticlePage(post, lang) {
   return head({ title, description: t.excerpt, url, image: `/assets/img/cards/${post.slug}.jpg`, type: 'article', lang, dir: L.dir, locale: L.locale, extra }) + `
 <div class="lang-page">
   <header class="lang-top">
-    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27"></a>
+    <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="${SITE.name}" width="100" height="27"></a>
     ${langSwitch(post, lang)}
   </header>
   <article class="lang-article">
@@ -226,7 +226,7 @@ function langIndexPage(lang) {
   return head({ title: labels.title, description: labels.lede, url: `/${lang}/`, lang, dir: L.dir, locale: L.locale }) + `
 <div class="lang-page">
   <header class="lang-top">
-    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27"></a>
+    <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="${SITE.name}" width="100" height="27"></a>
     <div class="lang-switch"><a href="/" hreflang="fr" lang="fr">FR</a><span aria-current="true">${L.short}</span></div>
   </header>
   <article class="lang-article">
@@ -464,7 +464,7 @@ function nav(active) {
         <span class="nav-toggle-label"><span class="l-open">Menu</span><span class="l-close">Fermer</span></span>
       </button>
     <a class="brand" href="/" aria-label="${SITE.name} — accueil">
-      <img src="/assets/img/logo.png" alt="${SITE.name}" width="86" height="27">
+      <img src="/assets/img/logo.svg" alt="${SITE.name}" width="100" height="27">
     </a>
     <nav class="nav-links" id="menu" aria-label="Navigation principale">
       ${links.map(([href, label, key]) => `<a href="${href}"${active === key ? ' aria-current="page"' : ''}>${label}</a>`).join('\n      ')}
@@ -484,7 +484,7 @@ function footer() {
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="brand" href="/"><img src="/assets/img/logo.png" alt="${SITE.name}" width="104" height="32"></a>
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="${SITE.name}" width="104" height="32"></a>
         <p>Je fouille internet, parfois je trouve des trucs. Une sélection d'outils, de réglages et d'astuces testés, publiés deux à quatre fois par mois.</p>
       </div>
       <div class="footer-cols">
@@ -701,7 +701,7 @@ function articlesPage() {
 </head>
 <body>
   <div>
-    <img src="/assets/img/logo.png" alt="${SITE.name}">
+    <img src="/assets/img/logo.svg" alt="${SITE.name}">
     <p>Toutes les actus sont maintenant sur la page d'accueil.</p>
     <p><a href="/">Continuer vers ${SITE.name}</a></p>
   </div>
