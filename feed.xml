@@ -36,6 +36,37 @@
 <p>Pour un étudiant en yéchiva, un rav qui prépare ses chiourim, ou quiconque accumule des heures de Guemara sans jamais les relire : c'est le chaînon manquant entre l'audio et la page.</p>]]></content:encoded>
     </item>
     <item>
+      <title>Mamash IA : une IA qui cite la Torah depuis les textes, pas de mémoire</title>
+      <link>https://aribaz.com/articles/mamash-ia.html</link>
+      <guid isPermaLink="true">https://aribaz.com/articles/mamash-ia.html</guid>
+      <pubDate>Wed, 11 Nov 2026 09:00:00 GMT</pubDate>
+      <category>Religion</category>
+      <description>Une question de Torah posée à une IA, et une réponse sourcée, lue sur Sefaria, avec le lien pour vérifier. Gratuit, sans compte, sur le site ou dans Claude.</description>
+      <content:encoded><![CDATA[<p class="lead">Poser une question de Torah à une IA, c'est pratique. C'est aussi risqué : les assistants répondent le plus souvent <strong>de mémoire</strong>, avec la même assurance qu'ils aient raison ou non. Une référence approximative, une citation recomposée, parfois inventée, et rien pour te dire ce qu'ils n'ont pas réellement ouvert.</p>
+<p><strong>Mamash IA</strong> part de ce constat. Le principe tient en une phrase, écrite sur le site : <em>ce qui n'a pas été lu n'est pas cité, et chaque citation vient avec le lien pour la vérifier.</em></p>
+<p>Le nom, <strong>ממש</strong> (« vraiment »), est présenté sur le site comme les initiales du Rabbi, Menahem Mendel Schneerson. C'est un projet personnel de Jonathan Bensaid, gratuit, sans compte et sans collecte de données.</p>
+<h2>Comment ça marche</h2>
+<p>La question déclenche une <strong>lecture</strong> : le texte est ouvert dans l'édition <strong>Sefaria</strong>, cité tel qu'il est écrit, avec sa référence exacte, et relié à ses commentateurs. Quand une source manque, la réponse le dit.</p>
+<p>D'après le site, la bibliothèque lue en direct couvre environ <strong>6 600 titres</strong> (Tanakh, Michna, Talmud, Midrach, Rambam, Choulhan Aroukh, responsa, hassidout et leurs commentateurs). La recherche plein texte du fonds <strong>HebrewBooks</strong> ajoute environ <strong>50 000 seforim</strong>, avec le passage, sa page et le fac-similé à ouvrir.</p>
+<p>Il y a deux façons de s'en servir :</p>
+<ul><li><strong>Sur le site</strong>, sans rien installer : tu écris ta question en français, la réponse est rédigée à partir des textes lus sur Sefaria.</li><li><strong>Dans Claude</strong>, avec un connecteur (un serveur MCP) qui donne à l'assistant une méthode d'étude et seize outils en lecture seule.</li></ul>
+<h2>Ce que le connecteur ajoute</h2>
+<ul><li><strong>La méthode</strong> : chargée avant toute réponse religieuse. Lire, citer depuis la lecture, signaler les désaccords (mahloket), ne jamais fabriquer de référence.</li><li><strong>La havrouta</strong> : Claude te pose des questions au lieu de répondre. Une kouchia à la fois, Rachi à défendre contre Tossafot, récapitulatif des chidouchim.</li><li><strong>Le guide de paracha</strong> : aliya par aliya, trois questions du texte départagées par deux commentateurs, l'écho de la haftara, des questions pour la table du Chabbat.</li><li><strong>Le daf en page de Vilna</strong> : la Guemara au centre, Rachi et Tossafot dépliables, la traduction au clic, ouverte dans la conversation. Sans référence, c'est le daf yomi.</li><li><strong>Le quotidien</strong> : zmanim et horaires de Chabbat, dates hébraïques, guematria, nikoud, et une fiche source prête à coller dans WhatsApp.</li></ul>
+<p>Trois modes s'ajustent à ton niveau : <strong>débutant</strong> (tout en français, chaque mot hébreu traduit), <strong>classique</strong> (le mode par défaut) et <strong>avancé</strong> (source en langue originale, richonim, nafka mina). Le registre change, la discipline des sources jamais.</p>
+<div class="protip"><div class="label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Le Pro-Tip ARIBAZ — dis ton niveau dès la première phrase</div><p>« Je débute, je ne lis pas l'hébreu » ou « mode avancé » : le site comme Claude adaptent le ton et la densité. Et dans tous les cas, <strong>clique le lien de la source</strong> avant de t'appuyer sur une réponse. C'est justement ce que l'outil rend possible, autant s'en servir.</p></div>
+<h2>Installer dans Claude (2 minutes)</h2>
+<p>Dans <strong>claude.ai</strong>, ouvre <em>Settings → Connectors → Add custom connector</em>, colle l'adresse suivante, nomme-le « Torah » et valide :</p>
+<p>``<code> https://torah-mcp.com/mcp </code>``</p>
+<p>Dans <strong>Claude Code</strong>, depuis un terminal (pas dans la conversation) :</p>
+<p>``<code> claude mcp add --transport http torah https://torah-mcp.com/mcp </code>``</p>
+<p>Vérifie ensuite avec <code>claude mcp list</code> : la ligne doit se terminer par « Connected ». Le <code>https://</code> est indispensable, sans lui la commande est acceptée mais la connexion échoue. Le code est libre (licence MIT), tu peux aussi héberger ta propre instance.</p>
+<h2>Les limites, dites franchement</h2>
+<ul><li><strong>Un outil d'étude, pas un décisionnaire.</strong> Pour une question de halakha pratique qui engage ta vie quotidienne, la réponse sourcée aide à comprendre, mais c'est à ton rav de trancher. C'est mon avis, pas une phrase du site.</li><li><strong>La page « Poser une question » envoie ton texte à Anthropic (Claude)</strong> pour rédiger la réponse. D'après la page confidentialité, la réponse n'est pas conservée, mais un <strong>journal statistique privé</strong> garde le texte des questions, sans adresse IP ni identifiant. Ces questions pourront être reprises, anonymisées, dans un recueil ou un ouvrage. N'y écris pas d'informations personnelles.</li><li><strong>Le site utilise Google Analytics 4</strong> pour mesurer la fréquentation. Le connecteur MCP lui-même n'envoie rien à Google.</li><li><strong>Limite de débit</strong> côté connecteur : 60 requêtes par minute et par adresse IP.</li><li><strong>Je n'ai pas testé chaque réponse.</strong> Cet article décrit ce que le site annonce. Teste avec une question dont tu connais déjà la source avant de t'y fier.</li></ul>
+<h2>Verdict</h2>
+<p>L'idée est la bonne : une IA qui <strong>ouvre le livre</strong> au lieu de le réciter, et qui te donne le lien pour contrôler. Pour étudier une sougya, préparer la paracha ou comprendre un terme sans bluffer, c'est un vrai gain, gratuit et sans compte. Pour trancher une question pratique, ça reste un point de départ vers ton rav, pas un remplaçant.</p>
+<p><strong>À essayer :</strong> <a href="https://mamash-ia.com" target="_blank" rel="noopener">mamash-ia.com</a></p>]]></content:encoded>
+    </item>
+    <item>
       <title>Bitchat : la messagerie qui marche même quand tout le réseau tombe</title>
       <link>https://aribaz.com/articles/bitchat.html</link>
       <guid isPermaLink="true">https://aribaz.com/articles/bitchat.html</guid>

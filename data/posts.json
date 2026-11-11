@@ -17,6 +17,24 @@
     "url": "/articles/plume.html"
   },
   {
+    "title": "Mamash IA : une IA qui cite la Torah depuis les textes, pas de mémoire",
+    "slug": "mamash-ia",
+    "date": "2026-11-11",
+    "category": "Religion",
+    "tags": [
+      "torah",
+      "talmud",
+      "halakha",
+      "claude",
+      "mcp",
+      "sefaria",
+      "gratuit"
+    ],
+    "excerpt": "Une question de Torah posée à une IA, et une réponse sourcée, lue sur Sefaria, avec le lien pour vérifier. Gratuit, sans compte, sur le site ou dans Claude.",
+    "readTime": 4,
+    "url": "/articles/mamash-ia.html"
+  },
+  {
     "title": "Bitchat : la messagerie qui marche même quand tout le réseau tombe",
     "slug": "bitchat",
     "date": "2026-11-10",
