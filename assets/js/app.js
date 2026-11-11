@@ -199,15 +199,49 @@
     });
   });
 
-  /* filtre via l'ancre (#securite, #productivite…) */
-  function applyHashFilter() {
-    var hash = (location.hash || '').replace('#', '');
-    if (!hash) return;
-    var chip = chips.filter(function (c) { return c.dataset.slug === hash; })[0];
-    if (chip) chip.click();
+  /* filtre via l'ancre (/#securite, /#productivite…) */
+  function journalEl() { return document.getElementById('journal'); }
+  function scrollToJournal() {
+    var target = journalEl();
+    if (!target) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
-  if (chips.length) applyHashFilter();
-  window.addEventListener('hashchange', applyHashFilter);
+  function chipForSlug(slug) {
+    return chips.filter(function (c) { return c.dataset.slug === slug; })[0];
+  }
+  function applyHashFilter(scroll) {
+    var hash = (location.hash || '').replace('#', '');
+    var chip = hash && chipForSlug(hash);
+    if (!chip) return;
+    chip.click();
+    if (scroll === true) scrollToJournal();
+  }
+  if (chips.length) {
+    applyHashFilter(false);
+    /* arrivée depuis une autre page (/#securite) : on amène sur la liste filtrée */
+    if (chipForSlug((location.hash || '').replace('#', ''))) {
+      window.addEventListener('load', function () { setTimeout(scrollToJournal, 60); });
+    }
+  }
+  window.addEventListener('hashchange', function () { applyHashFilter(true); });
+
+  /* Liens de catégorie (/#securite, ancien /articles/#securite) : si la page a
+     déjà son filtre (accueil), on filtre sur place sans recharger. */
+  document.addEventListener('click', function (e) {
+    if (!chips.length || !journalEl() || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest('a[href^="/#"], a[href^="/articles/#"]') : null;
+    if (!a) return;
+    var onHome = /^\/(index\.html)?$/.test(location.pathname);
+    if (!onHome) return;
+    var slug = a.getAttribute('href').split('#')[1];
+    var chip = chipForSlug(slug);
+    if (!chip) return;
+    e.preventDefault();
+    chip.click();
+    try { history.replaceState(null, '', '#' + slug); } catch (err) { /* ignoré */ }
+    scrollToJournal();
+  });
 
   if (searchInput) {
     searchInput.addEventListener('input', applyFilters);
