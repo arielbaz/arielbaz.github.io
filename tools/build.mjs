@@ -26,7 +26,7 @@ const SITE = {
   name: 'ARIBAZ',
   author: 'ARIBAZ',
   url: 'https://aribaz.com',
-  tagline: 'La tech utile, testée à la main.',
+  tagline: 'La tech, testée avant toi.',
   description:
     "Des astuces concrètes pour un numérique plus simple, plus sûr et plus propre : outils gratuits, vie privée, filtrage familial et productivité.",
   whatsapp: 'https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S',
@@ -571,11 +571,11 @@ function homePage() {
     <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
     <div class="wrap">
       <a class="eyebrow" href="/articles/${posts[0].slug}.html"><span class="dot"></span>Nouvelle actu · ${fmtDate(posts[0].date)}<svg viewBox="0 0 24 24" aria-hidden="true" class="eyebrow-arrow"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <h1 class="display">
-        <span class="line"><span>La tech qui sert</span></span>
-        <span class="line"><span>à <span class="gradient-text">quelque chose.</span></span></span>
+      <h1 class="display" style="max-width:20ch">
+        <span class="line"><span>Je clique partout,</span></span>
+        <span class="line"><span><span class="gradient-text">tu cliques juste.</span></span></span>
       </h1>
-      <p class="lede">Je fouille internet. Parfois je trouve des trucs. Des outils gratuits, des réglages précis et les pièges évités — testés avant d'atterrir ici.</p>
+      <p class="lede">Chaque semaine, je teste des outils gratuits, des réglages obscurs et des pièges bien déguisés. Ce qui survit atterrit ici. Le reste est enterré avec les honneurs militaires.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/articles/${posts[0].slug}.html">Voir ce qui vient de sortir ${icon('arrow')}</a>
         <a class="btn btn-ghost" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} La chaîne WhatsApp</a>
@@ -1046,7 +1046,7 @@ function servicesPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>Services</span>
-      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Quatre maisons, <span class="gradient-text">un seul artisan.</span></h1>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Dix doigts, un cerveau, <span class="gradient-text">quatre maisons.</span></h1>
       <p class="lede" style="margin-inline:0;max-width:52ch">ARIBAZ Electronics, Events, Web et Systems : les mêmes mains, la même manie du travail propre. Si ton besoin n'est pas dans la liste, écris quand même.</p>
       <div class="hero-meta" style="justify-content:flex-start">
         <span>${icon('check')} Jérusalem & à distance</span>
@@ -1204,7 +1204,7 @@ function filtresPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>ARIBAZ Systems · Aribaz Filter</span>
-      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:20ch">Un Internet propre, <span class="gradient-text">partout dans la maison.</span></h1>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:20ch">Internet à la maison, <span class="gradient-text">sans les invités surprise.</span></h1>
       <p class="lede" style="margin-inline:0;max-width:56ch">Aribaz Filter ne laisse passer que les sites autorisés. Le filtre tourne sur l\u2019appareil lui-même : ta navigation ne transite par aucun serveur, ni les nôtres ni ceux d\u2019un géant. Android, Windows, iPhone, iPad, Mac, et les navigateurs Chrome, Edge et Brave.</p>
       <div class="hero-actions" style="justify-content:flex-start">
         <a class="btn btn-primary" href="${FILTER_APP}/fr">Commencer — c\u2019est gratuit ${icon('arrow')}</a>
@@ -1310,7 +1310,7 @@ function aboutPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>À propos</span>
-      <h1 class="display" style="max-width:20ch">Je répare, je code, je soude — <span class="gradient-text">et je raconte.</span></h1>
+      <h1 class="display" style="max-width:20ch">Je démonte tout. <span class="gradient-text">Parfois, je remonte.</span></h1>
       <p class="lede" style="margin-inline:0">Ariel. Jérusalem, avec un pied en France. Un atelier, un terminal, et cette manie de vouloir comprendre comment tout fonctionne.</p>
     </div>
   </section>
@@ -1394,7 +1394,7 @@ function contactPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>Contact</span>
-      <h1 class="display" style="max-width:16ch">Un projet, une panne, <span class="gradient-text">une idée ?</span></h1>
+      <h1 class="display" style="max-width:16ch">Ça ne marche plus, <span class="gradient-text">ou pas encore ?</span></h1>
       <p class="lede" style="margin-inline:0">Deux lignes suffisent pour commencer. Je réponds moi-même, sous 24 h ouvrées — et franchement, si je ne peux pas t'aider, je te le dis tout de suite.</p>
     </div>
   </section>
@@ -1714,7 +1714,7 @@ function notFoundPage() {
   <section class="hero" style="text-align:center">
     <div class="wrap">
       <span class="eyebrow"><span class="dot" style="background:var(--orange)"></span>Erreur 404</span>
-      <h1 class="display">Cette page a <span class="gradient-text">disparu.</span></h1>
+      <h1 class="display">Cette page est <span class="gradient-text">partie sans laisser d\u2019adresse.</span></h1>
       <p class="lede">Le lien est peut-être périmé. Tout le journal reste accessible depuis la page des actus.</p>
       <div class="hero-actions"><a class="btn btn-primary" href="/articles/">Voir toutes les actus ${icon('arrow')}</a></div>
     </div>
