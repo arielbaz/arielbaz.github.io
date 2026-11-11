@@ -39,10 +39,6 @@ const SITE = {
   intro: "Bonjour ARIBAZ, besoin d'un coup de main : ",
 };
 
-// AT Filter vit désormais sur son propre domaine.
-const FILTER_APP = 'https://atfilter.aribaz.com';
-const FILTER_REPO = 'https://github.com/arielbaz/Geder';
-
 const CATEGORIES = [
   { name: 'Productivité', slug: 'productivite', art: 'art-produ', blurb: 'Raccourcis, outils de bureau, bureautique : gagner du temps chaque jour.' },
   { name: 'Sécurité', slug: 'securite', art: 'art-secu', blurb: 'Mots de passe, fuites de données, navigateurs : reprendre la main sur sa vie privée.' },
@@ -497,7 +493,7 @@ function footer() {
           <a href="/">Toutes les actus</a>
           <a href="/invitation.html">Invitation</a>
           <a href="/services.html">Services</a>
-          <a href="${FILTER_APP}/fr">AT Filter</a>
+          <a href="/services/filtres/">Aribaz Filter</a>
           <a href="/apropos.html">À propos</a>
           <a href="/contact.html">Contact</a>
           <a href="/feed.xml">Flux RSS</a>
@@ -1032,7 +1028,7 @@ const SERVICES = [
     desc: 'Réseau, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
     items: [
       { icon: 'layers', title: 'DevOps & auto-hébergement', text: 'Proxmox, NAS, Docker, sauvegardes : une infrastructure qui tient debout et se répare toute seule.', bullets: ['Proxmox / OMV / Docker', 'Sauvegardes 3-2-1 vérifiées', 'Monitoring & alertes'] },
-      { icon: 'eye', title: 'Filtrage internet & contrôle parental', text: 'DNS, filtres d\u2019images, contrôle parental : un web plus sain, sans transformer la maison en prison.', bullets: ['DNS filtrants', 'Family Link & co.', 'Filtres navigateur'], href: `${FILTER_APP}/fr`, hrefLabel: 'Ouvrir AT Filter' },
+      { icon: 'eye', title: 'Filtrage internet & contrôle parental', text: 'DNS, filtres d\u2019images, contrôle parental : un web plus sain, sans transformer la maison en prison.', bullets: ['DNS filtrants', 'Family Link & co.', 'Filtres navigateur'], href: '/services/filtres/', hrefLabel: 'Voir la page Aribaz Filter' },
       { icon: 'wifi', title: 'Réseau & Wi-Fi', text: 'Du câble, du 10 GbE, du PoE, et un Wi-Fi qui couvre vraiment la pièce du fond.', bullets: ['Câblage & baie', 'SFP+ / PoE', 'Wi-Fi maillé'] },
       { icon: 'shield', title: 'Conseil & audit', text: 'Avant d\u2019acheter, demande. Ça coûte moins cher que de se tromper.', bullets: ['Choix de matériel', 'Audit sécurité & sauvegardes', 'Détection d\u2019arnaques'] },
     ],
@@ -1149,6 +1145,8 @@ ${footer()}
 /* -------------------------------------------------------------------------- */
 /* L'application vit encore sur son URL Vercel provisoire (docs/RENOMMAGE-ARIBAZ.md).
    Le jour où elle passe sur un domaine définitif, seule cette constante change. */
+const FILTER_APP = 'https://geder-fawn.vercel.app';
+const FILTER_REPO = 'https://github.com/arielbaz/Geder';
 
 const FILTER_PLATFORMS = [
   { key: 'android', name: 'Android', state: 'Disponible' },
@@ -1185,45 +1183,121 @@ const FILTER_WHO = [
 ];
 
 function filtresPage() {
-  const target = `${FILTER_APP}/fr`;
-  return `<!doctype html>
-<html lang="fr" dir="ltr" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AT Filter — nouvelle adresse</title>
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="${target}">
-<meta http-equiv="refresh" content="0; url=${target}">
-<script>window.location.replace(${JSON.stringify(target)});</script>
-<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<style>
-  :root { color-scheme: light dark; --bg:#f5f5f7; --card:#fff; --ink:#1d1d1f; --muted:#5f5f63; --blue:#0066cc; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#000; --card:#1c1c1e; --ink:#f5f5f7; --muted:#a1a1a6; --blue:#2997ff; } }
-  * { box-sizing: border-box; }
-  body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:
-    radial-gradient(50% 50% at 20% 0%, rgb(0 199 190 / 16%), transparent 70%),
-    radial-gradient(50% 50% at 90% 10%, rgb(10 132 255 / 14%), transparent 70%), var(--bg);
-    color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif; }
-  main { width:min(520px,100%); padding:40px 32px; text-align:center; background:var(--card); border:1px solid rgb(127 127 127 / 18%); border-radius:28px; box-shadow:0 20px 60px -30px rgb(0 0 0 / 28%); }
-  .mark { width:72px; height:72px; margin:0 auto 22px; border-radius:19px; display:grid; place-items:center; font-size:38px; font-weight:700; color:#fff; background:linear-gradient(135deg,#00c7be,#0a84ff 55%,#5e5ce6); }
-  h1 { margin:0 0 10px; font-size:clamp(26px,5vw,34px); letter-spacing:-.04em; line-height:1.05; }
-  p { margin:0 auto 24px; max-width:34ch; color:var(--muted); font-size:15px; line-height:1.55; }
-  a { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 22px; border-radius:999px; background:var(--blue); color:#fff; text-decoration:none; font-weight:600; }
-  small { display:block; margin-top:16px; color:var(--muted); font-size:12px; }
-</style>
-</head>
-<body>
-<main>
-  <div class="mark" aria-hidden="true">@</div>
-  <h1>AT Filter a déménagé.</h1>
-  <p>La page du filtre est maintenant sur son propre domaine. Vous allez être redirigé vers <b>atfilter.aribaz.com/fr</b>.</p>
-  <a href="${target}">Continuer vers AT Filter</a>
-  <small>Redirection automatique…</small>
+  const title = `Aribaz Filter — le filtre Internet de la maison — ${SITE.name}`;
+  const desc = "Aribaz Filter ne laisse passer que les sites autorisés : liste blanche, SafeSearch imposé, filtrage sur l'appareil, aucune navigation envoyée à un serveur. Android, Windows, iPhone, iPad, Mac et navigateurs.";
+  const waFilter = `${SITE.waDirect}?text=${encodeURIComponent('Bonjour ARIBAZ, je voudrais des renseignements sur Aribaz Filter : ')}`;
+
+  const platformCards = FILTER_PLATFORMS.map((p) => {
+    const plat = PLATFORMS[p.key];
+    const color = p.state === 'Disponible' ? 'var(--green)' : p.state === 'Extension' ? 'var(--blue)' : 'var(--ink-faint)';
+    return `<div class="value" style="padding:22px;display:flex;gap:14px;align-items:flex-start">
+      <span class="plat ${plat.cls}" style="width:26px;height:26px;flex:none" aria-hidden="true">${plat.svg}</span>
+      <div><h3 style="margin:0 0 4px">${esc(p.name)}</h3>
+      <p style="font-size:13px;color:${color}">${esc(p.state)}</p></div>
+    </div>`;
+  }).join('');
+
+  const body = `${nav('services')}
+<main id="contenu">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>ARIBAZ Systems · Aribaz Filter</span>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:20ch">Un Internet propre, <span class="gradient-text">partout dans la maison.</span></h1>
+      <p class="lede" style="margin-inline:0;max-width:56ch">Aribaz Filter ne laisse passer que les sites autorisés. Le filtre tourne sur l\u2019appareil lui-même : ta navigation ne transite par aucun serveur, ni les nôtres ni ceux d\u2019un géant. Android, Windows, iPhone, iPad, Mac, et les navigateurs Chrome, Edge et Brave.</p>
+      <div class="hero-actions" style="justify-content:flex-start">
+        <a class="btn btn-primary" href="${FILTER_APP}/fr">Commencer — c\u2019est gratuit ${icon('arrow')}</a>
+        <a class="btn btn-ghost" href="#comment">${icon('layers')} Comment ça marche</a>
+      </div>
+      <div class="hero-meta" style="justify-content:flex-start">
+        <span>${icon('check')} Socle gratuit, pour toujours</span>
+        <span>${icon('shield')} Filtrage local, sans cloud</span>
+        <span>${icon('clock')} Bêta ouverte</span>
+      </div>
+      <p class="muted" style="font-size:13px;margin:18px 0 0">Android et Windows aujourd\u2019hui ; iPhone, iPad et Mac en préparation. <a class="link-arrow" href="${FILTER_REPO}" target="_blank" rel="noopener">Code source sur GitHub ${icon('arrow-up-right')}</a></p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Ce qui est garanti, partout</h2><p>Le plancher du produit, sur chaque appareil — navigation privée comprise.</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        ${FILTER_TRUST.map((v) => `<div class="value reveal"><span class="ico">${icon(v.icon)}</span><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Pourquoi une liste blanche</h2><p>Bloquer ce qui est interdit ne suffit pas : on autorise ce qui est utile, et le reste n\u2019existe pas.</p></div></div>
+      <div class="value-grid grid-2" style="margin-top:34px">
+        ${FILTER_WHY.map((v) => `<div class="value reveal"><span class="ico">${icon(v.icon)}</span><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="appareils">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Sur tous les appareils de la maison</h2><p>La même protection, du téléphone de l\u2019enfant à l\u2019ordinateur du bureau. Sans réinitialisation pour commencer.</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:26px">
+        ${platformCards}
+      </div>
+      <p class="muted" style="font-size:13.5px;margin-top:18px">L\u2019iPhone et le Mac arrivent après la bêta Android/Windows : le profil de filtrage y est posé sans effacer l\u2019appareil. Sur iPhone, sans verrou de supervision, le profil DNS et l\u2019extension Safari restent retirables depuis le téléphone — on le dit clairement plutôt que de le cacher.</p>
+    </div>
+  </section>
+
+  <section class="section" id="comment">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Trois étapes, c\u2019est tout</h2><p>Pas de routeur à configurer, pas de compte à rallonge.</p></div></div>
+      <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        ${FILTER_STEPS.map((s) => `<div class="step reveal"><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Pour qui</h2><p>Trois façons d\u2019utiliser le même filtre.</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        ${FILTER_WHO.map((v) => `<div class="value reveal"><span class="ico">${icon(v.icon)}</span><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <div class="section-head"><div><h2>Ce qu\u2019Aribaz Filter ne fera pas</h2><p>Autant le dire tout de suite.</p></div></div>
+      <ul class="dont" style="padding:0">
+        <li>${icon('check')}<span><b>Lire ta navigation.</b> Le filtre tourne sur l\u2019appareil : aucune requête ne remonte chez nous.</span></li>
+        <li>${icon('check')}<span><b>Te vendre un VPN.</b> Ce n\u2019est pas un tunnel de plus, c\u2019est un filtre qui décide avant que la page s\u2019ouvre.</span></li>
+        <li>${icon('check')}<span><b>Promettre l\u2019impossible.</b> Sans verrou de supervision, un profil iPhone reste retirable : c\u2019est écrit, pas caché.</span></li>
+        <li>${icon('check')}<span><b>Cacher le prix.</b> Le socle est gratuit pour toujours ; l\u2019abonnement ajoute les niveaux et l\u2019équipe, et se résilie depuis la console.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight"><div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Un web plus sain, sans transformer la maison en prison.</h2>
+      <p>Crée ton espace en deux minutes, installe sur un appareil, et regarde ce que ça change. Une question avant de commencer ? Écris-moi, c\u2019est moi qui réponds.</p>
+      <div class="hero-actions" style="margin-bottom:0">
+        <a class="btn btn-primary" href="${FILTER_APP}/fr">Protéger ma maison ${icon('arrow')}</a>
+        <a class="btn btn-wa" href="${waFilter}" target="_blank" rel="noopener">${icon('whatsapp')} Poser une question</a>
+        <a class="btn btn-ghost" href="${FILTER_REPO}" target="_blank" rel="noopener">${icon('github')} Voir le code</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <a class="link-arrow" href="/services.html">${icon('arrow')} Retour à tous les services</a>
+    </div>
+  </section>
 </main>
+${footer()}
+<script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
+  return head({ title, description: desc, url: '/services/filtres/' }) + body;
 }
 
 function aboutPage() {
@@ -1681,6 +1755,7 @@ function sitemap() {
   const urls = [
     { loc: '/', pri: '1.0', mod: posts[0].date },
     { loc: '/services.html', pri: '0.7', mod: posts[0].date },
+    { loc: '/services/filtres/', pri: '0.8', mod: posts[0].date },
     { loc: '/invitation.html', pri: '0.8', mod: posts[0].date },
     { loc: '/invitation/demo.html', pri: '0.6', mod: posts[0].date },
     { loc: '/contact.html', pri: '0.6', mod: posts[0].date },
