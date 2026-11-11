@@ -22,6 +22,7 @@ C'est un projet open source, gratuit, construit sur **Whisper** (le moteur d'Ope
 
 - **Import de fichiers** : MP3, M4A/AAC, WAV, FLAC, OGG, AIFF, MP4, MOV… glisser-déposer ou sélection multiple.
 - **Transcription locale** : modèles Whisper de Tiny à Large v3 Turbo. Sur un Mac Apple Silicon, le GPU Metal est utilisé ; sur Windows, le CPU.
+- **Précision renforcée** : beam search à 5 faisceaux et normalisation du niveau audio avant transcription.
 - **Word propre** : titre, date, source, durée, langue, modèle, paragraphes justifiés, pied de page numéroté, propriétés du document.
 - **Hébreu RTL** : les paragraphes en hébreu sont détectés et composés de droite à gauche ; le français reste LTR.
 - **Lecteur synchronisé** : lecture/pause, −10 s, +10 s, curseur. Le paragraphe en cours est surligné et le texte suit l'audio. Cliquer un paragraphe déplace la lecture.
@@ -54,8 +55,8 @@ Sur de vrais enregistrements, la qualité dépend beaucoup du micro, du bruit de
 
 ## Télécharger
 
-- **macOS (Apple Silicon)** : [Plume-0.2.0-arm64.dmg](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume-0.2.0-arm64.dmg) — ouvrir le DMG, glisser Plume dans `Applications`.
-- **Windows** : [installateur .exe](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume_0.2.0_x64-setup.exe) (recommandé) ou [paquet .msi](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume_0.2.0_x64_en-US.msi).
+- **macOS (Apple Silicon)** : [Plume-0.3.0-arm64.dmg](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume-0.3.0-arm64.dmg) — ouvrir le DMG, glisser Plume dans `Applications`.
+- **Windows** : [installateur .exe](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume_0.3.0_x64-setup.exe) (recommandé) ou [paquet .msi](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume_0.3.0_x64_en-US.msi).
 - **Toutes les versions** : [github.com/arielbaz/plume/releases](https://github.com/arielbaz/plume/releases).
 - **Code source** : [github.com/arielbaz/plume](https://github.com/arielbaz/plume) — licence MIT.
 
