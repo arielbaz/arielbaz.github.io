@@ -32,7 +32,7 @@ git add -A && git commit -m "Nouvel article : ..." && git push
 | `title` | titre affiché en gros |
 | `slug` | nom du fichier et adresse : `/articles/mon-sujet.html` |
 | `date` | `AAAA-MM-JJ` — sert au tri et à l'affichage |
-| `category` | Productivité, Sécurité, Filtrage, Alternatives ou Mobile |
+| `category` | Productivité, Sécurité, Filtrage, Alternatives, Mobile ou Religion |
 | `tags` | mots-clés (filtre la recherche) |
 | `excerpt` | la phrase affichée sur la carte |
 | `platforms` | `windows`, `mac`, `ios`, `android`, `chrome`, `web` |

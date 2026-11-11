@@ -322,23 +322,27 @@ h1.display {
 .art-filtre{ background: linear-gradient(145deg, #e6f9ec, #c9f0d8 45%, #aee8c4); }
 .art-alter { background: linear-gradient(145deg, #fff2e2, #ffe1c2 45%, #ffd0a1); }
 .art-mobile{ background: linear-gradient(145deg, #f8e9ff, #eed6ff 45%, #e2c1fb); }
+.art-religion{ background: linear-gradient(145deg, #fcf5e0, #f6e6b8 45%, #ecd48e); }
 @media (prefers-color-scheme: dark) {
   .art-produ { background: linear-gradient(145deg, #0b2a4a, #103a5e 55%, #0a1f36); }
   .art-secu  { background: linear-gradient(145deg, #1f1d4a, #2a2760 55%, #151336); }
   .art-filtre{ background: linear-gradient(145deg, #0b3020, #0f4229 55%, #06231a); }
   .art-alter { background: linear-gradient(145deg, #3a2410, #4d2f14 55%, #2b1a0b); }
   .art-mobile{ background: linear-gradient(145deg, #321a42, #43235a 55%, #24122f); }
+  .art-religion{ background: linear-gradient(145deg, #3a2f12, #4d3e18 55%, #2b220c); }
 }
 :root[data-theme="light"] .art-produ { background: linear-gradient(145deg, #e8f1ff, #cfe3ff 45%, #b9d4ff); }
 :root[data-theme="light"] .art-secu  { background: linear-gradient(145deg, #ecebff, #d9d7ff 45%, #c3c0ff); }
 :root[data-theme="light"] .art-filtre{ background: linear-gradient(145deg, #e6f9ec, #c9f0d8 45%, #aee8c4); }
 :root[data-theme="light"] .art-alter { background: linear-gradient(145deg, #fff2e2, #ffe1c2 45%, #ffd0a1); }
 :root[data-theme="light"] .art-mobile{ background: linear-gradient(145deg, #f8e9ff, #eed6ff 45%, #e2c1fb); }
+:root[data-theme="light"] .art-religion{ background: linear-gradient(145deg, #fcf5e0, #f6e6b8 45%, #ecd48e); }
 :root[data-theme="dark"] .art-produ { background: linear-gradient(145deg, #0b2a4a, #103a5e 55%, #0a1f36); }
 :root[data-theme="dark"] .art-secu  { background: linear-gradient(145deg, #1f1d4a, #2a2760 55%, #151336); }
 :root[data-theme="dark"] .art-filtre{ background: linear-gradient(145deg, #0b3020, #0f4229 55%, #06231a); }
 :root[data-theme="dark"] .art-alter { background: linear-gradient(145deg, #3a2410, #4d2f14 55%, #2b1a0b); }
 :root[data-theme="dark"] .art-mobile{ background: linear-gradient(145deg, #321a42, #43235a 55%, #24122f); }
+:root[data-theme="dark"] .art-religion{ background: linear-gradient(145deg, #3a2f12, #4d3e18 55%, #2b220c); }
 
 .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
 .card-meta {
@@ -357,12 +361,14 @@ h1.display {
 .pill[data-cat="Filtrage"] { color: #1a9e4b; }
 .pill[data-cat="Alternatives"] { color: #d2680a; }
 .pill[data-cat="Mobile"] { color: #a34fd4; }
+.pill[data-cat="Religion"] { color: #a8801f; }
 @media (prefers-color-scheme: dark) {
   .pill[data-cat="Productivité"] { color: #6cb8ff; }
   .pill[data-cat="Sécurité"] { color: #a5a3ff; }
   .pill[data-cat="Filtrage"] { color: #5fd98c; }
   .pill[data-cat="Alternatives"] { color: #ffb062; }
   .pill[data-cat="Mobile"] { color: #d79bf5; }
+  .pill[data-cat="Religion"] { color: #e6c56e; }
 }
 .card-body h3 {
   font-size: 19px; line-height: 1.28; letter-spacing: -0.022em;
@@ -772,6 +778,7 @@ svg.ico-inline { width: 12px; height: 12px; flex: none; }
 .art-filtre { color: #14854a; }
 .art-alter { color: #b8560a; }
 .art-mobile { color: #8c35c0; }
+.art-religion { color: #8a6a1f; }
 .card-art svg { stroke-width: 1.5; opacity: 0.92; }
 @media (prefers-color-scheme: dark) {
   .art-produ { color: #7cc0ff; }
@@ -779,17 +786,20 @@ svg.ico-inline { width: 12px; height: 12px; flex: none; }
   .art-filtre { color: #6fe39b; }
   .art-alter { color: #ffb06b; }
   .art-mobile { color: #dda6f7; }
+  .art-religion { color: #e6c56e; }
 }
 :root[data-theme="light"] .art-produ { color: #0b64c7; }
 :root[data-theme="light"] .art-secu { color: #4a47c4; }
 :root[data-theme="light"] .art-filtre { color: #14854a; }
 :root[data-theme="light"] .art-alter { color: #b8560a; }
 :root[data-theme="light"] .art-mobile { color: #8c35c0; }
+:root[data-theme="light"] .art-religion { color: #8a6a1f; }
 :root[data-theme="dark"] .art-produ { color: #7cc0ff; }
 :root[data-theme="dark"] .art-secu { color: #b3b1ff; }
 :root[data-theme="dark"] .art-filtre { color: #6fe39b; }
 :root[data-theme="dark"] .art-alter { color: #ffb06b; }
 :root[data-theme="dark"] .art-mobile { color: #dda6f7; }
+:root[data-theme="dark"] .art-religion { color: #e6c56e; }
 .brand img { height: 26px; }
 
 /* ==========================================================================

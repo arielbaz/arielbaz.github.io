@@ -16,6 +16,7 @@ PALETTE = {
     "Filtrage": ("#e6f9ec", "#aee8c4", "#14854a"),
     "Alternatives": ("#fff2e2", "#ffd0a1", "#b8560a"),
     "Mobile": ("#f8e9ff", "#e2c1fb", "#8c35c0"),
+    "Religion": ("#fcf5e0", "#ecd48e", "#8a6a1f"),
 }
 INK = "#18181c"
 SOFT = "#5f5f6b"
