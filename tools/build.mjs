@@ -45,6 +45,7 @@ const CATEGORIES = [
   { name: 'Filtrage', slug: 'filtrage', art: 'art-filtre', blurb: 'DNS, contrôle parental, filtres d\u2019images : un internet plus sain à la maison.' },
   { name: 'Alternatives', slug: 'alternatives', art: 'art-alter', blurb: 'Remplacer les services par défaut par des outils libres, gratuits et respectueux.' },
   { name: 'Mobile', slug: 'mobile', art: 'art-mobile', blurb: 'iPhone, Android, eSIM, appels Wi-Fi : les réglages qui changent le quotidien.' },
+  { name: 'Religion', slug: 'religion', art: 'art-religion', blurb: 'Étude, prière, halakha : des outils pour accompagner la pratique au quotidien.' },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -562,7 +563,7 @@ const others_all = posts.filter((p) => p !== featured);
 function homePage() {
   const title = `${SITE.name} — ${SITE.tagline}`;
   const desc = SITE.description;
-  const ticker = ['Productivité', 'Sécurité', 'Filtrage', 'Alternatives', 'Mobile', 'Zéro pub', 'Zéro cookie', 'Open source', 'Sans abonnement'];
+  const ticker = ['Productivité', 'Sécurité', 'Filtrage', 'Alternatives', 'Mobile', 'Religion', 'Zéro pub', 'Zéro cookie', 'Open source', 'Sans abonnement'];
   const tickerHtml = ticker.map((t) => `<span>${t}</span><span class="sep">✦</span>`).join('');
   const body = `${nav('home')}
 <main id="contenu">
@@ -637,7 +638,7 @@ function homePage() {
   <section class="section section-soft">
     <div class="wrap">
       <div class="section-head">
-        <div><h2>Cinq tiroirs, <span class="accent">pas un de plus.</span></h2><p>Gagner du temps, fermer la porte, filtrer la maison, quitter les géants, régler ton téléphone.</p></div>
+        <div><h2>Six tiroirs, <span class="accent">pas un de plus.</span></h2><p>Gagner du temps, fermer la porte, filtrer la maison, quitter les géants, régler ton téléphone, nourrir sa pratique.</p></div>
       </div>
       <div class="value-grid">
         ${CATEGORIES.map((c) => {
@@ -676,7 +677,7 @@ ${footer()}
 }
 
 function iconForCat(name) {
-  const map = { Productivité: 'boltless', Sécurité: 'shield', Filtrage: 'eye', Alternatives: 'layers', Mobile: 'phone' };
+  const map = { Productivité: 'boltless', Sécurité: 'shield', Filtrage: 'eye', Alternatives: 'layers', Mobile: 'phone', Religion: 'book' };
   const v = map[name];
   return ICONS[v] ? v : (name === 'Productivité' ? 'clipboard' : 'layers');
 }
