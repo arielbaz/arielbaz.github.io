@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 0 396 104" role="img" aria-label="ARIBAZ">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 0 407 104" role="img" aria-label="ARIBAZ">
   <defs>
-    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="6" y1="0" x2="384" y2="0">
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="6" y1="0" x2="395" y2="0">
       <stop offset="0" stop-color="#f0551a"/>
       <stop offset=".3" stop-color="#dc3f48"/>
       <stop offset=".6" stop-color="#c02f72"/>
@@ -11,8 +11,8 @@
   <!-- Une seule épaisseur de trait pour tout le logo -->
   <g fill="none" stroke="url(#a)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
     <!-- @ dont la queue se prolonge, sans raccord, en soulignement -->
-    <circle cx="50" cy="52" r="15"/>
-    <path d="M65 41V63A15 15 0 0 0 95 63V52A45 45 0 1 0 50 97H384"/>
+    <circle cx="50" cy="52" r="17"/>
+    <path d="M67 39V65A14 14 0 0 0 95 65V52A45 45 0 1 0 50 97H376Q393 97 395 89"/>
     <g transform="translate(18 -4)">
       <path d="M104 86V16H130a17.5 17.5 0 0 1 0 35H104M124 51L139 86"/>
       <path d="M169 16V86"/>
