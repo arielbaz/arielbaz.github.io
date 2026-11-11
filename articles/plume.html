@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr" dir="ltr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plume : un cours de Guemara transformé en Word, sans passer par le cloud — ARIBAZ</title>
+<meta name="description" content="Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.">
+<link rel="canonical" href="https://aribaz.com/articles/plume.html">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ARIBAZ">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Plume : un cours de Guemara transformé en Word, sans passer par le cloud — ARIBAZ">
+<meta property="og:description" content="Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.">
+<meta property="og:url" content="https://aribaz.com/articles/plume.html">
+<meta property="og:image" content="https://aribaz.com/assets/img/cards/plume.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plume : un cours de Guemara transformé en Word, sans passer par le cloud — ARIBAZ">
+<meta name="twitter:description" content="Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.">
+<meta name="twitter:image" content="https://aribaz.com/assets/img/cards/plume.jpg">
+<meta name="author" content="ARIBAZ">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+<link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="ARIBAZ — Flux RSS" href="/feed.xml">
+<link rel="stylesheet" href="/assets/css/style.css?v=798892c4bd">
+<script>(function(){try{var t=localStorage.getItem('aribaz-theme');var d=(t==='dark')?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
+<link rel="alternate" hreflang="fr" href="https://aribaz.com/articles/plume.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Plume : un cours de Guemara transformé en Word, sans passer par le cloud","description":"Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.","datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@type":"Person","name":"ARIBAZ"},"publisher":{"@type":"Organization","name":"ARIBAZ"},"mainEntityOfPage":"https://aribaz.com/articles/plume.html","articleSection":"Productivité","keywords":"transcription, hébreu, talmud, open source, whisper, word"}</script>
+</head>
+<body><a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="nav">
+  <div class="nav-inner">
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <span class="nav-toggle-label"><span class="l-open">Menu</span><span class="l-close">Fermer</span></span>
+      </button>
+    <a class="brand" href="/" aria-label="ARIBAZ — accueil">
+      <img src="/assets/img/logo.png" alt="ARIBAZ" width="86" height="27">
+    </a>
+    <nav class="nav-links" id="menu" aria-label="Navigation principale">
+      <a href="/">Actus</a>
+      <a href="/services.html">Services</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/apropos.html">À propos</a>
+      <a class="nav-cta" href="https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S" target="_blank" rel="noopener"><span>WhatsApp</span> <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-inline"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="/feed.xml" aria-label="Flux RSS" title="Flux RSS"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19a1 1 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 11.5A8 8 0 0 1 12.5 19.5M4.5 5a14.5 14.5 0 0 1 14.5 14.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2.6v2M12 19.4v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.6 12h2M19.4 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="progress" aria-hidden="true"></div>
+<main id="contenu">
+  <article>
+    <header class="article-hero">
+      <div class="wrap wrap-narrow">
+        <div class="meta">
+          <a class="pill" data-cat="Productivité" href="/articles/#productivite">Productivité</a>
+          <span>11 novembre 2026</span>
+          <span>·</span>
+          <span>4 min de lecture</span>
+          
+        </div>
+        <h1>Plume : un cours de Guemara transformé en Word, sans passer par le cloud</h1>
+        <p class="dek">Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.</p>
+      </div>
+      <div class="wrap">
+        <figure class="article-art">
+          <img src="/assets/img/cards/plume.jpg" alt="Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections." width="1600" height="900">
+        </figure>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="article-body">
+        <p class="lead">Écouter un shiur, c'est bien. Retrouver la sugya trois semaines plus tard, dans un fichier audio d'une heure, c'est autre chose. Les applications de transcription existent, mais elles envoient l'enregistrement sur un serveur, facturent à la minute, ou refusent tout simplement l'hébreu et l'araméen du Talmud.</p>
+<p><strong>Plume</strong> part d'un principe simple : le fichier audio ne quitte pas l'ordinateur. On glisse un MP3, un M4A ou un WAV, et on récupère un <strong>document Word mis en page</strong>, avec les paragraphes hébraïques en lecture de droite à gauche.</p>
+<p>C'est un projet open source, gratuit, construit sur <strong>Whisper</strong> (le moteur d'OpenAI) qui tourne en local via whisper.cpp, avec une interface <strong>Tauri/Rust</strong>.</p>
+<h2>Ce qu'il fait vraiment</h2>
+<ul><li><strong>Import de fichiers</strong> : MP3, M4A/AAC, WAV, FLAC, OGG, AIFF, MP4, MOV… glisser-déposer ou sélection multiple.</li><li><strong>Transcription locale</strong> : modèles Whisper de Tiny à Large v3 Turbo. Sur un Mac Apple Silicon, le GPU Metal est utilisé ; sur Windows, le CPU.</li><li><strong>Word propre</strong> : titre, date, source, durée, langue, modèle, paragraphes justifiés, pied de page numéroté, propriétés du document.</li><li><strong>Hébreu RTL</strong> : les paragraphes en hébreu sont détectés et composés de droite à gauche ; le français reste LTR.</li><li><strong>Lecteur synchronisé</strong> : lecture/pause, −10 s, +10 s, curseur. Le paragraphe en cours est surligné et le texte suit l'audio. Cliquer un paragraphe déplace la lecture.</li><li><strong>Mots incertains</strong> : les mots transcrits avec peu de confiance sont soulignés en rouge. Un clic propose une correction ; acceptée, elle est apprise pour les prochaines transcriptions.</li><li><strong>Sujet du cours</strong> : le nom du fichier est analysé (<code>baba-kama-42a.mp3</code>), le traité et la page sont détectés, et les termes probables sont préparés.</li><li><strong>Lexique</strong> : 291 termes talmudiques/halakha curatés avec leurs champs lexicaux, plus une banque de <strong>8 980 mots</strong> (Strong pour l'hébreu biblique, Jastrow pour l'araméen talmudique) consultable dans l'application.</li></ul>
+<h2>Le détail qui change tout pour un cours de Guemara</h2>
+<p>Whisper, seul, ne sait pas qu'on étudie Baba Kama plutôt que Berakhot. Plume lui donne un contexte : traité, page, notions liées, glossaire personnel, termes techniques, corrections apprises.</p>
+<p>Trois choses font la différence :</p>
+<ol><li><strong>Le bon modèle</strong> : Large v3 Turbo (574 Mo) est nettement plus fiable que Small sur l'hébreu. Le téléchargement se fait une fois, ensuite tout est hors ligne.</li><li><strong>Le vocabulaire</strong> : les noms de Rabbanim, les expressions araméennes (<code>איבעיא להו</code>, <code>תא שמע</code>, <code>מאי טעמא</code>…), les titres de sefarim. Les champs lexicaux du lexique proposent automatiquement les termes voisins d'un traité.</li><li><strong>La correction</strong> : quand un mot est souligné, on écoute, on accepte la suggestion, et Plume la réapplique aux cours suivants. C'est un apprentissage réel, pas un réglage oublié.</li></ol>
+<div class="protip"><div class="label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Le Pro-Tip ARIBAZ — nomme tes fichiers comme des références</div><p><code>baba-kama-42a.mp3</code>, <code>chabbat-15b.m4a</code>, <code>yoreh-deah-kashrout.mp3</code> : Plume reconnaît le traité, la page ou le thème, et prépare les termes correspondants avant même la transcription. Deux secondes de rigueur au nommage, des heures de relecture en moins.</p></div>
+<h2>Les limites, dites franchement</h2>
+<ul><li><strong>Une langue principale par transcription.</strong> Un cours en français avec des citations hébraïques se transcrit bien en choisissant « Français » ; un cours en hébreu avec des explications en français se transcrit en « Hébreu », avec parfois des termes français rendus en caractères hébraïques. La détection automatique par segment est le prochain chantier.</li><li><strong>L'araméen du Talmud reste difficile.</strong> Il n'existe pas de modèle Whisper araméen. Le lexique, le contexte et un futur modèle affiné aident, mais il faut relire.</li><li><strong>Pas de séparation des intervenants</strong> (diarisation) pour l'instant.</li><li><strong>Le lecteur audio fonctionne pendant la session</strong> ; l'historique persistant des transcriptions n'est pas encore là.</li></ul>
+<p>Sur de vrais enregistrements, la qualité dépend beaucoup du micro, du bruit de fond et de l'élocution. Un test de 5 à 10 minutes reste la meilleure façon de régler glossaire et modèle.</p>
+<h2>Télécharger</h2>
+<ul><li><strong>macOS (Apple Silicon)</strong> : <a href="https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume-0.2.0-arm64.dmg" target="_blank" rel="noopener">Plume pour macOS</a> — glisser l'application dans <code>Applications</code>.</li><li><strong>Windows</strong> : <a href="https://github.com/arielbaz/plume/releases/latest" target="_blank" rel="noopener">installateur Windows</a> — choisir le fichier <code>.exe</code> ou <code>.msi</code> de la dernière release.</li><li><strong>Code source</strong> : <a href="https://github.com/arielbaz/plume" target="_blank" rel="noopener">github.com/arielbaz/plume</a> — licence MIT.</li></ul>
+<p>L'application n'est pas notariée par Apple : au premier lancement, clic droit sur l'icône → <strong>Ouvrir</strong>. Le modèle est téléchargé depuis l'application, une seule fois.</p>
+<h2>Verdict</h2>
+<p>Plume ne remplace pas une relecture attentive — rien ne remplace une relecture attentive. Mais il transforme un enregistrement brut en document de travail : un Word hébraïque lisible, un lecteur pour vérifier, des mots incertains signalés, et un vocabulaire qui s'améliore à chaque cours.</p>
+<p>Pour un étudiant en yéchiva, un rav qui prépare ses chiourim, ou quiconque accumule des heures de Guemara sans jamais les relire : c'est le chaînon manquant entre l'audio et la page.</p>
+      </div>
+
+      <div class="source-box">
+        <div>
+          <div class="k">Site officiel</div>
+          <div class="v">github.com/arielbaz/plume</div>
+        </div>
+        <a class="btn btn-primary" href="https://github.com/arielbaz/plume" target="_blank" rel="noopener">Ouvrir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="article-plats"><span class="k">Disponible sur</span><span class="platforms" role="img" aria-label="Compatible : Windows, macOS" title="Compatible : Windows, macOS"><span class="plat plat-win" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g fill="currentColor"><rect x="9.1" y="7.3" width="3" height="3" rx="0.35"/><rect x="12.6" y="7.3" width="3" height="3" rx="0.35"/><rect x="9.1" y="10.8" width="3" height="3" rx="0.35"/><rect x="12.6" y="10.8" width="3" height="3" rx="0.35"/></g></svg></span><span class="plat plat-mac" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g transform="translate(7.9 6.2) scale(0.34)" fill="currentColor"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.3-1.5-2.8-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.9c.7-1 1-2 1-2.1-.1 0-2-.8-2-3.3Z"/><path d="M14.6 6.6c.5-.6.9-1.5.8-2.4-.8.1-1.8.5-2.4 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.5 2.4-1.1Z"/></g></svg></span></span></div>
+
+      <div class="article-footer">
+        <div class="tags">
+          <span class="tag">#transcription</span><span class="tag">#hébreu</span><span class="tag">#talmud</span><span class="tag">#open source</span><span class="tag">#whisper</span><span class="tag">#word</span>
+        </div>
+        <div class="share">
+          <span class="muted" style="font-size:13px">Partager</span>
+          <a class="icon-btn" href="https://wa.me/?text=Plume%20%3A%20un%20cours%20de%20Guemara%20transform%C3%A9%20en%20Word%2C%20sans%20passer%20par%20le%20cloud%20https%3A%2F%2Faribaz.com%2Farticles%2Fplume.html" target="_blank" rel="noopener" aria-label="Partager sur WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <button class="icon-btn" type="button" data-share="https://aribaz.com/articles/plume.html" aria-label="Copier le lien"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.8a4.2 4.2 0 0 0 6 0l2.6-2.6a4.2 4.2 0 0 0-6-6l-1.5 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 10.2a4.2 4.2 0 0 0-6 0L5.4 12.8a4.2 4.2 0 0 0 6 6l1.5-1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <nav class="post-nav" aria-label="Articles voisins">
+        <span></span>
+        <a class="next" href="/articles/bitchat.html"><span class="dir">Plus ancien →</span><span class="t">Bitchat : la messagerie qui marche même quand tout le réseau tombe</span></a>
+      </nav>
+    </div>
+  </article>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>À lire ensuite</h2><p>Dans le même esprit.</p></div>
+        <a class="link-arrow" href="/">Toutes les actus <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="card-grid"><a class="post-card" href="/articles/sharex.html" data-post data-cat="Productivité" data-search="ShareX : l'outil de capture d'écran le plus complet, et il est gratuit Capture, annotation, GIF, OCR. Cinq logiciels en un, et la facture reste à zéro euro. windows capture d'écran open source productivité Productivité" style="transition-delay:0ms">
+  <div class="card-art art-produ"><span class="app-tile"><img src="/assets/img/logos/sharex.png" alt="" loading="lazy" width="256" height="256"></span><span class="art-shine" aria-hidden="true"></span></div>
+  <div class="card-body">
+    <div class="card-meta"><span class="pill" data-cat="Productivité">Productivité</span><span>16 octobre 2026</span></div>
+    <h3>ShareX : l'outil de capture d'écran le plus complet, et il est gratuit</h3>
+    <p>Capture, annotation, GIF, OCR. Cinq logiciels en un, et la facture reste à zéro euro.</p>
+    <div class="card-foot"><span>2 min de lecture</span><span class="card-end"><span class="platforms" role="img" aria-label="Compatible : Windows" title="Compatible : Windows"><span class="plat plat-win" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g fill="currentColor"><rect x="9.1" y="7.3" width="3" height="3" rx="0.35"/><rect x="12.6" y="7.3" width="3" height="3" rx="0.35"/><rect x="9.1" y="10.8" width="3" height="3" rx="0.35"/><rect x="12.6" y="10.8" width="3" height="3" rx="0.35"/></g></svg></span></span><span class="go">Lire <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  </div>
+</a><a class="post-card" href="/articles/onlyoffice.html" data-post data-cat="Productivité" data-search="OnlyOffice : la suite bureautique gratuite qui n'abîme pas tes fichiers Word Word, Excel, PowerPoint sans abonnement. Et surtout : tes .docx gardent leur mise en page. bureautique office gratuit compatibilité Productivité" style="transition-delay:0ms">
+  <div class="card-art art-produ"><span class="app-tile"><img src="/assets/img/logos/onlyoffice.png" alt="" loading="lazy" width="256" height="256"></span><span class="art-shine" aria-hidden="true"></span></div>
+  <div class="card-body">
+    <div class="card-meta"><span class="pill" data-cat="Productivité">Productivité</span><span>7 octobre 2026</span></div>
+    <h3>OnlyOffice : la suite bureautique gratuite qui n'abîme pas tes fichiers Word</h3>
+    <p>Word, Excel, PowerPoint sans abonnement. Et surtout : tes .docx gardent leur mise en page.</p>
+    <div class="card-foot"><span>2 min de lecture</span><span class="card-end"><span class="platforms" role="img" aria-label="Compatible : Windows, macOS, iPhone / iPad, Android" title="Compatible : Windows, macOS, iPhone / iPad, Android"><span class="plat plat-win" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g fill="currentColor"><rect x="9.1" y="7.3" width="3" height="3" rx="0.35"/><rect x="12.6" y="7.3" width="3" height="3" rx="0.35"/><rect x="9.1" y="10.8" width="3" height="3" rx="0.35"/><rect x="12.6" y="10.8" width="3" height="3" rx="0.35"/></g></svg></span><span class="plat plat-mac" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g transform="translate(7.9 6.2) scale(0.34)" fill="currentColor"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.3-1.5-2.8-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.9c.7-1 1-2 1-2.1-.1 0-2-.8-2-3.3Z"/><path d="M14.6 6.6c.5-.6.9-1.5.8-2.4-.8.1-1.8.5-2.4 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.5 2.4-1.1Z"/></g></svg></span><span class="plat plat-ios" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.4" y="2.3" width="11.2" height="19.4" rx="2.8" fill="none" stroke="currentColor" stroke-width="1.5"/><g transform="translate(8.4 8.2) scale(0.3)" fill="currentColor"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.3-1.5-2.8-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.9c.7-1 1-2 1-2.1-.1 0-2-.8-2-3.3Z"/><path d="M14.6 6.6c.5-.6.9-1.5.8-2.4-.8.1-1.8.5-2.4 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.5 2.4-1.1Z"/></g></svg></span><span class="plat plat-android" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.4" y="2.3" width="11.2" height="19.4" rx="2.8" fill="none" stroke="currentColor" stroke-width="1.5"/><g fill="currentColor"><rect x="8.4" y="10.1" width="7.2" height="4.5" rx="1.3"/><path d="M9.4 9.9 8.5 8.3M14.6 9.9l.9-1.6" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/><circle cx="10.4" cy="12.1" r="0.55" fill="#fff"/><circle cx="13.6" cy="12.1" r="0.55" fill="#fff"/></g></svg></span></span><span class="go">Lire <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  </div>
+</a><a class="post-card" href="/articles/handy.html" data-post data-cat="Productivité" data-search="Handy : dicte ton texte, l'IA s'occupe du reste (et en local) Dicte, arrête de taper. L'IA transcrit ta voix en local, sans envoyer un mot à un serveur. dictée ia open source accessibilité Productivité" style="transition-delay:0ms">
+  <div class="card-art art-produ"><span class="app-tile"><img src="/assets/img/logos/handy.png" alt="" loading="lazy" width="256" height="256"></span><span class="art-shine" aria-hidden="true"></span></div>
+  <div class="card-body">
+    <div class="card-meta"><span class="pill" data-cat="Productivité">Productivité</span><span>29 septembre 2026</span></div>
+    <h3>Handy : dicte ton texte, l'IA s'occupe du reste (et en local)</h3>
+    <p>Dicte, arrête de taper. L'IA transcrit ta voix en local, sans envoyer un mot à un serveur.</p>
+    <div class="card-foot"><span>2 min de lecture</span><span class="card-end"><span class="platforms" role="img" aria-label="Compatible : Windows, macOS" title="Compatible : Windows, macOS"><span class="plat plat-win" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g fill="currentColor"><rect x="9.1" y="7.3" width="3" height="3" rx="0.35"/><rect x="12.6" y="7.3" width="3" height="3" rx="0.35"/><rect x="9.1" y="10.8" width="3" height="3" rx="0.35"/><rect x="12.6" y="10.8" width="3" height="3" rx="0.35"/></g></svg></span><span class="plat plat-mac" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.9" y="4.2" width="18.2" height="11.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.4 17.4h21.2l-1.3 1.9H2.7Z" fill="currentColor"/><g transform="translate(7.9 6.2) scale(0.34)" fill="currentColor"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-.9-1.4-2.3-1.5-2.8-1.6-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.9c.7-1 1-2 1-2.1-.1 0-2-.8-2-3.3Z"/><path d="M14.6 6.6c.5-.6.9-1.5.8-2.4-.8.1-1.8.5-2.4 1.2-.5.6-.9 1.5-.8 2.3.9.1 1.8-.5 2.4-1.1Z"/></g></svg></span></span><span class="go">Lire <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5.5 19.5 12 13 18.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  </div>
+</a></div>
+    </div>
+  </section>
+
+  <section class="section-tight"><div class="wrap">
+  <div class="cta-band reveal">
+    <h2>Les actus arrivent d'abord sur WhatsApp.</h2>
+    <p>Deux à quatre publications par mois, sans spam : des outils gratuits, des réglages utiles et des astuces testées. Le site garde tout, la chaîne te prévient.</p>
+    <div class="hero-actions" style="margin-bottom:0">
+      <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Rejoindre la chaîne ARIBAZ</a>
+      <a class="btn btn-ghost" href="/feed.xml"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19a1 1 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 11.5A8 8 0 0 1 12.5 19.5M4.5 5a14.5 14.5 0 0 1 14.5 14.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> S'abonner par RSS</a>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="/"><img src="/assets/img/logo.png" alt="ARIBAZ" width="104" height="32"></a>
+        <p>Je fouille internet, parfois je trouve des trucs. Une sélection d'outils, de réglages et d'astuces testés, publiés deux à quatre fois par mois.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explorer</h4>
+          <a href="/">Toutes les actus</a>
+          <a href="/invitation.html">Invitation</a>
+          <a href="/services.html">Services</a>
+          <a href="/services/filtres/">Aribaz Filter</a>
+          <a href="/apropos.html">À propos</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/feed.xml">Flux RSS</a>
+        </div>
+        <div class="footer-col">
+          <h4>Thèmes</h4>
+          <a href="/articles/#productivite">Productivité</a><a href="/articles/#securite">Sécurité</a><a href="/articles/#filtrage">Filtrage</a><a href="/articles/#alternatives">Alternatives</a><a href="/articles/#mobile">Mobile</a>
+        </div>
+        <div class="footer-col">
+          <h4>Suivre</h4>
+          <a href="https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S" target="_blank" rel="noopener">Chaîne WhatsApp</a>
+          <a href="https://wa.me/972557731349" target="_blank" rel="noopener">WhatsApp direct</a>
+          <a href="mailto:arielelbaz20@gmail.com">arielelbaz20@gmail.com</a>
+          <a href="https://github.com/arielbaz" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-word" aria-hidden="true">ARIBAZ</div>
+    <div class="footer-bottom">
+      <span>© 2026 ARIBAZ. Écrit et testé à la main.</span>
+      <span><a href="/feed.xml">RSS</a> · <a href="https://github.com/arielbaz" target="_blank" rel="noopener">Code source</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/app.js?v=bde541e148" defer></script>
+</body>
+</html>

@@ -1,5 +1,22 @@
 [
   {
+    "title": "Plume : un cours de Guemara transformé en Word, sans passer par le cloud",
+    "slug": "plume",
+    "date": "2026-11-11",
+    "category": "Productivité",
+    "tags": [
+      "transcription",
+      "hébreu",
+      "talmud",
+      "open source",
+      "whisper",
+      "word"
+    ],
+    "excerpt": "Un shiur d'une heure, un MP3, et un document Word propre en hébreu RTL. Plume transcrit en local, suit l'audio et apprend de tes corrections.",
+    "readTime": 4,
+    "url": "/articles/plume.html"
+  },
+  {
     "title": "Bitchat : la messagerie qui marche même quand tout le réseau tombe",
     "slug": "bitchat",
     "date": "2026-11-10",
