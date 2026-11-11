@@ -584,6 +584,7 @@ function homePage() {
         <span>${icon('layers')} <b data-count-to="${posts.length}">0</b>&nbsp;actus publiées</span>
         <span>${icon('clock')} <b>2 à 4</b>&nbsp;par mois</span>
         <span>${icon('check')} <b>0</b>&nbsp;cookie, <b>0</b>&nbsp;pub</span>
+        <span>${icon('heart')} <b>100&nbsp;%</b>&nbsp;passion</span>
       </div>
       <a class="scroll-cue" href="#journal" aria-label="Voir les actus"><span></span></a>
     </div>
