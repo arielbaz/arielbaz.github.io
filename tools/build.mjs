@@ -480,7 +480,7 @@ function nav(active) {
 }
 
 function footer() {
-  const cats = CATEGORIES.map((c) => `<a href="/articles/#${c.slug}">${c.name}</a>`).join('');
+  const cats = CATEGORIES.map((c) => `<a href="/#${c.slug}">${c.name}</a>`).join('');
   return `<footer class="footer">
   <div class="wrap">
     <div class="footer-top">
@@ -643,7 +643,7 @@ function homePage() {
       <div class="value-grid">
         ${CATEGORIES.map((c) => {
           const n = posts.filter((p) => p.category === c.name).length;
-          return `<a class="value reveal" href="/articles/#${c.slug}" style="text-decoration:none;color:inherit">
+          return `<a class="value reveal" href="/#${c.slug}" style="text-decoration:none;color:inherit">
             <div class="ico" style="background:var(--bg-soft)">${icon(iconForCat(c.name))}</div>
             <h3>${c.name}</h3>
             <p>${c.blurb}</p>
@@ -692,6 +692,7 @@ function articlesPage() {
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="${SITE.url}/">
 <meta http-equiv="refresh" content="0; url=/">
+<script>if(location.hash)location.replace("/"+location.hash);</script>
 <style>
   body { margin:0; min-height:100vh; display:grid; place-items:center; font-family:ui-sans-serif,-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif; background:#fff; color:#1d1d1f; text-align:center; padding:24px; }
   @media (prefers-color-scheme: dark) { body { background:#000; color:#f5f5f7; } }
@@ -833,7 +834,7 @@ function articlePage(post, prev, next) {
     <header class="article-hero">
       <div class="wrap wrap-narrow">
         <div class="meta">
-          <a class="pill" data-cat="${esc(post.category)}" href="/articles/#${post.cat.slug}">${esc(post.category)}</a>
+          <a class="pill" data-cat="${esc(post.category)}" href="/#${post.cat.slug}">${esc(post.category)}</a>
           <span>${fmtDate(post.date)}</span>
           <span>·</span>
           <span>${post.readTime} min de lecture</span>
