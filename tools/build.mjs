@@ -1145,7 +1145,7 @@ ${footer()}
 /* -------------------------------------------------------------------------- */
 /* L'application vit encore sur son URL Vercel provisoire (docs/RENOMMAGE-ARIBAZ.md).
    Le jour où elle passe sur un domaine définitif, seule cette constante change. */
-const FILTER_APP = 'https://geder-fawn.vercel.app';
+const FILTER_APP = 'https://atfilter.aribaz.com';
 const FILTER_REPO = 'https://github.com/arielbaz/Geder';
 
 const FILTER_PLATFORMS = [
