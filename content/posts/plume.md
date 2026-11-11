@@ -20,7 +20,7 @@ C'est un projet open source, gratuit, construit sur **Whisper** (le moteur d'Ope
 
 ## Ce qu'il fait vraiment
 
-- **Import de fichiers** : MP3, M4A/AAC, WAV, FLAC, OGG, AIFF, MP4, MOV… glisser-déposer ou sélection multiple.
+- **Import de fichiers** : MP3, M4A/AAC, WAV, FLAC, OGG, AIFF, MP4, MOV… glisser-déposer ou sélection multiple, sur macOS, Windows et Android.
 - **Transcription locale** : modèles Whisper de Tiny à Large v3 Turbo. Sur un Mac Apple Silicon, le GPU Metal est utilisé ; sur Windows, le CPU.
 - **Précision renforcée** : beam search à 5 faisceaux et normalisation du niveau audio avant transcription.
 - **Word propre** : titre, date, source, durée, langue, modèle, paragraphes justifiés, pied de page numéroté, propriétés du document.
@@ -49,6 +49,7 @@ Trois choses font la différence :
 - **Une langue principale par transcription.** Un cours en français avec des citations hébraïques se transcrit bien en choisissant « Français » ; un cours en hébreu avec des explications en français se transcrit en « Hébreu », avec parfois des termes français rendus en caractères hébraïques. La détection automatique par segment est le prochain chantier.
 - **L'araméen du Talmud reste difficile.** Il n'existe pas de modèle Whisper araméen. Le lexique, le contexte et un futur modèle affiné aident, mais il faut relire.
 - **Pas de séparation des intervenants** (diarisation) pour l'instant.
+- **Android** : APK arm64 signé, mais l'application mobile n'a pas encore été testée sur un appareil réel ; l'export Word s'ouvre via le partage Android.
 - **Le lecteur audio fonctionne pendant la session** ; l'historique persistant des transcriptions n'est pas encore là.
 
 Sur de vrais enregistrements, la qualité dépend beaucoup du micro, du bruit de fond et de l'élocution. Un test de 5 à 10 minutes reste la meilleure façon de régler glossaire et modèle.
@@ -56,6 +57,7 @@ Sur de vrais enregistrements, la qualité dépend beaucoup du micro, du bruit de
 ## Télécharger
 
 - **macOS (Apple Silicon)** : [Plume-0.3.0-arm64.dmg](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume-0.3.0-arm64.dmg) — ouvrir le DMG, glisser Plume dans `Applications`.
+- **Android** : [Plume-0.3.0-android-arm64.apk](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume-0.3.0-android-arm64.apk) — APK arm64, Android 7 minimum. Autoriser l'installation depuis le navigateur ou le gestionnaire de fichiers.
 - **Windows** : [installateur .exe](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume_0.3.0_x64-setup.exe) (recommandé) ou [paquet .msi](https://github.com/arielbaz/plume/releases/download/v0.3.0/Plume_0.3.0_x64_en-US.msi).
 - **Toutes les versions** : [github.com/arielbaz/plume/releases](https://github.com/arielbaz/plume/releases).
 - **Code source** : [github.com/arielbaz/plume](https://github.com/arielbaz/plume) — licence MIT.
