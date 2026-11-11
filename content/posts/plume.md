@@ -54,9 +54,12 @@ Sur de vrais enregistrements, la qualité dépend beaucoup du micro, du bruit de
 
 ## Télécharger
 
-- **macOS (Apple Silicon)** : [Plume pour macOS](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume-0.2.0-arm64.dmg) — glisser l'application dans `Applications`.
-- **Windows** : [installateur Windows](https://github.com/arielbaz/plume/releases/latest) — choisir le fichier `.exe` ou `.msi` de la dernière release.
+- **macOS (Apple Silicon)** : [Plume-0.2.0-arm64.dmg](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume-0.2.0-arm64.dmg) — ouvrir le DMG, glisser Plume dans `Applications`.
+- **Windows** : [installateur .exe](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume_0.2.0_x64-setup.exe) (recommandé) ou [paquet .msi](https://github.com/arielbaz/plume/releases/download/v0.2.0/Plume_0.2.0_x64_en-US.msi).
+- **Toutes les versions** : [github.com/arielbaz/plume/releases](https://github.com/arielbaz/plume/releases).
 - **Code source** : [github.com/arielbaz/plume](https://github.com/arielbaz/plume) — licence MIT.
+
+Les binaires ne sont pas signés : sous macOS, clic droit → **Ouvrir** au premier lancement ; sous Windows, SmartScreen peut demander de confirmer (« Informations complémentaires » → « Exécuter quand même »).
 
 L'application n'est pas notariée par Apple : au premier lancement, clic droit sur l'icône → **Ouvrir**. Le modèle est téléchargé depuis l'application, une seule fois.
 
