@@ -1809,3 +1809,40 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
   transition: transform 1.1s var(--ease), opacity 0.5s var(--ease);
 }
 .svc:hover .svc-art::before { transform: translate3d(70%, 0, 0) rotate(2deg); opacity: 0.6; }
+
+/* ---------- Services : visuels plus riches (au niveau de l'accueil) ---------- */
+.svc-art {
+  background:
+    radial-gradient(70% 80% at 18% 0%, rgba(255,255,255,0.9), transparent 58%),
+    radial-gradient(60% 70% at 90% 100%, color-mix(in srgb, var(--brand, #0a84ff) 40%, white), transparent 70%),
+    linear-gradient(150deg,
+      color-mix(in srgb, var(--brand, #0a84ff) 20%, white),
+      color-mix(in srgb, var(--brand, #0a84ff) 46%, white));
+}
+:root[data-theme="dark"] .svc-art {
+  background:
+    radial-gradient(70% 80% at 18% 0%, color-mix(in srgb, var(--brand, #0a84ff) 34%, transparent), transparent 62%),
+    radial-gradient(60% 70% at 90% 100%, color-mix(in srgb, var(--brand, #0a84ff) 22%, transparent), transparent 70%),
+    linear-gradient(150deg, #15161c, #0d0e12);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .svc-art {
+    background:
+      radial-gradient(70% 80% at 18% 0%, color-mix(in srgb, var(--brand, #0a84ff) 34%, transparent), transparent 62%),
+      radial-gradient(60% 70% at 90% 100%, color-mix(in srgb, var(--brand, #0a84ff) 22%, transparent), transparent 70%),
+      linear-gradient(150deg, #15161c, #0d0e12);
+  }
+}
+.svc-mini { display: none; }
+.svc-tile {
+  width: 104px; height: 104px; border-radius: 28px;
+  background: linear-gradient(160deg, #fff, color-mix(in srgb, var(--brand, #0a84ff) 8%, white));
+  box-shadow: 0 26px 46px -18px color-mix(in srgb, var(--brand, #0a84ff) 55%, rgba(0,0,0,0.5)), 0 0 0 1px rgba(0,0,0,0.05);
+}
+.svc-tile svg { width: 48px; height: 48px; stroke-width: 1.5; }
+.svc-tile::before, .svc-tile::after {
+  content: ""; position: absolute; inset: -22px; border-radius: 44px; pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--brand, #0a84ff) 28%, transparent);
+}
+.svc-tile::after { inset: -46px; border-radius: 62px; border-color: color-mix(in srgb, var(--brand, #0a84ff) 15%, transparent); }
+.svc:hover .svc-tile { transform: translateY(-4px) scale(1.06) rotate(-2deg); }
