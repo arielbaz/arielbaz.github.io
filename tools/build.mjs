@@ -1081,7 +1081,7 @@ function servicesPage() {
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>Services</span>
-      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Un doigt, <span class="gradient-text">dix cerveaux.</span></h1>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:18ch">Un cerveau, <span class="gradient-text">dix doigts.</span></h1>
       <p class="lede" style="margin-inline:0;max-width:52ch">J'aime toucher à tout, je garde toujours espoir et je suis têtu : le trio idéal pour réparer des trucs. Quatre maisons — Electronics, Events, Web et Systems — pour un seul bricoleur. Ton besoin n'est pas dans la liste ? Écris quand même : c'est justement là que ça devient intéressant.</p>
       <div class="hero-meta" style="justify-content:flex-start">
         <span>${icon('check')} Jérusalem & à distance</span>
