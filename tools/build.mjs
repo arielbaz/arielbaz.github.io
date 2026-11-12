@@ -1545,8 +1545,8 @@ function invitationPage() {
           <h1>Chaque invitation <span class="gradient-text">raconte une histoire.</span></h1>
           <p class="lede">Un lien élégant à envoyer sur WhatsApp : la date, le lieu, l\u2019itinéraire, la musique et les réponses de vos invités. Sans application, sans PDF illisible.</p>
           <div class="hero-actions" style="justify-content:flex-start">
-            <a class="btn btn-wa" href="${SITE.waDirect}?text=${encodeURIComponent("Bonjour ARIBAZ, je voudrais une invitation pour :")}" target="_blank" rel="noopener">${icon('whatsapp')} Préparer mon invitation</a>
             <a class="btn btn-ghost" href="/invitation/demo.html">Voir la démo ${icon('arrow')}</a>
+            <a class="btn btn-wa" href="${SITE.waDirect}?text=${encodeURIComponent("Bonjour ARIBAZ, je voudrais une invitation pour :")}" target="_blank" rel="noopener">${icon('whatsapp')} Préparer mon invitation</a>
           </div>
           <div class="hero-meta" style="justify-content:flex-start;margin-top:26px">
             <span>${icon('clock')} Livré en 5 à 10 jours</span>
