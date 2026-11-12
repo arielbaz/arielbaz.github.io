@@ -560,6 +560,40 @@ const featured = posts.find((p) => p.featured === true || p.featured === 'true')
 const others = latest.filter((p) => p !== featured).slice(0, 5);
 const others_all = posts.filter((p) => p !== featured);
 
+/* Données structurées de l'accueil : le site + l'activité locale (infos déjà publiques sur le site). */
+function homeJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE.url}/#site`,
+        url: `${SITE.url}/`,
+        name: SITE.name,
+        description: SITE.description,
+        inLanguage: 'fr',
+        publisher: { '@id': `${SITE.url}/#business` },
+      },
+      {
+        '@type': 'LocalBusiness',
+        '@id': `${SITE.url}/#business`,
+        name: SITE.name,
+        url: `${SITE.url}/`,
+        logo: `${SITE.url}/assets/img/logo.png`,
+        image: `${SITE.url}/assets/img/og.png`,
+        description: "Réparation électronique et micro-soudure, sites web, cartes de mariage numériques, DevOps et filtrage internet. Jérusalem et à distance.",
+        telephone: SITE.phone,
+        email: SITE.email,
+        address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: 'IL' },
+        areaServed: [{ '@type': 'City', name: SITE.city }],
+        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Ingénierie du son'],
+        sameAs: [SITE.whatsapp, SITE.github],
+      },
+    ],
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+}
+
 function homePage() {
   const title = `${SITE.name} — ${SITE.tagline}`;
   const desc = SITE.description;
@@ -674,7 +708,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/' }) + body;
+  return head({ title, description: desc, url: '/', extra: homeJsonLd() }) + body;
 }
 
 function iconForCat(name) {
