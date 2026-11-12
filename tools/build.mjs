@@ -81,6 +81,7 @@ const ICONS = {
   clock: `<circle cx="12" cy="12" r="8.4" ${STROKE}/><path d="M12 7.6V12l3 1.8" ${STROKE}/>`,
   sun: `<circle cx="12" cy="12" r="4.2" ${STROKE}/><path d="M12 2.6v2M12 19.4v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.6 12h2M19.4 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" ${STROKE}/>`,
   plus: `<path d="M12 5v14M5 12h14" ${STROKE}/>`,
+  laptop: `<rect x="4.5" y="5" width="15" height="10.5" rx="1.8" ${STROKE}/><path d="M2.5 19h19" ${STROKE}/>`,
   wrench: `<path d="M15.2 4.8a4 4 0 0 0 4 6.9L9.6 21.3a2.3 2.3 0 1 1-3.3-3.3L16 8.4a4 4 0 0 0-0.8-3.6Z" ${STROKE}/>`,
   chip: `<rect x="7" y="7" width="10" height="10" rx="2" ${STROKE}/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" ${STROKE}/>`,
   bike: `<circle cx="6" cy="17" r="3.2" ${STROKE}/><circle cx="18" cy="17" r="3.2" ${STROKE}/><path d="m9 17 3-7h4M12 10l3.5 7M14 7h3" ${STROKE}/>`,
@@ -586,7 +587,7 @@ function homeJsonLd() {
         email: SITE.email,
         address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: 'IL' },
         areaServed: [{ '@type': 'City', name: SITE.city }],
-        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Ingénierie du son'],
+        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation'],
         sameAs: [SITE.whatsapp, SITE.github],
       },
     ],
@@ -973,7 +974,7 @@ const SERVICE_DETAILS = {
     includes: ['Design sur mesure : couleurs, typographie', 'RSVP adultes / enfants', 'Itinéraire Waze et Google Maps', 'Aperçu soigné au partage WhatsApp'],
     delai: '5 à 10 jours',
   },
-  'Ingénieur du son': {
+  'Technicien son': {
     detail: "Sonorisation d\u2019événement, captation de voix, nettoyage et mixage. Le bon son est celui qu\u2019on ne remarque pas — jusqu\u2019au moment où il porte la salle.",
     includes: ['Sonorisation de salle ou d\u2019extérieur', 'Captation et montage', 'Nettoyage de bruit, égalisation, mixage', 'Livraison de fichiers prêts à diffuser'],
     delai: 'selon l\u2019événement',
@@ -1036,7 +1037,7 @@ const SERVICES = [
     tagline: 'Le matériel, réparé au bon niveau.',
     desc: 'Du composant à la machine complète : diagnostic, micro-soudure, réparation. Ce qui peut être sauvé le sera.',
     items: [
-      { icon: 'wrench', title: 'Réparation ordinateur & Mac', text: 'Diagnostic complet, SSD, RAM, batterie, écran, nappes. Sauvegarde des données incluse quand c\u2019est possible.', bullets: ['Diagnostic honnête, pas de devis à l\u2019aveugle', 'Récupération de données', 'Nettoyage & pâte thermique'] },
+      { icon: 'laptop', title: 'Réparation ordinateur & Mac', text: 'Diagnostic complet, SSD, RAM, batterie, écran, nappes. Sauvegarde des données incluse quand c\u2019est possible.', bullets: ['Diagnostic honnête, pas de devis à l\u2019aveugle', 'Récupération de données', 'Nettoyage & pâte thermique'] },
       { icon: 'chip', title: 'Micro-soudure & carte mère', text: 'Quand le devis officiel dit « irréparable », il reste souvent quelque chose à tenter.', bullets: ['Diagnostic au composant', 'Remplacement de connecteurs', 'Réparation d\u2019alimentations'] },
       { icon: 'bike', title: 'Électronique & mobilité électrique', text: 'Vélos électriques, contrôleurs, batteries, affichages : le même métier, avec du couple en plus.', bullets: ['Contrôleurs 48V', 'Double batterie & autonomie', 'Diagnostic de capteurs'] },
     ],
@@ -1047,7 +1048,7 @@ const SERVICES = [
     desc: 'Invitations digitales, cartes de mariage, sonorisation : ce qui se voit et ce qui s\u2019entend, sans fausse note.',
     items: [
       { icon: 'heart', title: 'Cartes de mariage numériques', text: 'Un lien élégant, avec les infos, le plan et les réponses — plutôt qu\u2019un PDF illisible sur téléphone.', bullets: ['Design sur mesure', 'RSVP en ligne', 'Compte à rebours & plan'], href: '/invitation.html', hrefLabel: 'Voir la page Invitation' },
-      { icon: 'music', title: 'Ingénieur du son', text: 'Sonorisation d\u2019événement, captation, nettoyage et mixage de voix.', bullets: ['Sonorisation événement', 'Enregistrement & montage', 'Restauration audio'] },
+      { icon: 'music', title: 'Technicien son', text: 'Sonorisation d\u2019événement, captation, nettoyage et mixage de voix.', bullets: ['Sonorisation événement', 'Enregistrement & montage', 'Restauration audio'] },
     ],
   },
   {
