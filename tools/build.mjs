@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
+import { servicePage, servicePath } from './service-pages.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const POSTS_DIR = path.join(ROOT, 'content', 'posts');
@@ -1129,15 +1130,13 @@ function servicesPage() {
               <div class="svc-foot">
                 <span>${it.href ? 'Produit maison' : 'Sur devis'}</span>
                 <span style="display:inline-flex;align-items:center;gap:14px">
-                  ${it.href ? `<a class="svc-more" href="${it.href}">Découvrir ${icon('arrow')}</a>` : ''}
-                  <button class="svc-more" type="button" data-service="${SLUG(it.title)}" aria-haspopup="dialog">Détails ${icon('arrow')}</button>
+                  <a class="svc-more svc-open" href="${it.href || servicePath(SLUG, it)}">${it.href ? 'Découvrir' : 'Voir la page'} ${icon('arrow')}</a>
                 </span>
               </div>
             </div>
           </article>`).join('')}
         </div>
       </div>`).join('\n      ')}
-      ${SERVICES.map((f) => f.items.map((it) => serviceDialog(it, f)).join('')).join('')}
     </div>
   </section>
 
@@ -1809,6 +1808,7 @@ function sitemap() {
     { loc: '/', pri: '1.0', mod: posts[0].date },
     { loc: '/services.html', pri: '0.7', mod: posts[0].date },
     { loc: '/services/filtres/', pri: '0.8', mod: posts[0].date },
+    ...SERVICES.flatMap((f) => f.items.filter((it) => !it.href).map((it) => ({ loc: servicePath(SLUG, it), pri: '0.7', mod: posts[0].date }))),
     { loc: '/invitation.html', pri: '0.8', mod: posts[0].date },
     { loc: '/invitation/demo.html', pri: '0.6', mod: posts[0].date },
     { loc: '/contact.html', pri: '0.6', mod: posts[0].date },
@@ -1859,6 +1859,13 @@ posts.forEach((p, idx) => {
 write('apropos.html', aboutPage());
 write('services.html', servicesPage());
 write('services/filtres/index.html', filtresPage());
+/* Une page dédiée pour chaque service qui n'a pas déjà la sienne. */
+const SERVICE_CTX = { SITE, SERVICE_DETAILS, SLUG, head, nav, footer, ctaBand, icon, esc };
+for (const family of SERVICES) {
+  for (const item of family.items.filter((it) => !it.href)) {
+    write(servicePath(SLUG, item).replace(/^\//, ''), servicePage(SERVICE_CTX, family, item));
+  }
+}
 write('contact.html', contactPage());
 write('invitation.html', invitationPage());
 write('invitation/demo.html', invitationDemoPage());

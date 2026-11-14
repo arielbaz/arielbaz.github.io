@@ -1805,6 +1805,12 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 @media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
 
+/* ---------- Tuile de service = lien vers sa page (zone cliquable étirée) ---------- */
+.svc .svc-more.svc-open { position: static; z-index: auto; }
+.svc .svc-more.svc-open::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.svc:has(.svc-open:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
+.svc .svc-open:focus-visible { outline: none; }
+
 /* ---------- Services : carte entièrement cliquable + reflet comme l'accueil ---------- */
 .svc { cursor: pointer; }
 .svc .svc-more[data-service]::after { content: ""; position: absolute; inset: 0; z-index: 1; }
