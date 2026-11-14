@@ -82,6 +82,7 @@ const ICONS = {
   sun: `<circle cx="12" cy="12" r="4.2" ${STROKE}/><path d="M12 2.6v2M12 19.4v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.6 12h2M19.4 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" ${STROKE}/>`,
   plus: `<path d="M12 5v14M5 12h14" ${STROKE}/>`,
   laptop: `<rect x="4.5" y="5" width="15" height="10.5" rx="1.8" ${STROKE}/><path d="M2.5 19h19" ${STROKE}/>`,
+  megaphone: `<path d="M3.5 10.5v3a1 1 0 0 0 1 1H7l7.5 4V5.5L7 9.5H4.5a1 1 0 0 0-1 1Z" ${STROKE}/><path d="M18 9.2a4.2 4.2 0 0 1 0 5.6M7 14.5l1.3 4.5h2.4" ${STROKE}/>`,
   wrench: `<path d="M15.2 4.8a4 4 0 0 0 4 6.9L9.6 21.3a2.3 2.3 0 1 1-3.3-3.3L16 8.4a4 4 0 0 0-0.8-3.6Z" ${STROKE}/>`,
   chip: `<rect x="7" y="7" width="10" height="10" rx="2" ${STROKE}/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" ${STROKE}/>`,
   bike: `<circle cx="6" cy="17" r="3.2" ${STROKE}/><circle cx="18" cy="17" r="3.2" ${STROKE}/><path d="m9 17 3-7h4M12 10l3.5 7M14 7h3" ${STROKE}/>`,
@@ -587,7 +588,7 @@ function homeJsonLd() {
         email: SITE.email,
         address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: 'IL' },
         areaServed: [{ '@type': 'City', name: SITE.city }],
-        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation'],
+        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation', 'Publicité en ligne'],
         sameAs: [SITE.whatsapp, SITE.github],
       },
     ],
@@ -999,6 +1000,11 @@ const SERVICE_DETAILS = {
     includes: ['Étude et câblage', 'Baie de brassage et switch PoE', 'Wi-Fi maillé et couverture réelle', 'Tests de débit et de latence'],
     delai: '1 à 3 jours',
   },
+  'Publicité dans Atguard': {
+    detail: "Ton annonce s’affiche directement dans le logiciel Atguard, auprès de tous les utilisateurs de la version gratuite : des milliers de personnes chaque mois, au moment où elles utilisent l’outil. Le format et le tarif se calent sur ton besoin.",
+    includes: ['Emplacement visible par tous les utilisateurs Free', 'Des milliers de vues chaque mois', 'Annonce adaptée au format du logiciel', 'Tarif et durée sur devis'],
+    delai: 'selon la campagne',
+  },
   'Conseil & audit': {
     detail: "Avant d\u2019acheter, demande. Un audit de trente minutes évite souvent trois cents euros de matériel inutile — et quelques mauvaises surprises.",
     includes: ['Choix de matériel adapté', 'Audit sauvegardes et sécurité', 'Détection d\u2019arnaques et de faux sites', 'Recommandations écrites'],
@@ -1073,10 +1079,19 @@ const SERVICES = [
   },
 ];
 
+/* Cinquième famille : publicité dans le logiciel Atguard (sur devis). */
+SERVICES.push({
+  brand: 'ARIBAZ Ads', slug: 'ads', color: '#ff375f',
+  tagline: 'Ta pub, devant de vrais utilisateurs.',
+  desc: 'Un emplacement publicitaire directement dans un logiciel utilisé chaque mois par des milliers de personnes. Chaque campagne est chiffrée sur devis.',
+  items: [
+    { icon: 'megaphone', title: 'Publicité dans Atguard', text: 'Ton annonce affichée directement dans le logiciel Atguard, devant tous les utilisateurs de la version gratuite : des milliers de personnes chaque mois.', bullets: ['Visible par tous les utilisateurs Free', 'Des milliers de vues par mois', 'Tarif sur devis'] },
+  ],
+});
 
 function servicesPage() {
   const title = `Services — ${SITE.name}`;
-  const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, filtrage internet. Du travail propre, expliqué sans jargon.";
+  const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, filtrage internet, publicité dans Atguard. Du travail propre, expliqué sans jargon.";
   const body = `${nav('services')}
 <main id="contenu">
   <section class="page-hero">
