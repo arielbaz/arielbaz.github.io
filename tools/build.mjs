@@ -589,7 +589,7 @@ function homeJsonLd() {
         email: SITE.email,
         address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: 'IL' },
         areaServed: [{ '@type': 'City', name: SITE.city }],
-        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation', 'Publicité en ligne'],
+        knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation', 'Publicité en ligne', 'Vidéosurveillance', 'Infrastructure réseau'],
         sameAs: [SITE.whatsapp, SITE.github],
       },
     ],
@@ -996,10 +996,15 @@ const SERVICE_DETAILS = {
     includes: ['Configuration DNS familiale', 'Family Link et contrôle parental', 'Filtres d\u2019images dans le navigateur', 'Réglages IPv4 et IPv6'],
     delai: '1 à 2 h',
   },
-  'Réseau & Wi-Fi': {
+  'Infrastructure réseau & Wi-Fi': {
     detail: "Câblage, baie, 10 GbE, PoE et Wi-Fi maillé : la pièce du fond mérite aussi du bon débit. On mesure avant, on mesure après.",
     includes: ['Étude et câblage', 'Baie de brassage et switch PoE', 'Wi-Fi maillé et couverture réelle', 'Tests de débit et de latence'],
     delai: '1 à 3 jours',
+  },
+  'Installation de vidéosurveillance': {
+    detail: "Caméras IP, enregistreur et accès à distance : on étudie les angles, on tire les câbles proprement, on configure tout, et tu peux regarder depuis ton téléphone.",
+    includes: ['Étude des emplacements et des angles', 'Pose des caméras et câblage PoE', 'Enregistreur et stockage des vidéos', 'Accès à distance sur téléphone', 'Explication de l’utilisation'],
+    delai: 'selon le chantier',
   },
   'Publicité dans Atguard': {
     detail: "Ton annonce s’affiche directement dans le logiciel Atguard, auprès de tous les utilisateurs de la version gratuite : des milliers de personnes chaque mois, au moment où elles utilisent l’outil. Le format et le tarif se calent sur ton besoin.",
@@ -1061,38 +1066,30 @@ const SERVICES = [
   {
     brand: 'ARIBAZ Web', slug: 'web', color: '#30b0c7',
     tagline: 'Des sites qui tiennent debout.',
-    desc: 'Vitrines, boutiques, outils internes : rapide, lisible, et modifiable sans moi.',
+    desc: 'Vitrines, boutiques, outils internes, publicité en ligne : rapide, lisible, et modifiable sans moi.',
     items: [
       { icon: 'globe', title: 'Sites web & e-commerce', text: 'Vitrine, boutique, multilingue. Conçu pour être rapide, lisible et modifiable sans moi.', bullets: ['WordPress / WooCommerce', 'Paiement Stripe & facturation', 'Performance & SEO de base'] },
       { icon: 'code', title: 'Automatisation & scripts', text: 'Tout ce que tu fais trois fois par semaine peut être fait par une machine.', bullets: ['Bash / zsh / cron', 'Sauvegardes automatiques', 'Synchronisation de fichiers'] },
+      { icon: 'megaphone', title: 'Publicité dans Atguard', text: 'Ton annonce affichée directement dans le logiciel Atguard, devant tous les utilisateurs de la version gratuite : des milliers de personnes chaque mois.', bullets: ['Visible par tous les utilisateurs Free', 'Des milliers de vues par mois', 'Tarif sur devis'] },
     ],
   },
   {
     brand: 'ARIBAZ Systems', slug: 'systems', color: '#ff9f0a',
     tagline: 'L\u2019infrastructure qui ne se voit pas.',
-    desc: 'Réseau, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
+    desc: 'Réseau, vidéosurveillance, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
     items: [
       { icon: 'layers', title: 'DevOps & auto-hébergement', text: 'Proxmox, NAS, Docker, sauvegardes : une infrastructure qui tient debout et se répare toute seule.', bullets: ['Proxmox / OMV / Docker', 'Sauvegardes 3-2-1 vérifiées', 'Monitoring & alertes'] },
       { icon: 'eye', title: 'Filtrage internet & contrôle parental', text: 'DNS, filtres d\u2019images, contrôle parental : un web plus sain, sans transformer la maison en prison.', bullets: ['DNS filtrants', 'Family Link & co.', 'Filtres navigateur'], href: '/services/filtres/', hrefLabel: 'Voir la page Aribaz Filter' },
-      { icon: 'wifi', title: 'Réseau & Wi-Fi', text: 'Du câble, du 10 GbE, du PoE, et un Wi-Fi qui couvre vraiment la pièce du fond.', bullets: ['Câblage & baie', 'SFP+ / PoE', 'Wi-Fi maillé'] },
+      { icon: 'wifi', title: 'Infrastructure réseau & Wi-Fi', text: 'Du câble, du 10 GbE, du PoE, et un Wi-Fi qui couvre vraiment la pièce du fond.', bullets: ['Câblage & baie', 'SFP+ / PoE', 'Wi-Fi maillé'] },
+      { icon: 'camera', title: 'Installation de vidéosurveillance', text: 'Caméras IP, enregistreur et accès à distance sur ton téléphone : une installation propre, câblée et configurée.', bullets: ['Caméras IP & enregistreur', 'Câblage PoE propre', 'Accès à distance sur téléphone'] },
       { icon: 'shield', title: 'Conseil & audit', text: 'Avant d\u2019acheter, demande. Ça coûte moins cher que de se tromper.', bullets: ['Choix de matériel', 'Audit sécurité & sauvegardes', 'Détection d\u2019arnaques'] },
     ],
   },
 ];
 
-/* Cinquième famille : publicité dans le logiciel Atguard (sur devis). */
-SERVICES.push({
-  brand: 'ARIBAZ Ads', slug: 'ads', color: '#ff375f',
-  tagline: 'Ta pub, devant de vrais utilisateurs.',
-  desc: 'Un emplacement publicitaire directement dans un logiciel utilisé chaque mois par des milliers de personnes. Chaque campagne est chiffrée sur devis.',
-  items: [
-    { icon: 'megaphone', title: 'Publicité dans Atguard', text: 'Ton annonce affichée directement dans le logiciel Atguard, devant tous les utilisateurs de la version gratuite : des milliers de personnes chaque mois.', bullets: ['Visible par tous les utilisateurs Free', 'Des milliers de vues par mois', 'Tarif sur devis'] },
-  ],
-});
-
 function servicesPage() {
   const title = `Services — ${SITE.name}`;
-  const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, filtrage internet, publicité dans Atguard. Du travail propre, expliqué sans jargon.";
+  const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, infrastructure réseau, vidéosurveillance, filtrage internet, publicité dans Atguard. Du travail propre, expliqué sans jargon.";
   const body = `${nav('services')}
 <main id="contenu">
   <section class="page-hero">
