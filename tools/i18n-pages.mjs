@@ -440,10 +440,17 @@ function aboutPage(ctx, lang) {
   const ch = chrome(ctx, lang, 'about', PATHS.about);
   const U = I18N[lang].ui;
   const inner = `  <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span>${esc(A.eyebrow)}</span>
-      <h1 class="display" style="max-width:22ch">${esc(A.h1a)} <span class="gradient-text">${esc(A.h1b)}</span></h1>
-      <p class="lede" style="margin-inline:0">${esc(A.lede)}</p>
+    <div class="wrap about-hero">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>${esc(A.eyebrow)}</span>
+        <h1 class="display" style="max-width:22ch">${esc(A.h1a)} <span class="gradient-text">${esc(A.h1b)}</span></h1>
+        <p class="lede" style="margin-inline:0">${esc(A.lede)}</p>
+      </div>
+      <figure class="about-photo" style="margin:0">
+        <img src="/assets/img/ariel.png" alt="${esc(A.photoAlt)}" width="520" height="520" decoding="async">
+        <span class="about-pill p1">${icon('clock')} ${esc(A.pills[0])}</span>
+        <span class="about-pill p2">${icon('wrench')} ${esc(A.pills[1])}</span>
+      </figure>
     </div>
   </section>
 
