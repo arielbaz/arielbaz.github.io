@@ -32,6 +32,7 @@ const SITE = {
     "Des astuces concrètes pour un numérique plus simple, plus sûr et plus propre : outils gratuits, vie privée, filtrage familial et productivité.",
   whatsapp: 'https://whatsapp.com/channel/0029VavhmewLtOjKNl2a3f1S',
   github: 'https://github.com/arielbaz',
+  linkedin: 'https://www.linkedin.com/in/arielbaz20/',
   email: 'arielelbaz20@gmail.com',
   phone: '+972 55 773 1349',
   phoneRaw: '972557731349',
@@ -77,6 +78,7 @@ const ICONS = {
   'arrow-up-right': `<path d="M7 17 17 7M9 7h8v8" ${STROKE}/>`,
   whatsapp: `<path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" ${STROKE}/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" ${STROKE}/>`,
   rss: `<path d="M5 19a1 1 0 1 0 0-.01" ${STROKE}/><path d="M4.5 11.5A8 8 0 0 1 12.5 19.5M4.5 5a14.5 14.5 0 0 1 14.5 14.5" ${STROKE}/>`,
+  linkedin: `<rect x="3.5" y="3.5" width="17" height="17" rx="3.2" ${STROKE}/><path d="M8.2 10.4V16M8.2 7.9v.1M11.8 16v-3.3a2.1 2.1 0 0 1 4.2 0V16M11.8 10.4V16" ${STROKE}/>`,
   github: `<path d="M9.2 20.4v-2.6c-2.7.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.5 4.9.4.3.7.9.7 1.9v3.1" ${STROKE}/>`,
   link: `<path d="M10 13.8a4.2 4.2 0 0 0 6 0l2.6-2.6a4.2 4.2 0 0 0-6-6l-1.5 1.5" ${STROKE}/><path d="M14 10.2a4.2 4.2 0 0 0-6 0L5.4 12.8a4.2 4.2 0 0 0 6 6l1.5-1.5" ${STROKE}/>`,
   clock: `<circle cx="12" cy="12" r="8.4" ${STROKE}/><path d="M12 7.6V12l3 1.8" ${STROKE}/>`,
@@ -590,7 +592,7 @@ function homeJsonLd() {
         address: { '@type': 'PostalAddress', addressLocality: SITE.city, addressCountry: 'IL' },
         areaServed: [{ '@type': 'City', name: SITE.city }],
         knowsAbout: ['Réparation électronique', 'Micro-soudure', 'Création de sites web', 'DevOps', 'Filtrage internet', 'Sonorisation', 'Publicité en ligne', 'Vidéosurveillance', 'Infrastructure réseau'],
-        sameAs: [SITE.whatsapp, SITE.github],
+        sameAs: [SITE.whatsapp, SITE.github, SITE.linkedin],
       },
     ],
   };
@@ -1409,6 +1411,7 @@ function aboutPage() {
           <div style="margin-top:18px;display:grid;gap:10px">
             <a class="btn btn-primary" href="/services.html" style="width:100%">Voir les services ${icon('arrow')}</a>
             <a class="btn btn-ghost" href="/contact.html" style="width:100%">Me contacter</a>
+            <a class="btn btn-ghost" href="${SITE.linkedin}" target="_blank" rel="noopener" style="width:100%">${icon('linkedin')} LinkedIn</a>
           </div>
         </aside>
       </div>
@@ -1421,6 +1424,7 @@ function aboutPage() {
 
       <div class="hero-actions" style="justify-content:flex-start;margin-top:36px">
         <a class="btn btn-wa" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} Rejoindre la chaîne</a>
+        <a class="btn btn-ghost" href="${SITE.linkedin}" target="_blank" rel="noopener">${icon('linkedin')} LinkedIn</a>
         <a class="btn btn-ghost" href="/">Lire les actus ${icon('arrow')}</a>
       </div>
     </div>
