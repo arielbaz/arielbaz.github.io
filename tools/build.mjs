@@ -1341,7 +1341,7 @@ function filtresPage() {
     </div>`;
   }).join('');
 
-  const body = `${nav('services')}
+  const body = `${nav('services', PATHS.filter)}
 <main id="contenu">
   <section class="page-hero">
     <div class="wrap">
@@ -1441,7 +1441,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/services/filtres/' }) + body;
+  return head({ title, description: desc, url: '/services/filtres/', extra: hreflangLinks(SITE.url, PATHS.filter) }) + body;
 }
 
 function aboutPage() {
@@ -1651,7 +1651,7 @@ function invitationPage() {
     ['Peut-on gérer les deux côtés et compter les enfants ?', 'Oui. Le RSVP distingue le côté de la mariée et celui du marié, chaque famille, les hommes et les femmes, puis les adultes et les enfants. Le récap se génère en un clic pour le traiteur.'],
     ['Ça marche sans installer d\u2019application ?', 'Oui, c\u2019est un simple lien : il s\u2019ouvre dans le navigateur, sur iPhone comme sur Android.'],
   ];
-  const body = `${nav('invitation')}
+  const body = `${nav('invitation', PATHS.invitation)}
 <main id="contenu">
   <section class="inv-hero">
     <div class="wrap">
@@ -1759,7 +1759,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/invitation.html' }) + body;
+  return head({ title, description: desc, url: '/invitation.html', extra: hreflangLinks(SITE.url, PATHS.invitation) }) + body;
 }
 
 function invitationDemoPage() {
@@ -1952,7 +1952,7 @@ Object.keys(TRANSLATIONS).forEach((slug) => {
   });
 });
 /* Pages traduites : accueil, services (+ une page par service), à propos, contact. */
-const I18N_CTX = { SITE, SLUG, SERVICES, head, icon, esc, filterApp: FILTER_APP, articleCards: translatedCards, logoStrip };
+const I18N_CTX = { SITE, SLUG, SERVICES, head, icon, esc, filterApp: FILTER_APP, articleCards: translatedCards, logoStrip, PLATFORMS, filterRepo: FILTER_REPO };
 Object.entries(i18nPages(I18N_CTX)).forEach(([rel, html]) => write(rel, html));
 
 posts.forEach((p, idx) => {
