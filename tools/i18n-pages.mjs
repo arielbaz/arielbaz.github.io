@@ -166,6 +166,9 @@ function homePage(ctx, lang) {
   const cards = articleCards ? articleCards(lang) : '';
   const inner = `  <section class="hero">
     <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+    <span class="hero-float f1" aria-hidden="true">${icon('wrench')} ${esc(H.floats[0])}</span>
+    <span class="hero-float f2" aria-hidden="true">${icon('check')} ${esc(H.floats[1])}</span>
+    <span class="hero-float f3" aria-hidden="true">${icon('code')} ${esc(H.floats[2])}</span>
     <div class="wrap">
       <span class="eyebrow"><span class="dot"></span>${esc(H.eyebrow)}</span>
       <h1 class="display" style="max-width:20ch">
@@ -205,7 +208,14 @@ function homePage(ctx, lang) {
     </div>
   </section>
 
-  <section class="section">
+${ctx.logoStrip ? `  <section class="section" style="padding-block:6px 0">
+    <div class="wrap">
+      <p class="logos-label">${esc(H.logosLabel)}</p>
+      ${ctx.logoStrip()}
+    </div>
+  </section>
+
+` : ''}  <section class="section">
     <div class="wrap">
       <div class="section-head">
         <div><h2>${esc(H.servicesH)}</h2><p>${esc(H.servicesSub)}</p></div>
@@ -273,10 +283,11 @@ function servicesPage(ctx, lang) {
           <div><span class="family-num">ARIBAZ</span><h2>${esc(f.brand.replace('ARIBAZ ', ''))}</h2></div>
         </div>
         <p><strong>${esc(L.families[f.slug].tagline)}</strong> ${esc(L.families[f.slug].desc)}</p>
+        <ul class="pf-chips">${(L.families[f.slug].chips || []).map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
         <div class="svc-grid">
-          ${f.items.map((it) => {
+          ${f.items.map((it, i) => {
             const t = tr(lang, it);
-            return `<article class="svc" style="--brand:${f.color}">
+            return `<article class="svc reveal" style="--brand:${f.color};animation-delay:${i * 70}ms">
             <div class="svc-art">
               <span class="svc-tile">${icon(it.icon)}</span>
               <span class="svc-mini mini-a">${icon('clock')}</span>
@@ -460,7 +471,7 @@ function aboutPage(ctx, lang) {
 
         <aside>
           <div class="fact-list">
-            ${A.facts.map(([n, l]) => `<div class="fact"><span class="n">${esc(n)}</span><span class="l">${esc(l)}</span></div>`).join('\n            ')}
+            ${A.facts.map(([n, l]) => `<div class="fact"><span class="n" data-count-to="${esc(n)}">0</span><span class="l">${esc(l)}</span></div>`).join('\n            ')}
           </div>
           <div style="margin-top:18px;display:grid;gap:10px">
             <a class="btn btn-primary" href="${PATHS.services[lang]}" style="width:100%">${esc(A.servicesBtn)} ${icon('arrow', 'arr')}</a>

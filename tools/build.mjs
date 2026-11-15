@@ -620,6 +620,16 @@ function homeJsonLd() {
   return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
 }
 
+/* Bandeau défilant des logos des outils testés dans les articles. */
+function logoStrip() {
+  const tiles = posts.filter((p) => p.logo).map((p) => {
+    const full = LOGO_MANIFEST[p.logo] && LOGO_MANIFEST[p.logo].full;
+    const name = esc(String(p.title).split(/[:—]/)[0].trim());
+    return `<a class="logo-tile${full ? ' full' : ''}" href="/articles/${p.slug}.html" title="${name}"><img src="/assets/img/logos/${p.logo}.png" alt="${name}" loading="lazy" width="64" height="64"></a>`;
+  }).join('');
+  return `<div class="logo-marquee"><div class="logo-track">${tiles}${tiles}</div></div>`;
+}
+
 function homePage() {
   const title = `${SITE.name} — Réparation électronique & services numériques à Jérusalem`;
   const desc = 'Réparation électronique, micro-soudure, sites web, vidéosurveillance et infrastructure réseau à Jérusalem et à distance. Plus des astuces tech testées à la main.';
@@ -629,6 +639,9 @@ function homePage() {
 <main id="contenu">
   <section class="hero">
     <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+    <span class="hero-float f1" aria-hidden="true">${icon('wrench')} Réparer d'abord</span>
+    <span class="hero-float f2" aria-hidden="true">${icon('check')} 0 cookie · 0 pub</span>
+    <span class="hero-float f3" aria-hidden="true">${icon('code')} Open source</span>
     <div class="wrap">
       <a class="eyebrow" href="/articles/${posts[0].slug}.html"><span class="dot"></span>Nouvelle actu · ${fmtDate(posts[0].date)}<svg viewBox="0 0 24 24" aria-hidden="true" class="eyebrow-arrow"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <h1 class="display" style="max-width:20ch">
@@ -668,6 +681,13 @@ function homePage() {
         </div>
         <div class="pf-art" aria-hidden="true">${icon('eye')}</div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block:6px 0">
+    <div class="wrap">
+      <p class="logos-label">Outils testés et passés au crible ici</p>
+      ${logoStrip()}
     </div>
   </section>
 
@@ -1088,6 +1108,7 @@ function serviceDialog(it, family) {
 const SERVICES = [
   {
     brand: 'ARIBAZ Electronics', slug: 'electronics', color: '#0a84ff',
+    chips: ['Micro-soudure', 'Diagnostic au composant', 'Multimètre', 'SSD · RAM', 'Batteries 48 V'],
     tagline: 'Le matériel, réparé au bon niveau.',
     desc: 'Du composant à la machine complète : diagnostic, micro-soudure, réparation. Ce qui peut être sauvé le sera.',
     items: [
@@ -1098,6 +1119,7 @@ const SERVICES = [
   },
   {
     brand: 'ARIBAZ Events', slug: 'events', color: '#bf5af2',
+    chips: ['Faire-part digital', 'RSVP', 'Waze · Google Maps', 'Sonorisation', 'Mixage'],
     tagline: 'Les grands moments, en mieux.',
     desc: 'Invitations digitales, cartes de mariage, sonorisation : ce qui se voit et ce qui s\u2019entend, sans fausse note.',
     items: [
@@ -1107,6 +1129,7 @@ const SERVICES = [
   },
   {
     brand: 'ARIBAZ Web', slug: 'web', color: '#30b0c7',
+    chips: ['WordPress', 'WooCommerce', 'Stripe', 'SEO', 'Bash · zsh · cron', 'Atguard'],
     tagline: 'Des sites qui tiennent debout.',
     desc: 'Vitrines, boutiques, outils internes, publicité en ligne : rapide, lisible, et modifiable sans moi.',
     items: [
@@ -1117,6 +1140,7 @@ const SERVICES = [
   },
   {
     brand: 'ARIBAZ Systems', slug: 'systems', color: '#ff9f0a',
+    chips: ['Proxmox', 'OMV', 'Docker', '10 GbE · PoE', 'Wi-Fi maillé', 'Caméras IP', 'DNS filtrants'],
     tagline: 'L\u2019infrastructure qui ne se voit pas.',
     desc: 'Réseau, vidéosurveillance, sauvegardes, filtrage : ce qui doit tourner sans toi, et sans dépendre d\u2019un géant.',
     items: [
@@ -1174,8 +1198,9 @@ function servicesPage() {
           <div><span class="family-num">ARIBAZ</span><h2>${f.brand.replace('ARIBAZ ', '')}</h2></div>
         </div>
         <p><strong>${f.tagline}</strong> ${f.desc}</p>
+        <ul class="pf-chips">${f.chips.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
         <div class="svc-grid">
-          ${f.items.map((it) => `<article class="svc" style="--brand:${f.color}">
+          ${f.items.map((it, i) => `<article class="svc reveal" style="--brand:${f.color};animation-delay:${i * 70}ms">
             <div class="svc-art">
               <span class="svc-tile">${icon(it.icon)}</span>
               <span class="svc-mini mini-a">${icon('clock')}</span>
@@ -1469,12 +1494,12 @@ function aboutPage() {
 
         <aside>
           <div class="fact-list">
-            <div class="fact"><span class="n">3</span><span class="l">activités : Electronics, Web &amp; Systems, Events</span></div>
-            <div class="fact"><span class="n">2</span><span class="l">pays, un aller-retour permanent entre la France et Israël</span></div>
-            <div class="fact"><span class="n">10</span><span class="l">gigabits par seconde sur le réseau de la maison</span></div>
-            <div class="fact"><span class="n">64</span><span class="l">Go de RAM ECC, parce que les erreurs silencieuses existent</span></div>
-            <div class="fact"><span class="n">48</span><span class="l">volts, la tension préférée des vélos qu'on bricole</span></div>
-            <div class="fact"><span class="n">0</span><span class="l">abonnement cloud propriétaire pour mes données</span></div>
+            <div class="fact"><span class="n" data-count-to="3">0</span><span class="l">activités : Electronics, Web &amp; Systems, Events</span></div>
+            <div class="fact"><span class="n" data-count-to="2">0</span><span class="l">pays, un aller-retour permanent entre la France et Israël</span></div>
+            <div class="fact"><span class="n" data-count-to="10">0</span><span class="l">gigabits par seconde sur le réseau de la maison</span></div>
+            <div class="fact"><span class="n" data-count-to="64">0</span><span class="l">Go de RAM ECC, parce que les erreurs silencieuses existent</span></div>
+            <div class="fact"><span class="n" data-count-to="48">0</span><span class="l">volts, la tension préférée des vélos qu'on bricole</span></div>
+            <div class="fact"><span class="n" data-count-to="0">0</span><span class="l">abonnement cloud propriétaire pour mes données</span></div>
           </div>
           <div style="margin-top:18px;display:grid;gap:10px">
             <a class="btn btn-primary" href="/services.html" style="width:100%">Voir les services ${icon('arrow')}</a>
@@ -1927,7 +1952,7 @@ Object.keys(TRANSLATIONS).forEach((slug) => {
   });
 });
 /* Pages traduites : accueil, services (+ une page par service), à propos, contact. */
-const I18N_CTX = { SITE, SLUG, SERVICES, head, icon, esc, filterApp: FILTER_APP, articleCards: translatedCards };
+const I18N_CTX = { SITE, SLUG, SERVICES, head, icon, esc, filterApp: FILTER_APP, articleCards: translatedCards, logoStrip };
 Object.entries(i18nPages(I18N_CTX)).forEach(([rel, html]) => write(rel, html));
 
 posts.forEach((p, idx) => {

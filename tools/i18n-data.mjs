@@ -36,6 +36,8 @@ export const I18N = {
       h1a: 'Tested. Broken.', h1b: 'Fixed. Explained.',
       lede: 'Electronics repair, micro-soldering, websites, networks and video surveillance — in Jerusalem and remotely. Plus the free tools and settings I test by hand.',
       primary: 'Get a free quote', secondary: 'See services',
+      floats: ['Repair first', '0 cookie · 0 ads', 'Open source'],
+      logosLabel: 'Tools tested and put through their paces here',
       meta: ['Reply within 24 h', 'Free quote', 'Jerusalem & remote', '100 % passion'],
       product: {
         pill: 'Flagship product', badge: 'Open beta', name: 'Aribaz Filter',
@@ -97,10 +99,10 @@ export const I18N = {
       subject: 'Quote — ',
     },
     families: {
-      electronics: { tagline: 'Hardware, repaired at the right level.', desc: 'From the component to the complete machine: diagnosis, micro-soldering, repair. What can be saved will be.' },
-      events: { tagline: 'The big moments, made better.', desc: 'Digital invitations, wedding cards, sound: what you see and what you hear, without a false note.' },
-      web: { tagline: 'Sites that stand up.', desc: 'Showcase sites, shops, internal tools, online advertising: fast, readable, and editable without me.' },
-      systems: { tagline: 'Infrastructure you don’t see.', desc: 'Network, video surveillance, backups, filtering: what must run without you, and without depending on a giant.' },
+      electronics: { chips: ['Micro-soldering', 'Component-level diagnosis', 'Multimeter', 'SSD · RAM', '48 V batteries'], tagline: 'Hardware, repaired at the right level.', desc: 'From the component to the complete machine: diagnosis, micro-soldering, repair. What can be saved will be.' },
+      events: { chips: ['Digital invitations', 'RSVP', 'Waze · Google Maps', 'Sound', 'Mixing'], tagline: 'The big moments, made better.', desc: 'Digital invitations, wedding cards, sound: what you see and what you hear, without a false note.' },
+      web: { chips: ['WordPress', 'WooCommerce', 'Stripe', 'SEO', 'Bash · zsh · cron', 'Atguard'], tagline: 'Sites that stand up.', desc: 'Showcase sites, shops, internal tools, online advertising: fast, readable, and editable without me.' },
+      systems: { chips: ['Proxmox', 'OMV', 'Docker', '10 GbE · PoE', 'Mesh Wi-Fi', 'IP cameras', 'Filtering DNS'], tagline: 'Infrastructure you don’t see.', desc: 'Network, video surveillance, backups, filtering: what must run without you, and without depending on a giant.' },
     },
     items: {
       'Réparation ordinateur & Mac': {
@@ -285,6 +287,8 @@ export const I18N = {
       h1a: 'נבדק. נשבר.', h1b: 'תוקן. הוסבר.',
       lede: 'תיקוני אלקטרוניקה, מיקרו-הלחמה, אתרים, רשתות ומצלמות אבטחה — בירושלים ובמרחוק. ובנוסף, הכלים וההגדרות החינמיים שאני בודק ביד.',
       primary: 'לקבלת הצעת מחיר חינם', secondary: 'לכל השירותים',
+      floats: ['קודם כול לתקן', '0 עוגיות · 0 פרסומות', 'קוד פתוח'],
+      logosLabel: 'כלים שנבדקו ועברו כאן בדיקה קפדנית',
       meta: ['מענה תוך 24 שעות', 'הצעת מחיר חינם', 'ירושלים ובמרחוק', '100% תשוקה'],
       product: {
         pill: 'מוצר מוביל', badge: 'בטא פתוחה', name: 'Aribaz Filter',
@@ -346,10 +350,10 @@ export const I18N = {
       subject: 'הצעת מחיר — ',
     },
     families: {
-      electronics: { tagline: 'ציוד שמתוקן ברמה הנכונה.', desc: 'מהרכיב ועד המכונה השלמה: אבחון, מיקרו-הלחמה, תיקון. מה שאפשר להציל יינצל.' },
-      events: { tagline: 'הרגעים הגדולים, ביתר איכות.', desc: 'הזמנות דיגיטליות, כרטיסי חתונה, סאונד: מה שרואים ומה ששומעים, בלי צליל שקרי.' },
-      web: { tagline: 'אתרים שעומדים איתן.', desc: 'אתרי תדמית, חנויות, כלים פנימיים, פרסום באינטרנט: מהיר, קריא, וניתן לעריכה גם בלעדיי.' },
-      systems: { tagline: 'התשתית שלא רואים.', desc: 'רשת, מצלמות אבטחה, גיבויים, סינון: מה שחייב לרוץ בלעדיכם, בלי להיות תלויים בענק.' },
+      electronics: { chips: ['מיקרו-הלחמה', 'אבחון ברמת הרכיב', 'מולטימטר', 'SSD · זיכרון', 'סוללות 48 וולט'], tagline: 'ציוד שמתוקן ברמה הנכונה.', desc: 'מהרכיב ועד המכונה השלמה: אבחון, מיקרו-הלחמה, תיקון. מה שאפשר להציל יינצל.' },
+      events: { chips: ['הזמנות דיגיטליות', 'אישורי הגעה', 'Waze · Google Maps', 'סאונד', 'מיקס'], tagline: 'הרגעים הגדולים, ביתר איכות.', desc: 'הזמנות דיגיטליות, כרטיסי חתונה, סאונד: מה שרואים ומה ששומעים, בלי צליל שקרי.' },
+      web: { chips: ['WordPress', 'WooCommerce', 'Stripe', 'SEO', 'Bash · zsh · cron', 'Atguard'], tagline: 'אתרים שעומדים איתן.', desc: 'אתרי תדמית, חנויות, כלים פנימיים, פרסום באינטרנט: מהיר, קריא, וניתן לעריכה גם בלעדיי.' },
+      systems: { chips: ['Proxmox', 'OMV', 'Docker', '10 GbE · PoE', 'Wi-Fi רשתי', 'מצלמות IP', 'DNS מסנן'], tagline: 'התשתית שלא רואים.', desc: 'רשת, מצלמות אבטחה, גיבויים, סינון: מה שחייב לרוץ בלעדיכם, בלי להיות תלויים בענק.' },
     },
     items: {
       'Réparation ordinateur & Mac': {
