@@ -307,6 +307,8 @@
   function initTitleFx() {
     var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (motionQuery.matches) return;
+    /* Pages de droite à gauche (hébreu) : découper en lettres inverserait les mots latins (Wi-Fi). */
+    if (document.documentElement.getAttribute('dir') === 'rtl') return;
 
     var titles = document.querySelectorAll('.display, .article-hero h1, .section-head h2');
     if (!titles.length) return;

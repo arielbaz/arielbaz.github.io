@@ -13,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import { servicePage, servicePath } from './service-pages.mjs';
+import { i18nPages, i18nUrls, PATHS, servicePaths, langSwitchHtml, hreflangLinks } from './i18n-pages.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const POSTS_DIR = path.join(ROOT, 'content', 'posts');
@@ -220,6 +221,23 @@ function translatedArticlePage(post, lang) {
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
+}
+
+/* Cartes des articles traduits (pour les accueils en anglais et en hébreu). */
+function translatedCards(lang) {
+  return Object.keys(TRANSLATIONS).filter((slug) => (TRANSLATIONS[slug] || []).includes(lang)).map((slug) => {
+    const post = posts.find((p) => p.slug === slug);
+    const t = loadTranslation(slug, lang);
+    if (!post || !t) return '';
+    return `<a class="post-card" href="/${lang}/articles/${slug}.html">
+      <div class="card-art ${post.cat.art}">${artVisual(post)}</div>
+      <div class="card-body">
+        <div class="card-meta"><span class="pill" data-cat="${esc(post.category)}">${esc(post.category)}</span><span>${fmtDate(post.date)}</span></div>
+        <h3>${esc(t.title)}</h3>
+        <p>${esc(t.excerpt)}</p>
+      </div>
+    </a>`;
+  }).join('');
 }
 
 function langIndexPage(lang) {
@@ -454,7 +472,7 @@ ${extra}
 <body>`;
 }
 
-function nav(active) {
+function nav(active, paths = { fr: '/', en: '/en/', he: '/he/' }) {
   const links = [
     ['/', 'Actus', 'home'],
     ['/services.html', 'Services', 'services'],
@@ -477,6 +495,7 @@ function nav(active) {
       <a class="nav-cta" href="${SITE.waDirect}?text=${encodeURIComponent(SITE.intro)}" target="_blank" rel="noopener"><span>Devis gratuit</span> ${icon('arrow-up-right', 'ico-inline')}</a>
     </nav>
     <div class="nav-actions">
+      ${langSwitchHtml('fr', paths)}
       <a class="icon-btn" href="/feed.xml" aria-label="Flux RSS" title="Flux RSS">${icon('rss')}</a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème">${icon('sun')}</button>
     </div>
@@ -606,7 +625,7 @@ function homePage() {
   const desc = 'Réparation électronique, micro-soudure, sites web, vidéosurveillance et infrastructure réseau à Jérusalem et à distance. Plus des astuces tech testées à la main.';
   const ticker = ['Productivité', 'Sécurité', 'Filtrage', 'Alternatives', 'Mobile', 'Religion', 'Zéro pub', 'Zéro cookie', 'Open source', 'Sans abonnement'];
   const tickerHtml = ticker.map((t) => `<span>${t}</span><span class="sep">✦</span>`).join('');
-  const body = `${nav('home')}
+  const body = `${nav('home', PATHS.home)}
 <main id="contenu">
   <section class="hero">
     <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
@@ -642,7 +661,7 @@ function homePage() {
           <p class="pf-tag">Un internet propre, partout dans la maison.</p>
           <p>Il ne laisse passer que les sites autorisés. Le filtre tourne sur l'appareil lui-même : ta navigation ne transite par aucun serveur, ni les nôtres ni ceux d'un géant.</p>
           <ul class="pf-chips"><li>Android</li><li>Windows</li><li>Chrome · Edge · Brave</li><li>iPhone, iPad et Mac en préparation</li></ul>
-          <div class="hero-actions" style="margin-bottom:0">
+          <div class="hero-actions" style="margin-bottom:0;justify-content:flex-start">
             <a class="btn btn-primary" href="/services/filtres/">Découvrir ${icon('arrow')}</a>
             <a class="btn btn-ghost" href="${FILTER_APP}/fr">Commencer — c'est gratuit</a>
           </div>
@@ -734,7 +753,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/', extra: homeJsonLd() }) + body;
+  return head({ title, description: desc, url: '/', extra: `${homeJsonLd()}\n${hreflangLinks(SITE.url, PATHS.home)}` }) + body;
 }
 
 function iconForCat(name) {
@@ -1132,7 +1151,7 @@ function faqJsonLd(faq) {
 function servicesPage() {
   const title = `Services — ${SITE.name}`;
   const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, infrastructure réseau, vidéosurveillance, filtrage internet, publicité dans Atguard. Du travail propre, expliqué sans jargon.";
-  const body = `${nav('services')}
+  const body = `${nav('services', PATHS.services)}
 <main id="contenu">
   <section class="page-hero">
     <div class="wrap">
@@ -1236,7 +1255,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/services.html', extra: faqJsonLd(FAQ_FR) }) + body;
+  return head({ title, description: desc, url: '/services.html', extra: `${faqJsonLd(FAQ_FR)}\n${hreflangLinks(SITE.url, PATHS.services)}` }) + body;
 }
 
 
@@ -1403,7 +1422,7 @@ ${footer()}
 function aboutPage() {
   const title = `À propos — ${SITE.name}`;
   const desc = "Ariel, artisan du numérique à Jérusalem : réparation, micro-soudure, sites web, systèmes et invitations. Un atelier, un terminal, et ce que j'en raconte.";
-  const body = `${nav('apropos')}
+  const body = `${nav('apropos', PATHS.about)}
 <main id="contenu">
   <section class="page-hero">
     <div class="wrap">
@@ -1483,13 +1502,13 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/apropos.html' }) + body;
+  return head({ title, description: desc, url: '/apropos.html', extra: hreflangLinks(SITE.url, PATHS.about) }) + body;
 }
 
 function contactPage() {
   const title = `Contact — ${SITE.name}`;
   const desc = "Une réparation, un site, une carte de mariage, un projet de filtrage : écris-moi sur WhatsApp ou par email, réponse sous 24 h.";
-  const body = `${nav('contact')}
+  const body = `${nav('contact', PATHS.contact)}
 <main id="contenu">
   <section class="page-hero">
     <div class="wrap">
@@ -1571,7 +1590,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/contact.html' }) + body;
+  return head({ title, description: desc, url: '/contact.html', extra: hreflangLinks(SITE.url, PATHS.contact) }) + body;
 }
 
 
@@ -1873,7 +1892,7 @@ function sitemap() {
     { loc: '/apropos.html', pri: '0.5', mod: posts[0].date },
     ...posts.map((p) => ({ loc: `/articles/${p.slug}.html`, pri: '0.8', mod: p.date })),
     ...Object.keys(TRANSLATIONS).flatMap((slug) => (TRANSLATIONS[slug] || []).map((l) => ({ loc: `/${l}/articles/${slug}.html`, pri: '0.6', mod: posts[0].date }))),
-    ...['en', 'he'].map((l) => ({ loc: `/${l}/`, pri: '0.5', mod: posts[0].date })),
+    ...i18nUrls(I18N_CTX).map((loc) => ({ loc, pri: '0.6', mod: posts[0].date })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1907,7 +1926,9 @@ Object.keys(TRANSLATIONS).forEach((slug) => {
     if (page) write(`${lang}/articles/${p.slug}.html`, page);
   });
 });
-['en', 'he'].forEach((lang) => write(`${lang}/index.html`, langIndexPage(lang)));
+/* Pages traduites : accueil, services (+ une page par service), à propos, contact. */
+const I18N_CTX = { SITE, SLUG, SERVICES, head, icon, esc, filterApp: FILTER_APP, articleCards: translatedCards };
+Object.entries(i18nPages(I18N_CTX)).forEach(([rel, html]) => write(rel, html));
 
 posts.forEach((p, idx) => {
   const prev = posts[idx + 1] || null; // plus ancien
@@ -1918,7 +1939,11 @@ write('apropos.html', aboutPage());
 write('services.html', servicesPage());
 write('services/filtres/index.html', filtresPage());
 /* Une page dédiée pour chaque service qui n'a pas déjà la sienne. */
-const SERVICE_CTX = { SITE, SERVICE_DETAILS, SLUG, head, nav, footer, ctaBand, icon, esc };
+const SERVICE_CTX = {
+  SITE, SERVICE_DETAILS, SLUG, head, nav, footer, ctaBand, icon, esc,
+  pathsFor: (item) => servicePaths(SLUG, item),
+  hreflang: (item) => hreflangLinks(SITE.url, servicePaths(SLUG, item)),
+};
 for (const family of SERVICES) {
   for (const item of family.items.filter((it) => !it.href)) {
     write(servicePath(SLUG, item).replace(/^\//, ''), servicePage(SERVICE_CTX, family, item));
