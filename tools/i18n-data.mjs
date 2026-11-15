@@ -295,9 +295,9 @@ export const I18N = {
     about: {
       title: 'About — ARIBAZ',
       desc: 'Ariel, digital craftsman in Jerusalem: repair, micro-soldering, websites, systems and invitations. A workshop, a terminal, and what I tell about them.',
-      eyebrow: 'About', h1a: 'A soldering iron, a terminal,', h1b: 'too much curiosity.',
-      photoAlt: 'Cartoon portrait of Ariel', pills: ['Jerusalem'],
-      lede: 'Ariel. Jerusalem, with one foot in France. A workshop, a terminal, and a habit of wanting to understand how everything works.',
+      eyebrow: 'About', h1a: 'I repair what breaks.', h1b: 'I build what’s missing.',
+      photoAlt: 'Cartoon portrait of Ariel', pills: ['Jerusalem', 'Handmade'],
+      lede: 'Ariel, in Jerusalem, with one foot in France. Electronics, web, systems: a workshop, a terminal, and the urge to understand how everything works.',
       lead: 'I make a living repairing, building and explaining technical things. No consulting desk, no startup: a workshop.',
       p1: 'Machines to get running again, sites to deliver, invitations to design, servers to keep up. The common thread is always the same: understand a system, find what’s wrong, and put it back in shape — cleanly.',
       doH: 'What I do, concretely',
@@ -333,6 +333,8 @@ export const I18N = {
         ['2', 'countries, a permanent back-and-forth between France and Israel'],
         ['10', 'gigabits per second on the home network'],
         ['64', 'GB of ECC RAM, because silent errors exist'],
+        ['24', 'GB of VRAM on the RTX 3090 Ti'],
+        ['4', 'TB of SSD on my workstation'],
         ['48', 'volts, the favorite voltage of the bikes we tinker with'],
         ['0', 'proprietary cloud subscriptions for my data'],
       ],
@@ -341,6 +343,14 @@ export const I18N = {
         ['code', 'Understand the system', 'From low-level code to network architecture: if you don’t know how it works, you don’t know why it breaks.'],
         ['shield', 'Take back control', 'Open source, self-hosted, encrypted. Tools that really belong to you.'],
       ],
+      gear: {
+        h: 'My gear, every day', sub: 'What I use daily, no frills.',
+        cards: [
+          { icon: 'chip', title: 'Workstation', rows: [['Processor', 'Intel Core i9-11900K'], ['Memory', '64 GB RAM'], ['Storage', '4 TB SSD'], ['Graphics card', 'NVIDIA RTX 3090 Ti (24 GB VRAM)']] },
+          { icon: 'laptop', title: 'Laptop', rows: [['Model', 'MacBook Air M5'], ['Memory', '16 GB'], ['Storage', '512 GB']] },
+          { icon: 'layers', title: 'Storage server (NAS)', rows: [['Model', 'QNAP TS-673A'], ['Role', 'Storage and backups']] },
+        ],
+      },
       contactBtn: 'Contact me', servicesBtn: 'See services', channelBtn: 'Join the channel',
     },
     contact: {
@@ -642,9 +652,9 @@ export const I18N = {
     about: {
       title: 'אודות — ARIBAZ',
       desc: 'אריאל, בעל מלאכה דיגיטלי בירושלים: תיקונים, מיקרו-הלחמה, אתרים, מערכות והזמנות. סדנה, טרמינל, ומה שאני מספר עליהם.',
-      eyebrow: 'אודות', h1a: 'מלחם, טרמינל,', h1b: 'יותר מדי סקרנות.',
-      photoAlt: 'דיוקן קריקטורה של אריאל', pills: ['ירושלים'],
-      lede: 'אריאל. ירושלים, ורגל אחת בצרפת. סדנה, טרמינל, והרגל לרצות להבין איך הכול עובד.',
+      eyebrow: 'אודות', h1a: 'אני מתקן מה שנשבר.', h1b: 'אני בונה מה שחסר.',
+      photoAlt: 'דיוקן קריקטורה של אריאל', pills: ['ירושלים', 'עבודת יד'],
+      lede: 'אריאל, בירושלים, ורגל אחת בצרפת. אלקטרוניקה, אינטרנט, מערכות: סדנה, טרמינל, והרצון להבין איך הכול עובד.',
       lead: 'אני מתפרנס מתיקון, מבנייה ומהסבר של דברים טכניים. בלי משרד ייעוץ, בלי סטארט-אפ: סדנה.',
       p1: 'מכונות להחזיר לפעולה, אתרים למסור, הזמנות לעצב, שרתים להפעיל. המכנה המשותף הוא תמיד אותו דבר: להבין מערכת, למצוא מה לא בסדר, ולהחזיר אותה למצב תקין — בצורה נקייה.',
       doH: 'מה אני עושה, בפועל',
@@ -680,6 +690,8 @@ export const I18N = {
         ['2', 'מדינות, הלוך וחזור מתמיד בין צרפת לישראל'],
         ['10', 'ג׳יגה-ביט בשנייה ברשת הביתית'],
         ['64', 'ג׳יגה-בייט של זיכרון ECC, כי שגיאות שקטות קיימות'],
+        ['24', 'ג׳יגה-בייט VRAM ב-RTX 3090 Ti'],
+        ['4', 'טרה-בייט SSD במחשב העבודה שלי'],
         ['48', 'וולט, המתח האהוב על האופניים שאנחנו מתקנים'],
         ['0', 'מנויי ענן קנייניים לנתונים שלי'],
       ],
@@ -688,6 +700,14 @@ export const I18N = {
         ['code', 'להבין את המערכת', 'מקוד ברמה נמוכה ועד ארכיטקטורת רשת: אם לא יודעים איך זה עובד, לא יודעים למה זה נשבר.'],
         ['shield', 'להחזיר את השליטה', 'קוד פתוח, אחסון עצמי, הצפנה. כלים ששייכים לכם באמת.'],
       ],
+      gear: {
+        h: 'הציוד שלי, כל יום', sub: 'מה שאני משתמש בו מדי יום, בלי קישוטים.',
+        cards: [
+          { icon: 'chip', title: 'תחנת עבודה', rows: [['מעבד', 'Intel Core i9-11900K'], ['זיכרון', '64 GB RAM'], ['אחסון', '4 TB SSD'], ['כרטיס מסך', 'NVIDIA RTX 3090 Ti (24 GB VRAM)']] },
+          { icon: 'laptop', title: 'מחשב נייד', rows: [['דגם', 'MacBook Air M5'], ['זיכרון', '16 GB'], ['אחסון', '512 GB']] },
+          { icon: 'layers', title: 'שרת אחסון (NAS)', rows: [['דגם', 'QNAP TS-673A'], ['תפקיד', 'אחסון וגיבויים']] },
+        ],
+      },
       contactBtn: 'ליצירת קשר', servicesBtn: 'לשירותים', channelBtn: 'להצטרפות לערוץ',
     },
     contact: {
@@ -701,4 +721,14 @@ export const I18N = {
       find: { title: 'מצאו אותי', text: 'לרקע, לפרויקטים ולקוד.' },
     },
   },
+};
+
+/** Matériel du quotidien et chiffres associés (page À propos en français). */
+export const GEAR_FR = {
+  h: 'Mon matériel au quotidien', sub: 'Ce que j\u2019utilise tous les jours, sans fard.',
+  cards: [
+    { icon: 'chip', title: 'Station de travail', rows: [['Processeur', 'Intel Core i9-11900K'], ['Mémoire', '64 Go de RAM'], ['Stockage', '4 To de SSD'], ['Carte graphique', 'NVIDIA RTX 3090 Ti (24 Go de VRAM)']] },
+    { icon: 'laptop', title: 'Ordinateur portable', rows: [['Modèle', 'MacBook Air M5'], ['Mémoire', '16 Go'], ['Stockage', '512 Go']] },
+    { icon: 'layers', title: 'Serveur de stockage (NAS)', rows: [['Modèle', 'QNAP TS-673A'], ['Rôle', 'Stockage et sauvegardes']] },
+  ],
 };

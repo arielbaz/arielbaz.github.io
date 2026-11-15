@@ -724,3 +724,21 @@
     }
   });
 })();
+
+/* ---------- Menu de langue (globe) : se ferme au clic ailleurs et à Échap ---------- */
+(function () {
+  var menus = document.querySelectorAll('details.lang-menu');
+  if (!menus.length) return;
+  document.addEventListener('click', function (e) {
+    Array.prototype.forEach.call(menus, function (m) { if (m.open && !m.contains(e.target)) m.open = false; });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    Array.prototype.forEach.call(menus, function (m) {
+      if (!m.open) return;
+      m.open = false;
+      var s = m.querySelector('summary');
+      if (s) s.focus();
+    });
+  });
+})();

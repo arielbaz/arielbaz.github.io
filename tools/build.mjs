@@ -13,7 +13,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import { servicePage, servicePath } from './service-pages.mjs';
-import { i18nPages, i18nUrls, PATHS, servicePaths, langSwitchHtml, hreflangLinks } from './i18n-pages.mjs';
+import { i18nPages, i18nUrls, PATHS, servicePaths, langSwitchHtml, hreflangLinks, gearSection } from './i18n-pages.mjs';
+import { GEAR_FR } from './i18n-data.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const POSTS_DIR = path.join(ROOT, 'content', 'posts');
@@ -87,6 +88,7 @@ const ICONS = {
   plus: `<path d="M12 5v14M5 12h14" ${STROKE}/>`,
   laptop: `<rect x="4.5" y="5" width="15" height="10.5" rx="1.8" ${STROKE}/><path d="M2.5 19h19" ${STROKE}/>`,
   megaphone: `<path d="M3.5 10.5v3a1 1 0 0 0 1 1H7l7.5 4V5.5L7 9.5H4.5a1 1 0 0 0-1 1Z" ${STROKE}/><path d="M18 9.2a4.2 4.2 0 0 1 0 5.6M7 14.5l1.3 4.5h2.4" ${STROKE}/>`,
+  home: `<path d="M4 11 12 4l8 7v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5Z" ${STROKE}/><path d="M10 21v-5.5h4V21" ${STROKE}/>`,
   /* Clé : tracé de l'icône « tool » de Feather Icons (MIT, © Cole Bemis). */
   wrench: `<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" ${STROKE}/>`,
   chip: `<rect x="7" y="7" width="10" height="10" rx="2" ${STROKE}/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" ${STROKE}/>`,
@@ -1454,12 +1456,13 @@ function aboutPage() {
     <div class="wrap about-hero">
       <div>
         <span class="eyebrow"><span class="dot"></span>À propos</span>
-        <h1 class="display" style="max-width:22ch">Un fer à souder, un terminal, <span class="gradient-text">trop de curiosité.</span></h1>
-        <p class="lede" style="margin-inline:0">Ariel. Jérusalem, avec un pied en France. Un atelier, un terminal, et cette manie de vouloir comprendre comment tout fonctionne.</p>
+        <h1 class="display" style="max-width:22ch">Je répare ce qui casse. <span class="gradient-text">Je construis ce qui manque.</span></h1>
+        <p class="lede" style="margin-inline:0">Ariel, à Jérusalem, avec un pied en France. Électronique, web, systèmes : un atelier, un terminal, et l'envie de comprendre comment tout fonctionne.</p>
       </div>
       <figure class="about-photo" style="margin:0">
         <img src="/assets/img/ariel.png" alt="Portrait cartoon d'Ariel" width="520" height="520" decoding="async">
-        <span class="about-pill p1">${icon('clock')} Jérusalem</span>
+        <span class="about-pill p1">${icon('home')} Jérusalem</span>
+        <span class="about-pill p2">${icon('wrench')} Fait main</span>
       </figure>
     </div>
   </section>
@@ -1505,6 +1508,8 @@ function aboutPage() {
             <div class="fact"><span class="n" data-count-to="2">0</span><span class="l">pays, un aller-retour permanent entre la France et Israël</span></div>
             <div class="fact"><span class="n" data-count-to="10">0</span><span class="l">gigabits par seconde sur le réseau de la maison</span></div>
             <div class="fact"><span class="n" data-count-to="64">0</span><span class="l">Go de RAM ECC, parce que les erreurs silencieuses existent</span></div>
+            <div class="fact"><span class="n" data-count-to="24">0</span><span class="l">Go de VRAM sur la RTX 3090 Ti</span></div>
+            <div class="fact"><span class="n" data-count-to="4">0</span><span class="l">To de SSD sur ma machine de travail</span></div>
             <div class="fact"><span class="n" data-count-to="48">0</span><span class="l">volts, la tension préférée des vélos qu'on bricole</span></div>
             <div class="fact"><span class="n" data-count-to="0">0</span><span class="l">abonnement cloud propriétaire pour mes données</span></div>
           </div>
@@ -1521,6 +1526,8 @@ function aboutPage() {
         <div class="value reveal"><div class="ico">${icon('code')}</div><h3>Comprendre le système</h3><p>Du code bas niveau à l'architecture réseau : si on ne sait pas comment ça marche, on ne sait pas pourquoi ça casse.</p></div>
         <div class="value reveal"><div class="ico">${icon('shield')}</div><h3>Reprendre le contrôle</h3><p>Open source, auto-hébergé, chiffré. Des outils qui t'appartiennent vraiment.</p></div>
       </div>
+
+      ${gearSection({ icon, esc }, GEAR_FR)}
 
       <div class="hero-actions" style="justify-content:flex-start;margin-top:36px">
         <a class="btn btn-wa" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} Rejoindre la chaîne</a>

@@ -30,9 +30,14 @@ export function servicePaths(SLUG, item) {
 
 /* ----- sélecteur de langue et balises hreflang ----- */
 export function langSwitchHtml(current, paths) {
-  return `<div class="lang-switch nav-lang" role="group" aria-label="Language">${ORDER.map((l) => (l === current
-    ? `<span aria-current="true">${SHORT[l]}</span>`
-    : `<a href="${paths[l]}" hreflang="${l}" lang="${l}" title="${LABEL[l]}">${SHORT[l]}</a>`)).join('')}</div>`;
+  const aria = { fr: 'Langue', en: 'Language', he: 'שפה' }[current];
+  const globe = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.4 2.4 3.6 5.3 3.6 8.4s-1.2 6-3.6 8.4c-2.4-2.4-3.6-5.3-3.6-8.4S9.6 6 12 3.6Z"/></svg>';
+  return `<details class="lang-menu">
+        <summary class="icon-btn" aria-label="${aria}" title="${aria}">${globe}</summary>
+        <div class="lang-pop" role="menu">${ORDER.map((l) => (l === current
+    ? `<span class="is-current" role="menuitem" aria-current="true" lang="${l}">${LABEL[l]}</span>`
+    : `<a role="menuitem" href="${paths[l]}" hreflang="${l}" lang="${l}">${LABEL[l]}</a>`)).join('')}</div>
+      </details>`;
 }
 export function hreflangLinks(siteUrl, paths) {
   return `${ORDER.map((l) => `<link rel="alternate" hreflang="${l}" href="${siteUrl}${paths[l]}">`).join('\n')}\n<link rel="alternate" hreflang="x-default" href="${siteUrl}${paths.fr}">`;
@@ -138,6 +143,16 @@ ${ch.footer}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
+}
+
+/** Section « matériel du quotidien » (partagée avec la page française). */
+export function gearSection(ctx, G) {
+  const { icon, esc } = ctx;
+  return `<div class="section-head" style="margin-top:56px"><div><h2>${esc(G.h)}</h2><p>${esc(G.sub)}</p></div></div>
+      <div class="gear-grid">
+        ${G.cards.map((c) => `<div class="value reveal"><div class="ico">${icon(c.icon)}</div><h3>${esc(c.title)}</h3>
+          <ul class="spec-list">${c.rows.map(([k, v]) => `<li><span>${esc(k)}</span><b dir="ltr">${esc(v)}</b></li>`).join('')}</ul></div>`).join('\n        ')}
+      </div>`;
 }
 
 function faqJsonLd(faq) {
@@ -448,7 +463,8 @@ function aboutPage(ctx, lang) {
       </div>
       <figure class="about-photo" style="margin:0">
         <img src="/assets/img/ariel.png" alt="${esc(A.photoAlt)}" width="520" height="520" decoding="async">
-        <span class="about-pill p1">${icon('clock')} ${esc(A.pills[0])}</span>
+        <span class="about-pill p1">${icon('home')} ${esc(A.pills[0])}</span>
+        <span class="about-pill p2">${icon('wrench')} ${esc(A.pills[1])}</span>
       </figure>
     </div>
   </section>
@@ -494,6 +510,8 @@ function aboutPage(ctx, lang) {
       <div class="value-grid" style="margin-top:56px">
         ${A.values.map(([ic, h, p]) => `<div class="value reveal"><div class="ico">${icon(ic)}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('\n        ')}
       </div>
+
+      ${gearSection(ctx, A.gear)}
 
       <div class="hero-actions" style="justify-content:flex-start;margin-top:36px">
         <a class="btn btn-wa" href="${SITE.whatsapp}" target="_blank" rel="noopener">${icon('whatsapp')} ${esc(A.channelBtn)}</a>

@@ -1986,6 +1986,15 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 }
 .pf-art::after { animation-delay: 1.8s; }
 
+/* Matériel du quotidien (page À propos) */
+.gear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.spec-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 8px; }
+.spec-list li {
+  display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+  padding-top: 8px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-soft);
+}
+.spec-list b { color: var(--ink); font-weight: 600; text-align: end; }
+
 /* Portrait cartoon sur la page À propos */
 .about-hero { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 5vw, 64px); align-items: center; }
 .about-photo { position: relative; width: min(300px, 34vw); aspect-ratio: 1; flex: none; animation: floaty 9s ease-in-out infinite; }
@@ -2017,3 +2026,19 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .hero-float, .logo-track, .pf-art, .pf-art::before, .pf-art::after { animation: none !important; }
 }
+
+/* ---------- Menu de langue : un seul bouton globe ---------- */
+.lang-menu { position: relative; }
+.lang-menu > summary { list-style: none; cursor: pointer; }
+.lang-menu > summary::-webkit-details-marker { display: none; }
+.lang-menu[open] > summary { background: var(--bg-soft); color: var(--ink); }
+.lang-pop {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 90; min-width: 150px;
+  display: grid; gap: 2px; padding: 6px;
+  background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+}
+.lang-pop a, .lang-pop .is-current {
+  display: block; padding: 9px 12px; border-radius: 9px; font-size: 14px; color: var(--ink); text-decoration: none;
+}
+.lang-pop a:hover, .lang-pop a:focus-visible { background: var(--bg-soft); }
+.lang-pop .is-current { font-weight: 700; background: var(--bg-soft); }
