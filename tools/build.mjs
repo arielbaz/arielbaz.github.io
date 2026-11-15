@@ -1292,7 +1292,7 @@ ${footer()}
 /* -------------------------------------------------------------------------- */
 /* L'application vit encore sur son URL Vercel provisoire (docs/RENOMMAGE-ARIBAZ.md).
    Le jour où elle passe sur un domaine définitif, seule cette constante change. */
-const FILTER_APP = 'https://atfilter.aribaz.com';
+const FILTER_APP = 'https://atguard.aribaz.com'; /* ancien domaine atfilter.aribaz.com : redirige ici */
 const FILTER_REPO = 'https://github.com/arielbaz/Geder';
 
 const FILTER_PLATFORMS = [
