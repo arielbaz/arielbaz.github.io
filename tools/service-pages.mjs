@@ -23,7 +23,7 @@ export function servicePage(ctx, family, item) {
   const mailSubject = encodeURIComponent(`Devis — ${item.title}`);
   const siblings = family.items.filter((x) => x !== item);
 
-  const body = `${nav('services')}
+  const body = `${nav('services', ctx.pathsFor ? ctx.pathsFor(item) : undefined)}
 <main id="contenu">
   <section class="page-hero" style="--brand:${family.color}">
     <div class="wrap">
@@ -85,5 +85,5 @@ ${footer()}
 </body>
 </html>`;
 
-  return head({ title, description: item.text, url }) + body;
+  return head({ title, description: item.text, url, extra: ctx.hreflang ? ctx.hreflang(item) : '' }) + body;
 }

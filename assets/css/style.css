@@ -1879,7 +1879,7 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 .pf h2 { margin: 8px 0 4px; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; }
 .pf-tag { margin: 0 0 10px; font-weight: 600; color: var(--ink); }
 .pf p { color: var(--ink-soft); max-width: 54ch; }
-.pf-tag { color: var(--ink); }
+.pf .pf-tag { color: var(--ink); }
 .pf-badges { display: flex; gap: 8px; align-items: center; }
 .pf-new {
   font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
@@ -1909,3 +1909,12 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
   .wa-fab { display: inline-flex; }
   .footer { padding-bottom: 76px; }
 }
+
+/* ---------- Langues : sélecteur dans le menu + sens de lecture (hébreu) ---------- */
+.nav-actions .lang-switch { margin-inline-end: 4px; }
+[dir="rtl"] svg.arr { transform: scaleX(-1); }
+[dir="rtl"] .svc-more:hover svg.arr,
+[dir="rtl"] .link-arrow:hover svg.arr,
+[dir="rtl"] .btn:hover svg.arr { transform: scaleX(-1) translateX(3px); }
+[dir="rtl"] .quote-block { border-left: 0; border-right: 3px solid var(--blue); }
+[dir="rtl"] .eyebrow, [dir="rtl"] .hero-meta span { direction: rtl; }
