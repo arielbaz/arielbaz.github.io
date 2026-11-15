@@ -87,7 +87,7 @@ const ICONS = {
   plus: `<path d="M12 5v14M5 12h14" ${STROKE}/>`,
   laptop: `<rect x="4.5" y="5" width="15" height="10.5" rx="1.8" ${STROKE}/><path d="M2.5 19h19" ${STROKE}/>`,
   megaphone: `<path d="M3.5 10.5v3a1 1 0 0 0 1 1H7l7.5 4V5.5L7 9.5H4.5a1 1 0 0 0-1 1Z" ${STROKE}/><path d="M18 9.2a4.2 4.2 0 0 1 0 5.6M7 14.5l1.3 4.5h2.4" ${STROKE}/>`,
-  wrench: `<path d="M15.2 4.8a4 4 0 0 0 4 6.9L9.6 21.3a2.3 2.3 0 1 1-3.3-3.3L16 8.4a4 4 0 0 0-0.8-3.6Z" ${STROKE}/>`,
+  wrench: `<g transform="rotate(45 12 12)"><path d="M10.6 20.2V11H8.4V4.6A1.6 1.6 0 0 1 10 3h.8v4.4h2.4V3H14a1.6 1.6 0 0 1 1.6 1.6V11h-2.2v9.2a1.4 1.4 0 0 1-2.8 0Z" ${STROKE}/><circle cx="12" cy="17.2" r=".9" ${STROKE}/></g>`,
   chip: `<rect x="7" y="7" width="10" height="10" rx="2" ${STROKE}/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" ${STROKE}/>`,
   bike: `<circle cx="6" cy="17" r="3.2" ${STROKE}/><circle cx="18" cy="17" r="3.2" ${STROKE}/><path d="m9 17 3-7h4M12 10l3.5 7M14 7h3" ${STROKE}/>`,
   music: `<path d="M9 18V5l10-2v13" ${STROKE}/><circle cx="6.5" cy="18" r="2.6" ${STROKE}/><circle cx="16.5" cy="16" r="2.6" ${STROKE}/>`,
