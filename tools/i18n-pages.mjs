@@ -211,7 +211,7 @@ function homePage(ctx, lang) {
         <div><h2>${esc(H.servicesH)}</h2><p>${esc(H.servicesSub)}</p></div>
         <a class="link-arrow" href="${PATHS.services[lang]}">${esc(H.seeAll)} ${icon('arrow', 'arr')}</a>
       </div>
-      <div class="value-grid">
+      <div class="value-grid value-grid-4">
         ${SERVICES.map((f) => `<a class="value reveal" href="${PATHS.services[lang]}#${f.slug}" style="text-decoration:none;color:inherit">
           <div class="ico" style="background:var(--bg-soft)">${icon(FAMILY_ICON[f.slug] || 'layers')}</div>
           <h3>${esc(f.brand)}</h3>
