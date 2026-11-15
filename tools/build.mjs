@@ -474,7 +474,7 @@ function nav(active) {
     </a>
     <nav class="nav-links" id="menu" aria-label="Navigation principale">
       ${links.map(([href, label, key]) => `<a href="${href}"${active === key ? ' aria-current="page"' : ''}>${label}</a>`).join('\n      ')}
-      <a class="nav-cta" href="${SITE.whatsapp}" target="_blank" rel="noopener"><span>WhatsApp</span> ${icon('arrow-up-right', 'ico-inline')}</a>
+      <a class="nav-cta" href="${SITE.waDirect}?text=${encodeURIComponent(SITE.intro)}" target="_blank" rel="noopener"><span>Devis gratuit</span> ${icon('arrow-up-right', 'ico-inline')}</a>
     </nav>
     <div class="nav-actions">
       <a class="icon-btn" href="/feed.xml" aria-label="Flux RSS" title="Flux RSS">${icon('rss')}</a>
@@ -513,6 +513,7 @@ function footer() {
           <a href="${SITE.whatsapp}" target="_blank" rel="noopener">Chaîne WhatsApp</a>
           <a href="${SITE.waDirect}" target="_blank" rel="noopener">WhatsApp direct</a>
           <a href="mailto:${SITE.email}">${SITE.email}</a>
+          <a href="${SITE.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
           <a href="${SITE.github}" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -523,7 +524,8 @@ function footer() {
       <span><a href="/feed.xml">RSS</a> · <a href="${SITE.github}" target="_blank" rel="noopener">Code source</a></span>
     </div>
   </div>
-</footer>`;
+</footer>
+<a class="btn btn-wa wa-fab" href="${SITE.waDirect}?text=${encodeURIComponent(SITE.intro)}" target="_blank" rel="noopener" aria-label="Demander un devis sur WhatsApp">${icon('whatsapp')} Devis gratuit</a>`;
 }
 
 function artVisual(post) {
@@ -600,8 +602,8 @@ function homeJsonLd() {
 }
 
 function homePage() {
-  const title = `${SITE.name} — ${SITE.tagline}`;
-  const desc = SITE.description;
+  const title = `${SITE.name} — Réparation électronique & services numériques à Jérusalem`;
+  const desc = 'Réparation électronique, micro-soudure, sites web, vidéosurveillance et infrastructure réseau à Jérusalem et à distance. Plus des astuces tech testées à la main.';
   const ticker = ['Productivité', 'Sécurité', 'Filtrage', 'Alternatives', 'Mobile', 'Religion', 'Zéro pub', 'Zéro cookie', 'Open source', 'Sans abonnement'];
   const tickerHtml = ticker.map((t) => `<span>${t}</span><span class="sep">✦</span>`).join('');
   const body = `${nav('home')}
@@ -630,6 +632,25 @@ function homePage() {
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee-track">${tickerHtml}${tickerHtml}</div></div>
+
+  <section class="section" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="pf reveal">
+        <div class="pf-body">
+          <div class="pf-badges"><span class="pill">Produit phare</span><span class="pf-new">Bêta ouverte</span></div>
+          <h2>Aribaz Filter</h2>
+          <p class="pf-tag">Un internet propre, partout dans la maison.</p>
+          <p>Il ne laisse passer que les sites autorisés. Le filtre tourne sur l'appareil lui-même : ta navigation ne transite par aucun serveur, ni les nôtres ni ceux d'un géant.</p>
+          <ul class="pf-chips"><li>Android</li><li>Windows</li><li>Chrome · Edge · Brave</li><li>iPhone, iPad et Mac en préparation</li></ul>
+          <div class="hero-actions" style="margin-bottom:0">
+            <a class="btn btn-primary" href="/services/filtres/">Découvrir ${icon('arrow')}</a>
+            <a class="btn btn-ghost" href="${FILTER_APP}/fr">Commencer — c'est gratuit</a>
+          </div>
+        </div>
+        <div class="pf-art" aria-hidden="true">${icon('eye')}</div>
+      </div>
+    </div>
+  </section>
 
   <section class="section" data-featured-section>
     <div class="wrap">
@@ -1089,6 +1110,25 @@ const SERVICES = [
   },
 ];
 
+const FAQ_FR = [
+  ['Le devis est-il vraiment gratuit ?', "Oui. Tu me décris le besoin, je te réponds avec un prix clair avant de commencer. Le prix annoncé est le prix payé ; si un imprévu change la donne, je te préviens avant de continuer, jamais après."],
+  ['Où interviens-tu ?', "À Jérusalem sur place, et à distance pour le web, les systèmes, le réseau et le conseil : en France, en Israël, partout où il y a une connexion."],
+  ['En combien de temps réponds-tu ?', "Je réponds moi-même, sous 24 h ouvrées. WhatsApp reste le canal le plus rapide : une photo, deux lignes, et on avance."],
+  ["Et si ce n'est pas réparable ?", "Je te le dis franchement après le diagnostic. Quand le devis officiel dit « irréparable », il reste parfois quelque chose à tenter — mais je préfère ne pas facturer de l'espoir."],
+  ['Mes données sont-elles protégées pendant une réparation ?', "La sauvegarde des données est incluse quand c'est possible. Et je documente ce que je fais, pour que tu ne dépendes pas de moi."],
+  ['Quelles langues parles-tu ?', "Français, hébreu et anglais."],
+  ['Comment passer une annonce dans Atguard ?', "Demande un devis : le format, la durée et le tarif se calent sur ton besoin. Ton annonce est visible par tous les utilisateurs de la version gratuite."],
+];
+
+function faqJsonLd(faq) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+}
+
 function servicesPage() {
   const title = `Services — ${SITE.name}`;
   const desc = "Réparation, micro-soudure, sites web, cartes de mariage, sonorisation, DevOps, infrastructure réseau, vidéosurveillance, filtrage internet, publicité dans Atguard. Du travail propre, expliqué sans jargon.";
@@ -1163,6 +1203,15 @@ function servicesPage() {
     </div>
   </section>
 
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap wrap-narrow">
+      <div class="section-head"><div><h2>Questions fréquentes</h2><p>Les réponses avant que tu ne les poses.</p></div></div>
+      <div class="inv-faq">
+        ${FAQ_FR.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="contact" style="padding-top:0">
     <div class="wrap">
       <div class="section-head"><div><h2>Parlons de ton projet</h2><p>Décris-moi le problème en deux lignes, je te dis si je peux aider.</p></div></div>
@@ -1187,7 +1236,7 @@ ${footer()}
 <script src="/assets/js/app.js" defer></script>
 </body>
 </html>`;
-  return head({ title, description: desc, url: '/services.html' }) + body;
+  return head({ title, description: desc, url: '/services.html', extra: faqJsonLd(FAQ_FR) }) + body;
 }
 
 
@@ -1467,6 +1516,14 @@ function contactPage() {
           <div class="contact-card">
             <h3>${icon('clock')} En pratique</h3>
             <p style="margin:0">${SITE.city} · interventions sur place et à distance (France, Israël, partout où il y a un réseau).<br>Réponse sous 24 h ouvrées · devis gratuit · français, hébreu, anglais.</p>
+          </div>
+          <div class="contact-card">
+            <h3>${icon('link')} Retrouve-moi</h3>
+            <p style="margin:0 0 14px">Pour le parcours, les projets et le code.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-ghost" href="${SITE.linkedin}" target="_blank" rel="noopener">${icon('linkedin')} LinkedIn</a>
+              <a class="btn btn-ghost" href="${SITE.github}" target="_blank" rel="noopener">${icon('github')} GitHub</a>
+            </div>
           </div>
         </div>
 

@@ -1862,3 +1862,50 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 }
 .svc-tile::after { inset: -46px; border-radius: 62px; border-color: color-mix(in srgb, var(--brand, #0a84ff) 15%, transparent); }
 .svc:hover .svc-tile { transform: translateY(-4px) scale(1.06) rotate(-2deg); }
+
+/* ---------- Produit phare (accueil) ---------- */
+.pf {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 28px; align-items: center;
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid var(--line); border-radius: 28px;
+  background: var(--bg-elevated); box-shadow: var(--shadow-sm);
+}
+.pf::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 80% at 100% 0%, color-mix(in srgb, #ff9f0a 16%, transparent), transparent 70%);
+}
+.pf-body, .pf-art { position: relative; }
+.pf h2 { margin: 8px 0 4px; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; }
+.pf-tag { margin: 0 0 10px; font-weight: 600; color: var(--ink); }
+.pf p { color: var(--ink-soft); max-width: 54ch; }
+.pf-tag { color: var(--ink); }
+.pf-badges { display: flex; gap: 8px; align-items: center; }
+.pf-new {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 999px;
+  background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green);
+}
+.pf-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 22px; }
+.pf-chips li {
+  font-size: 12.5px; padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--ink-soft); background: var(--bg-soft);
+}
+.pf-art {
+  justify-self: center; width: min(220px, 40vw); aspect-ratio: 1; border-radius: 34%;
+  display: grid; place-items: center; color: #c26a00;
+  background: linear-gradient(150deg, color-mix(in srgb, #ff9f0a 26%, var(--bg-elevated)), color-mix(in srgb, #ff9f0a 52%, var(--bg-elevated)));
+  box-shadow: 0 30px 60px -24px rgba(194, 106, 0, 0.5);
+}
+.pf-art svg { width: 46%; height: 46%; stroke-width: 1.4; }
+@media (max-width: 760px) { .pf { grid-template-columns: 1fr; } .pf-art { display: none; } }
+
+/* ---------- Bouton WhatsApp fixe (mobile) ---------- */
+.wa-fab {
+  position: fixed; inset-inline-start: 14px; bottom: 14px; z-index: 60; display: none;
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 820px) {
+  .wa-fab { display: inline-flex; }
+  .footer { padding-bottom: 76px; }
+}
