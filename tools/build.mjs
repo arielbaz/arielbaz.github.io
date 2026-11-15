@@ -1520,7 +1520,7 @@ function contactPage() {
 
   <section class="section" style="padding-top:10px">
     <div class="wrap">
-      <div class="contact-grid" style="grid-template-columns:1fr 1.15fr">
+      <div class="contact-grid contact-grid-wide">
         <div class="stack-lg">
           <div class="contact-card wa">
             <h3>${icon('whatsapp')} WhatsApp</h3>
