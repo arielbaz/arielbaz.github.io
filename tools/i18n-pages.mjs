@@ -449,7 +449,6 @@ function aboutPage(ctx, lang) {
       <figure class="about-photo" style="margin:0">
         <img src="/assets/img/ariel.png" alt="${esc(A.photoAlt)}" width="520" height="520" decoding="async">
         <span class="about-pill p1">${icon('clock')} ${esc(A.pills[0])}</span>
-        <span class="about-pill p2">${icon('wrench')} ${esc(A.pills[1])}</span>
       </figure>
     </div>
   </section>
