@@ -26,7 +26,7 @@
 <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="ARIBAZ — Flux RSS" href="/feed.xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=88357ea92d">
+<link rel="stylesheet" href="/assets/css/style.css?v=3051dcf4bd">
 <script>(function(){try{var t=localStorage.getItem('aribaz-theme');var d=(t==='dark')?'dark':'light';document.documentElement.setAttribute('data-theme',d);document.documentElement.style.colorScheme=d;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
 <link rel="alternate" hreflang="fr" href="https://aribaz.com/apropos.html">
 <link rel="alternate" hreflang="en" href="https://aribaz.com/en/about.html">
@@ -52,7 +52,10 @@
       <a class="nav-cta" href="https://wa.me/972557731349?text=Hello%20ARIBAZ%2C%20I%20need%20a%20hand%20with%3A%20" target="_blank" rel="noopener"><span>Free quote</span> <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-inline"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </nav>
     <div class="nav-actions">
-      <div class="lang-switch nav-lang" role="group" aria-label="Language"><a href="/apropos.html" hreflang="fr" lang="fr" title="Français">FR</a><span aria-current="true">EN</span><a href="/he/about.html" hreflang="he" lang="he" title="עברית">עב</a></div>
+      <details class="lang-menu">
+        <summary class="icon-btn" aria-label="Language" title="Language"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.4 2.4 3.6 5.3 3.6 8.4s-1.2 6-3.6 8.4c-2.4-2.4-3.6-5.3-3.6-8.4S9.6 6 12 3.6Z"/></svg></summary>
+        <div class="lang-pop" role="menu"><a role="menuitem" href="/apropos.html" hreflang="fr" lang="fr">Français</a><span class="is-current" role="menuitem" aria-current="true" lang="en">English</span><a role="menuitem" href="/he/about.html" hreflang="he" lang="he">עברית</a></div>
+      </details>
       <a class="icon-btn" href="/feed.xml" aria-label="RSS feed" title="RSS feed"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19a1 1 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 11.5A8 8 0 0 1 12.5 19.5M4.5 5a14.5 14.5 0 0 1 14.5 14.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2.6v2M12 19.4v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.6 12h2M19.4 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
@@ -63,12 +66,13 @@
     <div class="wrap about-hero">
       <div>
         <span class="eyebrow"><span class="dot"></span>About</span>
-        <h1 class="display" style="max-width:22ch">A soldering iron, a terminal, <span class="gradient-text">too much curiosity.</span></h1>
-        <p class="lede" style="margin-inline:0">Ariel. Jerusalem, with one foot in France. A workshop, a terminal, and a habit of wanting to understand how everything works.</p>
+        <h1 class="display" style="max-width:22ch">I repair what breaks. <span class="gradient-text">I build what’s missing.</span></h1>
+        <p class="lede" style="margin-inline:0">Ariel, in Jerusalem, with one foot in France. Electronics, web, systems: a workshop, a terminal, and the urge to understand how everything works.</p>
       </div>
       <figure class="about-photo" style="margin:0">
         <img src="/assets/img/ariel.png" alt="Cartoon portrait of Ariel" width="520" height="520" decoding="async">
-        <span class="about-pill p1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.6V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Jerusalem</span>
+        <span class="about-pill p1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v-5.5h4V21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Jerusalem</span>
+        <span class="about-pill p2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Handmade</span>
       </figure>
     </div>
   </section>
@@ -113,6 +117,8 @@
             <div class="fact"><span class="n" data-count-to="2">0</span><span class="l">countries, a permanent back-and-forth between France and Israel</span></div>
             <div class="fact"><span class="n" data-count-to="10">0</span><span class="l">gigabits per second on the home network</span></div>
             <div class="fact"><span class="n" data-count-to="64">0</span><span class="l">GB of ECC RAM, because silent errors exist</span></div>
+            <div class="fact"><span class="n" data-count-to="24">0</span><span class="l">GB of VRAM on the RTX 3090 Ti</span></div>
+            <div class="fact"><span class="n" data-count-to="4">0</span><span class="l">TB of SSD on my workstation</span></div>
             <div class="fact"><span class="n" data-count-to="48">0</span><span class="l">volts, the favorite voltage of the bikes we tinker with</span></div>
             <div class="fact"><span class="n" data-count-to="0">0</span><span class="l">proprietary cloud subscriptions for my data</span></div>
           </div>
@@ -128,6 +134,16 @@
         <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Repair first</h3><p>The best machine is the one that still works. Diagnosis before replacement, always.</p></div>
         <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Understand the system</h3><p>From low-level code to network architecture: if you don’t know how it works, you don’t know why it breaks.</p></div>
         <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.8 7.5 9 4.3-1.2 7.5-4.4 7.5-9V6L12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Take back control</h3><p>Open source, self-hosted, encrypted. Tools that really belong to you.</p></div>
+      </div>
+
+      <div class="section-head" style="margin-top:56px"><div><h2>My gear, every day</h2><p>What I use daily, no frills.</p></div></div>
+      <div class="gear-grid">
+        <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Workstation</h3>
+          <ul class="spec-list"><li><span>Processor</span><b dir="ltr">Intel Core i9-11900K</b></li><li><span>Memory</span><b dir="ltr">64 GB RAM</b></li><li><span>Storage</span><b dir="ltr">4 TB SSD</b></li><li><span>Graphics card</span><b dir="ltr">NVIDIA RTX 3090 Ti (24 GB VRAM)</b></li></ul></div>
+        <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5" width="15" height="10.5" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 19h19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Laptop</h3>
+          <ul class="spec-list"><li><span>Model</span><b dir="ltr">MacBook Air M5</b></li><li><span>Memory</span><b dir="ltr">16 GB</b></li><li><span>Storage</span><b dir="ltr">512 GB</b></li></ul></div>
+        <div class="value reveal"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.4 8.4 4.4L12 12.2 3.6 7.8 12 3.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="m3.6 12.2 8.4 4.4 8.4-4.4M3.6 16.6l8.4 4.4 8.4-4.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Storage server (NAS)</h3>
+          <ul class="spec-list"><li><span>Model</span><b dir="ltr">QNAP TS-673A</b></li><li><span>Role</span><b dir="ltr">Storage and backups</b></li></ul></div>
       </div>
 
       <div class="hero-actions" style="justify-content:flex-start;margin-top:36px">
@@ -173,6 +189,6 @@
   </div>
 </footer>
 <a class="btn btn-wa wa-fab" href="https://wa.me/972557731349?text=Hello%20ARIBAZ%2C%20I%20need%20a%20hand%20with%3A%20" target="_blank" rel="noopener" aria-label="Request a quote on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.8 8.1c-.3.1-.8.5-.8 1.4 0 2 2.6 5 5.5 5.6 1.3.3 1.9-.1 2.3-.5.3-.4.5-1 .3-1.2l-1.3-.7c-.2-.1-.5 0-.7.2l-.5.6c-.2.2-.4.2-.6.1-.7-.3-2.3-1.6-2.7-2.4-.1-.2 0-.4.2-.5l.6-.5c.2-.2.2-.4.1-.6l-.7-1.4c-.2-.3-.5-.3-.8-.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free quote</a>
-<script src="/assets/js/app.js?v=dcec5d6721" defer></script>
+<script src="/assets/js/app.js?v=3b2fe6f023" defer></script>
 </body>
 </html>
