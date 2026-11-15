@@ -20,6 +20,8 @@ export const PATHS = {
   services: { fr: '/services.html', en: '/en/services.html', he: '/he/services.html' },
   about: { fr: '/apropos.html', en: '/en/about.html', he: '/he/about.html' },
   contact: { fr: '/contact.html', en: '/en/contact.html', he: '/he/contact.html' },
+  filter: { fr: '/services/filtres/', en: '/en/services/filtres/', he: '/he/services/filtres/' },
+  invitation: { fr: '/invitation.html', en: '/en/invitation.html', he: '/he/invitation.html' },
 };
 export function servicePaths(SLUG, item) {
   const s = SLUG(item.title);
@@ -83,8 +85,8 @@ function chrome(ctx, lang, active, paths) {
           <h4>${esc(F.explore)}</h4>
           <a href="${PATHS.home[lang]}">${esc(F.home)}</a>
           <a href="${PATHS.services[lang]}">${esc(F.services)}</a>
-          <a href="/services/filtres/">${esc(F.filter)}</a>
-          <a href="/invitation.html">${esc(F.invitation)}</a>
+          <a href="${PATHS.filter[lang]}">${esc(F.filter)}</a>
+          <a href="${PATHS.invitation[lang]}">${esc(F.invitation)}</a>
           <a href="${PATHS.about[lang]}">${esc(F.about)}</a>
           <a href="${PATHS.contact[lang]}">${esc(F.contact)}</a>
           <a href="/feed.xml">${esc(F.rss)}</a>
@@ -153,6 +155,8 @@ function tr(lang, item) {
   return t || { title: item.title, text: item.text, detail: item.text, includes: item.bullets, delai: '' };
 }
 function itemUrl(SLUG, lang, item) {
+  if (item.href === '/services/filtres/') return PATHS.filter[lang];
+  if (item.href === '/invitation.html') return PATHS.invitation[lang];
   return item.href || servicePaths(SLUG, item)[lang];
 }
 
@@ -199,8 +203,8 @@ function homePage(ctx, lang) {
           <p>${esc(P.text)}</p>
           <ul class="pf-chips">${P.chips.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
           <div class="hero-actions" style="margin-bottom:0;justify-content:flex-start">
-            <a class="btn btn-primary" href="/services/filtres/">${esc(P.more)} ${icon('arrow', 'arr')}</a>
-            <a class="btn btn-ghost" href="${filterApp}/${lang === 'he' ? 'he' : 'en'}">${esc(P.start)}</a>
+            <a class="btn btn-primary" href="${PATHS.filter[lang]}">${esc(P.more)} ${icon('arrow', 'arr')}</a>
+            <a class="btn btn-ghost" href="${filterApp}/">${esc(P.start)}</a>
           </div>
         </div>
         <div class="pf-art" aria-hidden="true">${icon('eye')}</div>
@@ -543,6 +547,229 @@ function contactPage(ctx, lang) {
 }
 
 /* ======================================================================= */
+/* Aribaz Filter                                                            */
+/* ======================================================================= */
+function filterPage(ctx, lang) {
+  const { SITE, icon, esc, PLATFORMS, filterApp, filterRepo } = ctx;
+  const L = I18N[lang]; const F = L.filter;
+  const ch = chrome(ctx, lang, 'services', PATHS.filter);
+  const waFilter = `${SITE.waDirect}?text=${encodeURIComponent(F.waText)}`;
+  const state = { android: 'ok', windows: 'ok', chrome: 'ext', ios: 'soon', mac: 'soon' };
+  const platformCards = Object.keys(F.platforms).map((key) => {
+    const plat = PLATFORMS[key]; const [name, st] = F.platforms[key];
+    const color = state[key] === 'ok' ? 'var(--green)' : state[key] === 'ext' ? 'var(--blue)' : 'var(--ink-faint)';
+    return `<div class="value" style="padding:22px;display:flex;gap:14px;align-items:flex-start">
+      <span class="plat ${plat.cls}" style="width:26px;height:26px;flex:none" aria-hidden="true">${plat.svg}</span>
+      <div><h3 style="margin:0 0 4px">${esc(name)}</h3><p style="font-size:13px;color:${color}">${esc(st)}</p></div>
+    </div>`;
+  }).join('');
+  const card = ([ic, t, p]) => `<div class="value reveal"><span class="ico">${icon(ic)}</span><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`;
+  const inner = `  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>${esc(F.eyebrow)}</span>
+      <h1 class="display" style="font-size:clamp(36px,6vw,64px);max-width:20ch">${esc(F.h1a)} <span class="gradient-text">${esc(F.h1b)}</span></h1>
+      <p class="lede" style="margin-inline:0;max-width:56ch">${esc(F.lede)}</p>
+      <div class="hero-actions" style="justify-content:flex-start">
+        <a class="btn btn-primary" href="${filterApp}/">${esc(F.start)} ${icon('arrow', 'arr')}</a>
+        <a class="btn btn-ghost" href="#comment">${icon('layers')} ${esc(F.how)}</a>
+      </div>
+      <div class="hero-meta" style="justify-content:flex-start">
+        <span>${icon('check')} ${esc(F.meta[0])}</span>
+        <span>${icon('shield')} ${esc(F.meta[1])}</span>
+        <span>${icon('clock')} ${esc(F.meta[2])}</span>
+      </div>
+      <p class="muted" style="font-size:13px;margin:18px 0 0">${esc(F.note)} <a class="link-arrow" href="${filterRepo}" target="_blank" rel="noopener">${esc(F.source)} ${icon('arrow-up-right')}</a></p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(F.trustH)}</h2><p>${esc(F.trustSub)}</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        ${F.trust.map(card).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(F.whyH)}</h2><p>${esc(F.whySub)}</p></div></div>
+      <div class="value-grid grid-2" style="margin-top:34px">
+        ${F.why.map(card).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="appareils">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(F.devicesH)}</h2><p>${esc(F.devicesSub)}</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:26px">
+        ${platformCards}
+      </div>
+      <p class="muted" style="font-size:13.5px;margin-top:18px">${esc(F.devicesNote)}</p>
+    </div>
+  </section>
+
+  <section class="section" id="comment">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(F.stepsH)}</h2><p>${esc(F.stepsSub)}</p></div></div>
+      <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        ${F.steps.map(([t, p]) => `<div class="step reveal"><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(F.whoH)}</h2><p>${esc(F.whoSub)}</p></div></div>
+      <div class="value-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        ${F.who.map(card).join('\n        ')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <div class="section-head"><div><h2>${esc(F.dontH)}</h2><p>${esc(F.dontSub)}</p></div></div>
+      <ul class="dont" style="padding:0">
+        ${F.dont.map(([b, t]) => `<li>${icon('check')}<span><b>${esc(b)}</b> ${esc(t)}</span></li>`).join('\n        ')}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight"><div class="wrap">
+    <div class="cta-band reveal">
+      <h2>${esc(F.cta.title)}</h2>
+      <p>${esc(F.cta.text)}</p>
+      <div class="hero-actions" style="margin-bottom:0">
+        <a class="btn btn-primary" href="${filterApp}/">${esc(F.cta.protect)} ${icon('arrow', 'arr')}</a>
+        <a class="btn btn-wa" href="${waFilter}" target="_blank" rel="noopener">${icon('whatsapp')} ${esc(F.cta.ask)}</a>
+        <a class="btn btn-ghost" href="${filterRepo}" target="_blank" rel="noopener">${icon('github')} ${esc(F.cta.code)}</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <a class="link-arrow" href="${PATHS.services[lang]}">${icon('arrow', 'arr')} ${esc(F.back)}</a>
+    </div>
+  </section>`;
+  return shell(ctx, lang, { title: F.title, description: F.desc, url: PATHS.filter[lang], paths: PATHS.filter }, inner, 'services', ch);
+}
+
+/* ======================================================================= */
+/* Invitation                                                               */
+/* ======================================================================= */
+function invitationPage(ctx, lang) {
+  const { SITE, icon, esc } = ctx;
+  const L = I18N[lang]; const V = L.invitation;
+  const ch = chrome(ctx, lang, 'invitation', PATHS.invitation);
+  const waInv = `${SITE.waDirect}?text=${encodeURIComponent(V.waText)}`;
+  const inner = `  <section class="inv-hero">
+    <div class="wrap">
+      <div class="inv-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>${esc(V.eyebrow)}</span>
+          <h1>${esc(V.h1a)} <span class="gradient-text">${esc(V.h1b)}</span></h1>
+          <p class="lede">${esc(V.lede)}</p>
+          <div class="hero-actions" style="justify-content:flex-start">
+            <a class="btn btn-ghost" href="/invitation/demo.html">${esc(V.demo)} ${icon('arrow', 'arr')}</a>
+            <a class="btn btn-wa" href="${waInv}" target="_blank" rel="noopener">${icon('whatsapp')} ${esc(V.prepare)}</a>
+          </div>
+          <div class="hero-meta" style="justify-content:flex-start;margin-top:26px">
+            <span>${icon('clock')} ${esc(V.meta[0])}</span>
+            <span>${icon('check')} ${esc(V.meta[1])}</span>
+            <span>${icon('shield')} ${esc(V.meta[2])}</span>
+          </div>
+        </div>
+        <div class="inv-mock" aria-hidden="true">
+          <div>
+            <p class="m-kicker">${esc(V.mock.kicker)}</p>
+            <p class="m-names">${esc(V.mock.names[0])}<br><em>&amp;</em><br>${esc(V.mock.names[1])}</p>
+            <div class="m-rule"></div>
+            <p class="m-date">${esc(V.mock.date)}</p>
+            <p class="m-place">${esc(V.mock.place)}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.includedA)} <span class="accent">${esc(V.includedB)}</span></h2><p>${esc(V.includedSub)}</p></div></div>
+      <div class="inv-features">
+        ${V.features.map(([ic, t, d]) => `<div class="inv-feature reveal"><div class="ico">${icon(ic)}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
+      </div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:34px">
+        <a class="btn btn-primary" href="/invitation/demo.html">${esc(V.openDemo)} ${icon('arrow', 'arr')}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.howH)}</h2><p>${esc(V.howSub)}</p></div></div>
+      <div class="steps">
+        ${V.steps.map(([t, d]) => `<div class="step"><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.eventsA)} <span class="accent">${esc(V.eventsB)}</span></h2><p>${esc(V.eventsSub)}</p></div></div>
+      <div class="chips" style="gap:10px">
+        ${V.events.map((t) => `<span class="chip" style="padding:10px 18px;font-size:14px">${esc(t)}</span>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.pricesH)}</h2><p>${esc(V.pricesSub)}</p></div></div>
+      <div class="inv-price-grid">
+        ${V.prices.map((p) => `<div class="inv-price${p.main ? ' is-main' : ''}">
+          ${p.tag ? `<span class="tag-main">${esc(p.tag)}</span>` : ''}
+          <h3>${esc(p.t)}</h3>
+          <p class="p-desc">${esc(p.d)}</p>
+          <ul>${p.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+          <div class="p-foot"><span class="p-price">${esc(V.onQuote)}</span><a class="link-arrow" href="${SITE.waDirect}?text=${encodeURIComponent(V.quoteText + p.t)}" target="_blank" rel="noopener">${esc(V.request)} ${icon('arrow', 'arr')}</a></div>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.faqA)} <span class="accent">${esc(V.faqB)}</span></h2><p>${esc(V.faqSub)}</p></div></div>
+      <div class="inv-faq">
+        ${V.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head"><div><h2>${esc(V.contactH)}</h2><p>${esc(V.contactSub)}</p></div></div>
+      <div class="contact-grid">
+        <div class="contact-card wa">
+          <h3>${icon('whatsapp')} WhatsApp</h3>
+          <p>${esc(V.wa.text)} <span dir="ltr">${SITE.phone}</span></p>
+          <a class="btn btn-wa" href="${waInv}" target="_blank" rel="noopener">${esc(V.wa.btn)} ${icon('arrow-up-right')}</a>
+        </div>
+        <div class="contact-card">
+          <h3>${icon('link')} Email</h3>
+          <p>${esc(V.mail.text)}</p>
+          <a class="btn btn-primary" href="mailto:${SITE.email}?subject=${encodeURIComponent(V.mail.subject)}">${SITE.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
+  return shell(ctx, lang, { title: V.title, description: V.desc, url: PATHS.invitation[lang], paths: PATHS.invitation }, inner, 'invitation', ch);
+}
+
+/* ======================================================================= */
 /* Toutes les pages : { 'en/services.html': '<html…>', … }                  */
 /* ======================================================================= */
 export function i18nPages(ctx) {
@@ -552,6 +779,8 @@ export function i18nPages(ctx) {
     out[`${lang}/services.html`] = servicesPage(ctx, lang);
     out[`${lang}/about.html`] = aboutPage(ctx, lang);
     out[`${lang}/contact.html`] = contactPage(ctx, lang);
+    out[`${lang}/services/filtres/index.html`] = filterPage(ctx, lang);
+    out[`${lang}/invitation.html`] = invitationPage(ctx, lang);
     for (const family of ctx.SERVICES) {
       for (const item of family.items.filter((it) => !it.href)) {
         out[`${lang}/services/${ctx.SLUG(item.title)}.html`] = servicePage(ctx, lang, family, item);

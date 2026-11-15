@@ -1918,6 +1918,10 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 [dir="rtl"] .btn:hover svg.arr { transform: scaleX(-1) translateX(3px); }
 [dir="rtl"] .quote-block { border-left: 0; border-right: 3px solid var(--blue); }
 [dir="rtl"] .eyebrow, [dir="rtl"] .hero-meta span { direction: rtl; }
+/* Carte d'invitation d'exemple : les prénoms hébreux tiennent sur une ligne. */
+[dir="rtl"] .inv-mock .m-names { line-height: 1.2; }
+[dir="rtl"] .inv-mock .m-names br { display: none; }
+[dir="rtl"] .inv-mock .m-names em { margin-inline: 0.3em; }
 
 
 /* Page Contact : deux colonnes sur grand écran, une seule sur mobile (le style direct l'empêchait). */
