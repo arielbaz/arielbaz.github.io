@@ -1450,10 +1450,17 @@ function aboutPage() {
   const body = `${nav('apropos', PATHS.about)}
 <main id="contenu">
   <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span>À propos</span>
-      <h1 class="display" style="max-width:22ch">Un fer à souder, un terminal, <span class="gradient-text">trop de curiosité.</span></h1>
-      <p class="lede" style="margin-inline:0">Ariel. Jérusalem, avec un pied en France. Un atelier, un terminal, et cette manie de vouloir comprendre comment tout fonctionne.</p>
+    <div class="wrap about-hero">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>À propos</span>
+        <h1 class="display" style="max-width:22ch">Un fer à souder, un terminal, <span class="gradient-text">trop de curiosité.</span></h1>
+        <p class="lede" style="margin-inline:0">Ariel. Jérusalem, avec un pied en France. Un atelier, un terminal, et cette manie de vouloir comprendre comment tout fonctionne.</p>
+      </div>
+      <figure class="about-photo" style="margin:0">
+        <img src="/assets/img/ariel.png" alt="Portrait cartoon d'Ariel" width="520" height="520" decoding="async">
+        <span class="about-pill p1">${icon('clock')} Jérusalem</span>
+        <span class="about-pill p2">${icon('wrench')} Fait main</span>
+      </figure>
     </div>
   </section>
 

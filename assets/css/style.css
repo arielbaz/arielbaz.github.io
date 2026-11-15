@@ -1986,6 +1986,31 @@ a.eyebrow:hover .eyebrow-arrow { transform: translate(2px, -2px); opacity: 1; }
 }
 .pf-art::after { animation-delay: 1.8s; }
 
+/* Portrait cartoon sur la page À propos */
+.about-hero { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 5vw, 64px); align-items: center; }
+.about-photo { position: relative; width: min(300px, 34vw); aspect-ratio: 1; flex: none; animation: floaty 9s ease-in-out infinite; }
+.about-photo img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 30px 60px -26px rgba(94, 28, 130, 0.55); }
+.about-photo::before {
+  content: ""; position: absolute; inset: -8px; border-radius: 50%; z-index: 0;
+  background: conic-gradient(from 0deg, #f0551a, #c02f72, #8a2fc0, #0a84ff, #f0551a);
+  animation: spinSlow 14s linear infinite; opacity: 0.9;
+}
+.about-pill {
+  position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink-soft);
+  background: color-mix(in srgb, var(--bg-elevated) 86%, transparent); border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); white-space: nowrap;
+}
+.about-pill svg { width: 14px; height: 14px; color: var(--blue); }
+.about-pill.p1 { inset-inline-start: -14px; top: 12%; }
+.about-pill.p2 { inset-inline-end: -10px; bottom: 8%; }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+@media (max-width: 760px) {
+  .about-hero { grid-template-columns: 1fr; }
+  .about-photo { width: 200px; order: -1; }
+}
+@media (prefers-reduced-motion: reduce) { .about-photo, .about-photo::before { animation: none !important; } }
+
 /* Étiquettes de technologies sous chaque maison de services */
 .family .pf-chips { margin: -6px 0 22px; }
 
